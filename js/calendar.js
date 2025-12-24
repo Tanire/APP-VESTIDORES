@@ -193,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const expenses = StorageService.getExpenses();
       expenses.push(newExpense);
       StorageService.saveExpenses(expenses);
+      StorageService.triggerAutoSync(); // MANUAL SYNC
       alert('¡Gasto añadido y guardado!');
     }
   }
@@ -205,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (idx !== -1) {
         events[idx]._deleted = true;
         StorageService.saveEvents(events);
+        StorageService.triggerAutoSync(); // MANUAL SYNC
         renderCalendar();
         if (selectedDate) showDayDetails(selectedDate);
       }
@@ -255,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const events = StorageService.getEvents();
     events.push(newEvent);
     StorageService.saveEvents(events);
+    StorageService.triggerAutoSync(); // MANUAL SYNC
 
     closeModal();
     renderCalendar();

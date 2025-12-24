@@ -17,9 +17,9 @@ const StorageService = {
   set(key, value, suppressAutoSync = false) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
-      if (!suppressAutoSync) {
-        this.triggerAutoSync();
-      }
+      // triggerAutoSync removed to prevent loops. 
+      // Manual sync is now required in UI handlers.
+      // if (!suppressAutoSync) { this.triggerAutoSync(); }
     } catch (e) {
       console.error(`Error saving ${key} to storage`, e);
     }

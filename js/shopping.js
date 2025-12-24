@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: Date.now().toString()
         });
         StorageService.set('shopping_list', items);
+        StorageService.triggerAutoSync(); // MANUAL SYNC
 
         itemInput.value = '';
         renderList();

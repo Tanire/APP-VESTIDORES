@@ -243,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 expenses[idx]._deleted = true;
                 expenses[idx]._deletedAt = new Date().toISOString(); // optional metadata
                 StorageService.saveExpenses(expenses);
+                StorageService.triggerAutoSync(); // MANUAL SYNC
                 renderExpenses();
             }
         }
@@ -256,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (idx !== -1) {
                 bills[idx]._deleted = true;
                 StorageService.saveRecurringBills(bills);
+                StorageService.triggerAutoSync(); // MANUAL SYNC
                 renderRecurring();
             }
         }
