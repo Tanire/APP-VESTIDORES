@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes - Casa Mocholí Chordà</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main-container">
+
+        <div class="back-button">
+            <button onclick="window.location.href='index.html'" class="btn btn-secondary">
+                ← Volver
+            </button>
+        </div>
+
+        <header class="home-header" style="margin-bottom: 2rem;">
+            <h2>Ajustes y Nube</h2>
+            <p style="color: var(--text-muted);">Sincronización con GitHub</p>
+        </header>
+
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">Configuración GitHub</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Para sincronizar entre dispositivos, necesitas un <strong>Personal Access Token</strong> de GitHub (con
+                permiso de 'gist') y el ID de un Gist secreto.
+            </p>
+
+            <div class="form-group">
+                <label class="form-label">GitHub Access Token</label>
+                <input type="password" id="gh-token" class="form-input" placeholder="ghp_xxxxxxxxxxxx">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Gist ID (Archivo de Datos)</label>
+                <input type="text" id="gh-gist-id" class="form-input" placeholder="Ej: a1b2c3d4e5...">
+                <small style="color: var(--text-muted);">Si lo dejas vacío, crearemos uno nuevo al guardar.</small>
+            </div>
+
+            <button id="save-config-btn" class="btn btn-primary" style="width: 100%; margin-bottom: 2rem;">
+                💾 Guardar Configuración
+            </button>
+
+            <hr style="border: 0; border-top: 1px solid #E5E7EB; margin-bottom: 2rem;">
+
+            <h3 style="margin-bottom: 1rem;">Acciones de Sincronización</h3>
+
+            <div style="display: grid; gap: 1rem;">
+                <button id="sync-upload-btn" class="btn btn-secondary">
+                    ☁️ Subir Datos (Local → Nube)
+                </button>
+                <button id="sync-download-btn" class="btn btn-secondary">
+                    📥 Descargar Datos (Nube → Local)
+                </button>
+            </div>
+
+            <div id="sync-status" style="margin-top: 1rem; text-align: center; font-weight: 500;"></div>
+        </div>
+
+        <div class="card" style="margin-top: 2rem;">
+            <h3>Datos Locales</h3>
+            <button id="export-json-btn" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">
+                Descargar Copia de Seguridad (.json)
+            </button>
+            <input type="file" id="import-json-file" style="display: none;" accept=".json">
+            <button id="import-json-btn" class="btn btn-secondary" style="margin-top: 0.5rem; width: 100%;">
+                Restaurar Copia...
+            </button>
+        </div>
+
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/sync-service.js"></script>
+</body>
+
+</html>

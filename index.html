@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Mocholí Chordà</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4F46E5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+<body>
+  <div class="main-container">
+    <header class="home-header">
+      <div class="family-photo-container">
+        <img src="assets/family_photo.jpg" alt="Foto familiar" class="family-photo">
+      </div>
+      <h1 class="app-title">Casa Mocholí Chordà</h1>
+      <p style="color: var(--text-muted);">Organización y gastos familiares</p>
+    </header>
+
+    <div class="menu-grid">
+      <!-- Calendar Card -->
+      <div class="menu-card" onclick="navigateTo('calendar.html')">
+        <div class="menu-icon">📅</div>
+        <div class="menu-title">Calendario</div>
+        <div class="menu-desc">Eventos y recordatorios</div>
+      </div>
+
+      <!-- Expenses Card -->
+      <div class="menu-card" onclick="navigateTo('expenses.html')">
+        <div class="menu-icon">💶</div>
+        <div class="menu-title">Gastos Mensuales</div>
+        <div class="menu-desc">Control de economía</div>
+      </div>
+
+      <!-- Shopping List Card -->
+      <div class="menu-card" onclick="navigateTo('shopping.html')">
+        <div class="menu-icon">🛒</div>
+        <div class="menu-title">Lista Compra</div>
+        <div class="menu-desc">Añadir productos</div>
+      </div>
+
+      <!-- Settings Card -->
+      <div class="menu-card" onclick="navigateTo('settings.html')">
+        <div class="menu-icon">⚙️</div>
+        <div class="menu-title">Ajustes / Nube</div>
+        <div class="menu-desc">Sincronización y Config</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <!-- Simple Service Worker Registration for PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => console.log('SW fail', err));
+      });
+    }
+  </script>
+</body>
+
+</html>
