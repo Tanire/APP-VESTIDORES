@@ -14,10 +14,12 @@ const StorageService = {
     }
   },
 
-  set(key, value) {
+  set(key, value, suppressAutoSync = false) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
-      this.triggerAutoSync();
+      if (!suppressAutoSync) {
+        this.triggerAutoSync();
+      }
     } catch (e) {
       console.error(`Error saving ${key} to storage`, e);
     }
@@ -44,11 +46,8 @@ const StorageService = {
 
         if (indicator) {
           if (success) {
-            indicator.innerHTML = '<span style="color: #10B981;">●</span> Guardado en Nube';
-            setTimeout(() => {
-              indicator.innerHTML = '<span style="color: #10B981;">●</span> En línea';
-              indicator.style.opacity = '0.7';
-            }, 2000);
+            indicator.innerHTML = '<span style="color: #10B981;">●</span> En línea';
+            setTimeout(() => { indicator.style.opacity = '0.7'; }, 2000);
           } else {
             indicator.innerHTML = '<span style="color: #EF4444;">●</span> Error al guardar';
           }
@@ -64,11 +63,11 @@ const StorageService = {
 
   // Helpers
   getEvents() { return this.get('calendar_events', []); },
-  saveEvents(events) { this.set('calendar_events', events); },
-  getExpenses() { return this.get('expenses', []); },
-  saveExpenses(expenses) { this.set('expenses', expenses); },
+  saveEvents(events, suppress = false) { this.set('calendar_events', events, suppress); },
 
-  // Recurring Bills
+  getExpenses() { return this.get('expenses', []); },
+  saveExpenses(expenses, suppress = false) { this.set('expenses', expenses, suppress); },
+
   getRecurringBills() { return this.get('recurring_bills', []); },
-  saveRecurringBills(bills) { this.set('recurring_bills', bills); }
+  saveRecurringBills(bills, suppress = false) { this.set('recurring_bills', bills, suppress); }
 };

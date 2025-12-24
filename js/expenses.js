@@ -123,16 +123,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Renders ---
 
     function renderExpenses() {
-        // Only show expenses for CURRENT MONTH logic? 
-        // For simplicity V1 showed all history. user didn't ask for filtering yet but "Historial Mes" implies filter.
-        // Let's filter for current month to be cleaner.
         const now = new Date();
         const currentMonth = now.getMonth();
         const currentYear = now.getFullYear();
 
         let expenses = StorageService.getExpenses();
 
-        // Filter
+        // Filter Soft Deleted
+        expenses = expenses.filter(e => !e._deleted);
+
+        // Filter Month
         expenses = expenses.filter(e => {
             const d = new Date(e.date);
             return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
@@ -183,6 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderRecurring() {
         let bills = StorageService.getRecurringBills();
+
+        // Filter Soft Deleted
+        bills = bills.filter(b => !b._deleted);
+
         recurringList.innerHTML = '';
 
         if (bills.length === 0) {
@@ -233,18 +237,27 @@ document.addEventListener('DOMContentLoaded', () => {
     function deleteExpense(id) {
         if (confirm('¿Eliminar este gasto del historial?')) {
             let expenses = StorageService.getExpenses();
-            expenses = expenses.filter(e => e.id !== id);
-            StorageService.saveExpenses(expenses);
-            renderExpenses();
+            // SOFT DELETE: Find and mark
+            const idx = expenses.findIndex(e => e.id === id);
+            if (idx !== -1) {
+                expenses[idx]._deleted = true;
+                expenses[idx]._deletedAt = new Date().toISOString(); // optional metadata
+                StorageService.saveExpenses(expenses);
+                renderExpenses();
+            }
         }
     }
 
     function deleteRecurring(id) {
         if (confirm('¿Eliminar este gasto fijo? Dejará de avisarte.')) {
             let bills = StorageService.getRecurringBills();
-            bills = bills.filter(b => b.id !== id);
-            StorageService.saveRecurringBills(bills);
-            renderRecurring();
+            // SOFT DELETE
+            const idx = bills.findIndex(b => b.id === id);
+            if (idx !== -1) {
+                bills[idx]._deleted = true;
+                StorageService.saveRecurringBills(bills);
+                renderRecurring();
+            }
         }
     }
 

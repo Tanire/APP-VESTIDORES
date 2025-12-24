@@ -5,7 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearBtn = document.getElementById('clear-completed-btn');
 
     function renderList() {
-        const items = StorageService.get('shopping_list', []);
+        let items = StorageService.get('shopping_list', []);
+
+        // Filter Soft Deleted
+        items = items.filter(i => !i._deleted);
+
         shoppingList.innerHTML = '';
 
         if (items.length === 0) {
@@ -18,24 +22,24 @@ document.addEventListener('DOMContentLoaded', () => {
             div.className = `shopping-item ${item.completed ? 'completed' : ''}`;
 
             div.innerHTML = `
-        <div class="checkbox-container" data-index="${index}">
+        <div class="checkbox-container" data-id="${item.id}">
            <div class="custom-checkbox ${item.completed ? 'checked' : ''}"></div>
            <span class="item-name">${item.name}</span>
         </div>
-        <button class="delete-btn" data-index="${index}">×</button>
+        <button class="delete-btn" data-id="${item.id}">×</button>
       `;
             shoppingList.appendChild(div);
         });
 
         // Listeners
         document.querySelectorAll('.checkbox-container').forEach(el => {
-            el.addEventListener('click', () => toggleItem(el.dataset.index));
+            el.addEventListener('click', () => toggleItem(el.dataset.id));
         });
 
         document.querySelectorAll('.delete-btn').forEach(el => {
             el.addEventListener('click', (e) => {
                 e.stopPropagation();
-                deleteItem(el.dataset.index);
+                deleteItem(el.dataset.id);
             });
         });
     }
@@ -56,24 +60,33 @@ document.addEventListener('DOMContentLoaded', () => {
         renderList();
     }
 
-    function toggleItem(index) {
+    function toggleItem(id) {
         const items = StorageService.get('shopping_list', []);
-        items[index].completed = !items[index].completed;
-        StorageService.set('shopping_list', items);
-        renderList();
+        const idx = items.findIndex(i => i.id === id);
+        if (idx !== -1) {
+            items[idx].completed = !items[idx].completed;
+            StorageService.set('shopping_list', items);
+            renderList();
+        }
     }
 
-    function deleteItem(index) {
+    function deleteItem(id) {
         const items = StorageService.get('shopping_list', []);
-        items.splice(index, 1);
-        StorageService.set('shopping_list', items);
-        renderList();
+        // SOFT DELETE
+        const idx = items.findIndex(i => i.id === id);
+        if (idx !== -1) {
+            items[idx]._deleted = true;
+            StorageService.set('shopping_list', items);
+            renderList();
+        }
     }
 
     clearBtn.addEventListener('click', () => {
         if (confirm('¿Borrar todos los elementos marcados?')) {
             let items = StorageService.get('shopping_list', []);
-            items = items.filter(i => !i.completed);
+            items.forEach(i => {
+                if (i.completed) i._deleted = true;
+            });
             StorageService.set('shopping_list', items);
             renderList();
         }
@@ -87,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderList();
 });
 
-// Auto-refresh when sync finishes
 window.addEventListener('storage-updated', () => {
     location.reload();
 });

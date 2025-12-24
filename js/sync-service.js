@@ -88,14 +88,15 @@ const SyncService = {
         };
     },
 
+    // Suppress Auto-Sync when restoring data to avoid loops!
     restoreData(data) {
-        if (data.calendar_events) StorageService.saveEvents(data.calendar_events);
-        if (data.expenses) StorageService.saveExpenses(data.expenses);
-        if (data.shopping_list) StorageService.set('shopping_list', data.shopping_list);
-        if (data.recurring_bills) StorageService.saveRecurringBills(data.recurring_bills);
+        if (data.calendar_events) StorageService.saveEvents(data.calendar_events, true);
+        if (data.expenses) StorageService.saveExpenses(data.expenses, true);
+        if (data.shopping_list) StorageService.set('shopping_list', data.shopping_list, true);
+        if (data.recurring_bills) StorageService.saveRecurringBills(data.recurring_bills, true);
     },
 
-    // ---- Smart Merge Logic ----
+    // ---- Smart Merge Logic (with Soft Delete Support) ----
 
     mergeArrays(localArr, cloudArr) {
         // Map by ID to merge. Local wins if conflict (assumed latest edit by active user).
@@ -111,7 +112,15 @@ const SyncService = {
         // 2. Add/Overwrite with Local items
         if (Array.isArray(localArr)) {
             localArr.forEach(item => {
-                if (item && item.id) mergedMap.set(item.id, item);
+                if (item && item.id) {
+                    const existing = mergedMap.get(item.id);
+                    // Conflict Resolution Strategy:
+                    // If cloud says 'deleted' and local says 'not deleted' -> It depends.
+                    // If local has NEW timestamp, keep local. If not, maybe use cloud?
+                    // SIMPLE STRATEGY: Local always wins.
+                    // Meaning if I deleted locally, my local item has _deleted=true, so it overrides cloud.
+                    mergedMap.set(item.id, item);
+                }
             });
         }
 
@@ -138,7 +147,7 @@ const SyncService = {
             recurring_bills: this.mergeArrays(localData.recurring_bills, cloudData.recurring_bills)
         };
 
-        // 4. Update Local
+        // 4. Update Local (Suppress Sync!)
         this.restoreData(mergedData);
 
         // 5. Update Cloud
@@ -147,9 +156,6 @@ const SyncService = {
 };
 
 // UI Logic (kept same as before, just update file content to include new SyncService logic)
-// To keep main file small, I am reusing the previous UI portion for settings (it's in settings.html inline or using the same file).
-// Wait, sync-service.js DOES have UI logic at the bottom. I need to preserve it.
-// I will include the UI logic block from previous version.
 
 document.addEventListener('DOMContentLoaded', () => {
     // Only run if elements exist (we are on settings page)

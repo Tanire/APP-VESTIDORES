@@ -40,14 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let startDay = firstDay.getDay() - 1;
     if (startDay === -1) startDay = 6;
 
-    const events = StorageService.getEvents();
-    const recurringBills = StorageService.getRecurringBills();
+    // Filter Soft Deleted
+    const events = StorageService.getEvents().filter(e => !e._deleted);
+    const recurringBills = StorageService.getRecurringBills().filter(b => !b._deleted);
 
-    // Check which bills are already paid in this month
-    // We assume a bill is paid if an expense exists with linked recurrence_id (ideal) or just matching title logic?
-    // Let's rely on manual interaction for now. 
-    // Optimization: fetch expenses for this month to check for payments?
-    // Let's do simple visualization first.
 
     for (let i = 0; i < startDay; i++) {
       const emptyCell = document.createElement('div');
@@ -108,12 +104,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showDayDetails(dateStr) {
     detailsPanel.classList.add('active');
-    const events = StorageService.getEvents().filter(e => e.date === dateStr);
+    const events = StorageService.getEvents().filter(e => e.date === dateStr && !e._deleted);
 
     // Filter bills for this day
     const [y, m, d] = dateStr.split('-');
     const dayNum = parseInt(d);
-    const bills = StorageService.getRecurringBills().filter(b => b.day === dayNum);
+    const bills = StorageService.getRecurringBills().filter(b => b.day === dayNum && !b._deleted);
 
     const dateObj = new Date(y, m - 1, d);
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -204,10 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function deleteEvent(id) {
     if (confirm('¿Borrar este evento?')) {
       let events = StorageService.getEvents();
-      events = events.filter(e => e.id !== id);
-      StorageService.saveEvents(events);
-      renderCalendar();
-      if (selectedDate) showDayDetails(selectedDate);
+      // SOFT DELETE
+      const idx = events.findIndex(e => e.id === id);
+      if (idx !== -1) {
+        events[idx]._deleted = true;
+        StorageService.saveEvents(events);
+        renderCalendar();
+        if (selectedDate) showDayDetails(selectedDate);
+      }
     }
   }
 
