@@ -1,4 +1,4 @@
-const CACHE_NAME = 'familia-app-v2';
+const CACHE_NAME = 'familia-app-v3';
 const ASSETS = [
     './',
     './index.html',
@@ -17,7 +17,6 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', (e) => {
-    // Force new service worker to activate immediately
     self.skipWaiting();
     e.waitUntil(
         caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
@@ -25,7 +24,6 @@ self.addEventListener('install', (e) => {
 });
 
 self.addEventListener('activate', (e) => {
-    // Clean up old caches (v1)
     e.waitUntil(
         caches.keys().then((keys) => {
             return Promise.all(
@@ -37,7 +35,6 @@ self.addEventListener('activate', (e) => {
             );
         })
     );
-    // Take control of all clients immediately
     return self.clients.claim();
 });
 

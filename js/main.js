@@ -6,32 +6,29 @@ async function checkAutoSync() {
 
   const indicator = document.getElementById('sync-indicator');
   if (indicator) {
-    indicator.textContent = '☁️ Sincronizando...';
-    indicator.className = 'sync-loading';
+    indicator.innerHTML = '<span style="color: #F59E0B;">●</span> Sincronizando...';
   }
 
-  // Attempt download
-  const data = await SyncService.getGist(token, gistId);
-  if (data) {
-    // Compare? For now, simple overwrite strategies on load are safest for this complexity
-    SyncService.restoreData(data);
-    console.log('Auto-download completed');
-    if (indicator) {
-      indicator.textContent = '☁️ Actualizado';
-      indicator.className = 'sync-success';
-    }
-    // If we are on calendar/expenses page, we might need to refresh view. 
-    // Simplest is reload if data changed, but that's jarring.
-    // Better: Functions like renderCalendar() should act on data change.
-    // For this version (V2), let's just update storage. The user might need to refresh 
-    // if they had the page open, but if they just opened it, it will render with new data
-    // IF this runs before render. 
-    // Ideally this runs ASAP.
+  // Smart Sync on Load (Fetch -> Merge -> Update Local)
+  // We reuse the Smart Sync logic from service? 
+  // Actually checkAutoSync was just a download before. 
+  // Now with Smart Merge, we should probably do a full sync even on load to ensure consistency?
+  // OR just download? If we edited offline, download might overwrite local changes if we use restoreData(data) blindly.
+  // SAFE APPROACH ON LOAD:
+  // call syncWithCloud. This merges cloud changes into local (if any local offline changes exist) and pushes back.
+  const success = await SyncService.syncWithCloud(token, gistId);
 
-    // Dispatch event for current page to re-render if needed
+  if (indicator) {
+    if (success) {
+      indicator.innerHTML = '<span style="color: #10B981;">●</span> En línea';
+      setTimeout(() => { indicator.style.opacity = '0.7'; }, 2000);
+    } else {
+      indicator.innerHTML = '<span style="color: #EF4444;">●</span> Error Conexión';
+    }
+  }
+
+  if (success) {
     window.dispatchEvent(new Event('storage-updated'));
-  } else {
-    if (indicator) indicator.textContent = '☁️ Offline';
   }
 }
 
@@ -40,15 +37,16 @@ function navigateTo(page) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Inject Indicator if not exists
+  // Inject PROMINENT Indicator if not exists
   if (!document.getElementById('sync-indicator')) {
     const div = document.createElement('div');
     div.id = 'sync-indicator';
-    div.style.cssText = "position: fixed; top: 1rem; right: 1rem; background: rgba(255,255,255,0.8); padding: 4px 8px; border-radius: 12px; font-size: 0.8rem; pointer-events: none; z-index: 1000; transition: all 0.3s;";
-    div.textContent = '☁️';
+    // Bottom center pill styling
+    div.style.cssText = "position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; padding: 8px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 9999; display: flex; align-items: center; gap: 8px; border: 1px solid #E5E7EB; white-space: nowrap;";
+    div.innerHTML = '<span style="color: #9CA3AF;">●</span> Conectando...';
     document.body.appendChild(div);
   }
 
   // Wait a bit to ensure SyncService is loaded
-  setTimeout(checkAutoSync, 500);
+  setTimeout(checkAutoSync, 1000);
 });

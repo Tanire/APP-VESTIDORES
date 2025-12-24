@@ -1,5 +1,5 @@
 /**
- * StorageService - Manejo centralizado de localStorage con Auto-Sync
+ * StorageService - Manejo centralizado de localStorage con Auto-Sync (SMART MERGE)
  */
 const StorageService = {
   syncTimeout: null,
@@ -24,48 +24,47 @@ const StorageService = {
   },
 
   triggerAutoSync() {
-    // Only if configuring is done
     const token = localStorage.getItem('gh_token');
     const gistId = localStorage.getItem('gh_gist_id');
     if (!token || !gistId) return;
 
-    // Debounce: Wait 3 seconds after last change
+    // Debounce: Wait 3 seconds
     if (this.syncTimeout) clearTimeout(this.syncTimeout);
 
-    // Show "Saving..." indicator if exists (in UI)
     const indicator = document.getElementById('sync-indicator');
     if (indicator) {
-      indicator.textContent = '☁️ Guardando...';
-      indicator.className = 'sync-saving';
+      indicator.innerHTML = '<span style="color: #F59E0B;">●</span> Guardando...';
+      indicator.style.opacity = '1';
     }
 
     this.syncTimeout = setTimeout(async () => {
-      // Dynamic import to avoid circular dependency if possible, or just expect SyncService globally
-      if (typeof SyncService !== 'undefined' && window.SyncService && window.SyncService.updateGist) {
-        const success = await window.SyncService.updateGist(token, gistId);
+      if (typeof SyncService !== 'undefined' && window.SyncService && window.SyncService.syncWithCloud) {
+        // Use SMART SYNC (Merge) instead of simple update
+        const success = await window.SyncService.syncWithCloud(token, gistId);
+
         if (indicator) {
-          indicator.textContent = success ? '☁️ Guardado' : '☁️ Error';
-          indicator.className = success ? 'sync-success' : 'sync-error';
-          setTimeout(() => { indicator.textContent = '☁️'; indicator.className = ''; }, 3000);
+          if (success) {
+            indicator.innerHTML = '<span style="color: #10B981;">●</span> Guardado en Nube';
+            setTimeout(() => {
+              indicator.innerHTML = '<span style="color: #10B981;">●</span> En línea';
+              indicator.style.opacity = '0.7';
+            }, 2000);
+          } else {
+            indicator.innerHTML = '<span style="color: #EF4444;">●</span> Error al guardar';
+          }
+        }
+
+        // If merge brought new data, refresh UI
+        if (success) {
+          window.dispatchEvent(new Event('storage-updated'));
         }
       }
     }, 3000);
   },
 
-  // Helpers específicos
-  getEvents() {
-    return this.get('calendar_events', []);
-  },
-
-  saveEvents(events) {
-    this.set('calendar_events', events);
-  },
-
-  getExpenses() {
-    return this.get('expenses', []);
-  },
-
-  saveExpenses(expenses) {
-    this.set('expenses', expenses);
-  }
+  // Helpers
+  getEvents() { return this.get('calendar_events', []); },
+  saveEvents(events) { this.set('calendar_events', events); },
+  getExpenses() { return this.get('expenses', []); },
+  saveExpenses(expenses) { this.set('expenses', expenses); }
 };
