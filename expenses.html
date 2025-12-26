@@ -22,14 +22,44 @@
         </div>
 
         <header class="home-header">
-            <h2>Gastos Mensuales</h2>
-            <div id="total-amount" class="total-display">0.00 €</div>
-            <p style="color: var(--text-muted); text-align: center;">Total gastado este mes</p>
+            <h2>Gastos e Ingresos</h2>
+
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+                <button id="prev-month-stats" class="arrow-btn btn btn-secondary">←</button>
+                <div id="stats-month-year" style="font-weight: 600;"></div>
+                <button id="next-month-stats" class="arrow-btn btn btn-secondary">→</button>
+            </div>
+
+            <div id="balance-container" class="balance-card">
+                <!-- Balance Chart/Info will go here -->
+                <div class="balance-row">
+                    <div class="balance-item income">
+                        <small>Ingresos</small>
+                        <span id="total-income">0.00 €</span>
+                    </div>
+                    <div class="balance-item expense">
+                        <small>Gastos</small>
+                        <span id="total-expense">0.00 €</span>
+                    </div>
+                </div>
+                <div class="balance-total">
+                    <small>Balance</small>
+                    <span id="total-balance">0.00 €</span>
+                </div>
+            </div>
         </header>
 
         <!-- New Expense Form -->
         <div class="card add-expense-form">
-            <h3>Añadir Gasto</h3>
+            <h3>Añadir Movimiento</h3>
+
+            <div class="form-group">
+                <select id="expense-type" class="form-input" style="font-weight: 600;">
+                    <option value="expense">📉 Gasto</option>
+                    <option value="income">📈 Ingreso</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <input type="text" id="expense-title" class="form-input" placeholder="Concepto (ej: Mercadona)">
             </div>

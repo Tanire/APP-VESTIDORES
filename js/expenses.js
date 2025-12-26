@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Inputs
+    const typeInput = document.getElementById('expense-type');
     const titleInput = document.getElementById('expense-title');
     const categoryInput = document.getElementById('expense-category');
     const amountInput = document.getElementById('expense-amount');
@@ -11,22 +12,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const addBtn = document.getElementById('add-expense-btn');
 
+    // Header Stats
+    const prevMonthBtn = document.getElementById('prev-month-stats');
+    const nextMonthBtn = document.getElementById('next-month-stats');
+    const statsLabel = document.getElementById('stats-month-year');
+    const totalIncomeEl = document.getElementById('total-income');
+    const totalExpenseEl = document.getElementById('total-expense');
+    const totalBalanceEl = document.getElementById('total-balance');
+
     // Lists & Views
     const expensesList = document.getElementById('expenses-list');
     const recurringList = document.getElementById('recurring-list');
-    const totalAmountEl = document.getElementById('total-amount');
 
     const viewExpensesBtn = document.getElementById('view-expenses-btn');
     const viewRecurringBtn = document.getElementById('view-recurring-btn');
 
+    // Navigation State
+    let currentDate = new Date();
+
     // Constants
     const CATEGORY_ICONS = {
         'supermarket': '🛒', 'home': '🏠', 'transport': '🚗',
-        'leisure': '🎉', 'health': '💊', 'clothing': '👕', 'other': '📦'
+        'leisure': '🎉', 'health': '💊', 'clothing': '👕', 'other': '📦', 'salary': '💰', 'gift': '🎁'
     };
     const CATEGORY_NAMES = {
         'supermarket': 'Supermercado', 'home': 'Casa', 'transport': 'Transporte',
-        'leisure': 'Ocio', 'health': 'Salud', 'clothing': 'Ropa', 'other': 'Otros'
+        'leisure': 'Ocio', 'health': 'Salud', 'clothing': 'Ropa', 'other': 'Otros', 'salary': 'Nómina', 'gift': 'Regalo'
     };
 
     // --- UI Toggles ---
@@ -55,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderRecurring();
     });
 
-
     // --- Logic ---
 
     function addExpense() {
@@ -63,14 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const amount = parseFloat(amountInput.value);
         const category = categoryInput.value;
         const isRecurring = isRecurringCheck.checked;
+        const type = typeInput ? typeInput.value : 'expense';
 
         if (!title || isNaN(amount)) {
             alert('Por favor, introduce concepto y cantidad.');
             return;
         }
 
-        if (isRecurring) {
-            // Add Recurring Bill
+        if (isRecurring && type === 'expense') {
+            // Recurring Bill (Only Expenses supported for now as Recurring in this logic, but easy to expand)
             const day = parseInt(recurringDayInput.value);
             if (!day || day < 1 || day > 31) {
                 alert('Por favor, introduce un día válido (1-31).');
@@ -86,26 +97,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 day
             });
             StorageService.saveRecurringBills(bills);
+            StorageService.triggerAutoSync(); // MANUAL SYNC
 
-            alert('Gasto Fijo añadido. Se repetirá cada mes.');
-            // Switch to list view
+            alert('Gasto Fijo añadido.');
             viewRecurringBtn.click();
         } else {
-            // Add Normal Expense
-            const newExpense = {
+            // Normal Movement (Income or Expense)
+            const newMov = {
                 id: Date.now().toString(),
                 title,
                 amount,
                 category,
+                type: type, // 'income' or 'expense'
                 date: new Date().toISOString(),
                 createdBy: localStorage.getItem('user_profile') || ''
             };
 
             const expenses = StorageService.getExpenses();
-            expenses.push(newExpense);
+            expenses.push(newMov);
             StorageService.saveExpenses(expenses);
+            StorageService.triggerAutoSync(); // MANUAL SYNC
 
-            // Stay in history view
+            // Reset Date View to NOW to see the new item
+            currentDate = new Date();
+
             if (expensesList.classList.contains('hidden')) {
                 viewExpensesBtn.click();
             } else {
@@ -118,81 +133,95 @@ document.addEventListener('DOMContentLoaded', () => {
         amountInput.value = '';
         isRecurringCheck.checked = false;
         recurringOptions.classList.add('hidden');
-        recurringDayInput.value = '';
     }
 
     // --- Renders ---
 
     function renderExpenses() {
-        const now = new Date();
-        const currentMonth = now.getMonth();
-        const currentYear = now.getFullYear();
+        const viewMonth = currentDate.getMonth();
+        const viewYear = currentDate.getFullYear();
 
-        let expenses = StorageService.getExpenses();
+        const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        if (statsLabel) statsLabel.textContent = `${monthNames[viewMonth]} ${viewYear}`;
 
+        let allMovements = StorageService.getExpenses();
         // Filter Soft Deleted
-        expenses = expenses.filter(e => !e._deleted);
+        allMovements = allMovements.filter(e => !e._deleted);
 
-        // Filter Month
-        expenses = expenses.filter(e => {
+        // Filter by View Date
+        const currentMovements = allMovements.filter(e => {
             const d = new Date(e.date);
-            return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
+            return d.getMonth() === viewMonth && d.getFullYear() === viewYear;
         });
 
         // Sort descending
-        expenses.sort((a, b) => new Date(b.date) - new Date(a.date));
+        currentMovements.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        let total = 0;
+        // Stats Calculation
+        let income = 0;
+        let expense = 0;
+
         expensesList.innerHTML = '';
 
-        if (expenses.length === 0) {
-            expensesList.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--text-muted);">No hay gastos este mes.</div>';
+        if (currentMovements.length === 0) {
+            expensesList.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--text-muted);">No hay movimientos este mes.</div>';
         }
 
-        expenses.forEach((expense) => {
-            total += parseFloat(expense.amount);
+        currentMovements.forEach((mov) => {
+            const val = parseFloat(mov.amount);
+            const isIncome = mov.type === 'income';
+
+            if (isIncome) income += val;
+            else expense += val;
 
             const item = document.createElement('div');
             item.className = 'expense-item';
+            if (isIncome) item.classList.add('item-income');
+            else item.classList.add('item-expense');
 
             const dateOpts = { day: 'numeric', month: 'short' };
-            const dateStr = new Date(expense.date).toLocaleDateString('es-ES', dateOpts);
-
-            const categoryIcon = CATEGORY_ICONS[expense.category] || '📦';
-            const categoryName = CATEGORY_NAMES[expense.category] || 'Otros';
+            const dateStr = new Date(mov.date).toLocaleDateString('es-ES', dateOpts);
+            const categoryIcon = CATEGORY_ICONS[mov.category] || (isIncome ? '💰' : '📦');
+            const categoryName = CATEGORY_NAMES[mov.category] || (isIncome ? 'Ingreso' : 'Otros');
 
             item.innerHTML = `
                 <div style="font-size: 1.5rem; margin-right: 1rem;">${categoryIcon}</div>
                 <div style="flex-grow: 1;">
-                <div style="font-weight: 600;">${expense.title}</div>
+                <div style="font-weight: 600;">${mov.title}</div>
                 <div style="font-size: 0.8rem; color: var(--text-muted);">
-                    <span style="background: #F3F4F6; padding: 2px 6px; border-radius: 4px; border: 1px solid #E5E7EB;">${categoryName}</span>
+                    <span style="background: var(--bg-body); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--text-light);">${categoryName}</span>
                     • ${dateStr}
-                    ${expense.createdBy ? `• <small>${expense.createdBy}</small>` : ''}
+                    ${mov.createdBy ? `• <small>${mov.createdBy}</small>` : ''}
                 </div>
                 </div>
-                <div class="amount" style="margin-right: 1rem; font-weight: 600; font-size: 1.1rem;">
-                ${parseFloat(expense.amount).toFixed(2)} €
+                <div class="amount" style="margin-right: 1rem; font-weight: 600; font-size: 1.1rem; color: ${isIncome ? 'var(--secondary)' : 'inherit'}">
+                ${isIncome ? '+' : '-'}${val.toFixed(2)} €
                 </div>
-                <button class="btn-delete" data-id="${expense.id}" data-type="normal">✕</button>
+                <button class="btn-delete" data-id="${mov.id}" data-type="normal">✕</button>
             `;
             expensesList.appendChild(item);
         });
 
-        totalAmountEl.textContent = `${total.toFixed(2)} €`;
+        // Update Header Stats
+        if (totalIncomeEl) totalIncomeEl.textContent = `${income.toFixed(2)} €`;
+        if (totalExpenseEl) totalExpenseEl.textContent = `${expense.toFixed(2)} €`;
+
+        const balance = income - expense;
+        if (totalBalanceEl) {
+            totalBalanceEl.textContent = `${balance.toFixed(2)} €`;
+            totalBalanceEl.style.color = balance >= 0 ? 'var(--secondary)' : 'var(--danger)';
+        }
+
         setupDeleteListeners();
     }
 
     function renderRecurring() {
         let bills = StorageService.getRecurringBills();
-
-        // Filter Soft Deleted
         bills = bills.filter(b => !b._deleted);
-
         recurringList.innerHTML = '';
 
         if (bills.length === 0) {
-            recurringList.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--text-muted); line-height: 1.6;">No tienes gastos fijos configurados.<br>Añade la luz, agua, internet...</div>';
+            recurringList.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--text-muted);">No hay gastos fijos configurados.</div>';
             return;
         }
 
@@ -201,8 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bills.forEach(bill => {
             const item = document.createElement('div');
             item.className = 'expense-item';
-            // Different border or style for recurring?
-            item.style.borderLeft = '4px solid #F59E0B'; // Orange for recurring
+            item.style.borderLeft = '4px solid #F59E0B';
 
             const categoryIcon = CATEGORY_ICONS[bill.category] || '📦';
 
@@ -221,7 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             recurringList.appendChild(item);
         });
-
         setupDeleteListeners();
     }
 
@@ -237,13 +264,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function deleteExpense(id) {
-        if (confirm('¿Eliminar este gasto del historial?')) {
+        if (confirm('¿Eliminar este movimiento?')) {
             let expenses = StorageService.getExpenses();
-            // SOFT DELETE: Find and mark
             const idx = expenses.findIndex(e => e.id === id);
             if (idx !== -1) {
                 expenses[idx]._deleted = true;
-                expenses[idx]._deletedAt = new Date().toISOString(); // optional metadata
                 StorageService.saveExpenses(expenses);
                 StorageService.triggerAutoSync(); // MANUAL SYNC
                 renderExpenses();
@@ -252,9 +277,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function deleteRecurring(id) {
-        if (confirm('¿Eliminar este gasto fijo? Dejará de avisarte.')) {
+        if (confirm('¿Eliminar este gasto fijo?')) {
             let bills = StorageService.getRecurringBills();
-            // SOFT DELETE
             const idx = bills.findIndex(b => b.id === id);
             if (idx !== -1) {
                 bills[idx]._deleted = true;
@@ -265,6 +289,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Navigation Listeners
+    if (prevMonthBtn) prevMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderExpenses();
+    });
+
+    if (nextMonthBtn) nextMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderExpenses();
+    });
 
     addBtn.addEventListener('click', addExpense);
     amountInput.addEventListener('keypress', (e) => {
@@ -274,11 +308,289 @@ document.addEventListener('DOMContentLoaded', () => {
     // Init
     renderExpenses();
 
-    // Auto-refresh logic without reload (INSIDE THE SCOPE)
     window.addEventListener('storage-updated', () => {
-        // Decide which one to render based on visibility?
-        // Or just render both (cheap)
         renderExpenses();
         renderRecurring();
     });
+});
+const categoryInput = document.getElementById('expense-category');
+const amountInput = document.getElementById('expense-amount');
+
+// Recurring Inputs
+const isRecurringCheck = document.getElementById('is-recurring');
+const recurringOptions = document.getElementById('recurring-options');
+const recurringDayInput = document.getElementById('recurring-day');
+
+const addBtn = document.getElementById('add-expense-btn');
+
+// Lists & Views
+const expensesList = document.getElementById('expenses-list');
+const recurringList = document.getElementById('recurring-list');
+const totalAmountEl = document.getElementById('total-amount');
+
+const viewExpensesBtn = document.getElementById('view-expenses-btn');
+const viewRecurringBtn = document.getElementById('view-recurring-btn');
+
+// Constants
+const CATEGORY_ICONS = {
+    'supermarket': '🛒', 'home': '🏠', 'transport': '🚗',
+    'leisure': '🎉', 'health': '💊', 'clothing': '👕', 'other': '📦'
+};
+const CATEGORY_NAMES = {
+    'supermarket': 'Supermercado', 'home': 'Casa', 'transport': 'Transporte',
+    'leisure': 'Ocio', 'health': 'Salud', 'clothing': 'Ropa', 'other': 'Otros'
+};
+
+// --- UI Toggles ---
+
+isRecurringCheck.addEventListener('change', () => {
+    if (isRecurringCheck.checked) {
+        recurringOptions.classList.remove('hidden');
+    } else {
+        recurringOptions.classList.add('hidden');
+    }
+});
+
+viewExpensesBtn.addEventListener('click', () => {
+    expensesList.classList.remove('hidden');
+    recurringList.classList.add('hidden');
+    viewExpensesBtn.className = 'btn btn-sm btn-primary';
+    viewRecurringBtn.className = 'btn btn-sm btn-secondary';
+    renderExpenses();
+});
+
+viewRecurringBtn.addEventListener('click', () => {
+    expensesList.classList.add('hidden');
+    recurringList.classList.remove('hidden');
+    viewExpensesBtn.className = 'btn btn-sm btn-secondary';
+    viewRecurringBtn.className = 'btn btn-sm btn-primary';
+    renderRecurring();
+});
+
+
+// --- Logic ---
+
+function addExpense() {
+    const title = titleInput.value.trim();
+    const amount = parseFloat(amountInput.value);
+    const category = categoryInput.value;
+    const isRecurring = isRecurringCheck.checked;
+
+    if (!title || isNaN(amount)) {
+        alert('Por favor, introduce concepto y cantidad.');
+        return;
+    }
+
+    if (isRecurring) {
+        // Add Recurring Bill
+        const day = parseInt(recurringDayInput.value);
+        if (!day || day < 1 || day > 31) {
+            alert('Por favor, introduce un día válido (1-31).');
+            return;
+        }
+
+        const bills = StorageService.getRecurringBills();
+        bills.push({
+            id: Date.now().toString(),
+            title,
+            amount,
+            category,
+            day
+        });
+        StorageService.saveRecurringBills(bills);
+
+        alert('Gasto Fijo añadido. Se repetirá cada mes.');
+        // Switch to list view
+        viewRecurringBtn.click();
+    } else {
+        // Add Normal Expense
+        const newExpense = {
+            id: Date.now().toString(),
+            title,
+            amount,
+            category,
+            date: new Date().toISOString(),
+            createdBy: localStorage.getItem('user_profile') || ''
+        };
+
+        const expenses = StorageService.getExpenses();
+        expenses.push(newExpense);
+        StorageService.saveExpenses(expenses);
+
+        // Stay in history view
+        if (expensesList.classList.contains('hidden')) {
+            viewExpensesBtn.click();
+        } else {
+            renderExpenses();
+        }
+    }
+
+    // Reset Form
+    titleInput.value = '';
+    amountInput.value = '';
+    isRecurringCheck.checked = false;
+    recurringOptions.classList.add('hidden');
+    recurringDayInput.value = '';
+}
+
+// --- Renders ---
+
+function renderExpenses() {
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+
+    let expenses = StorageService.getExpenses();
+
+    // Filter Soft Deleted
+    expenses = expenses.filter(e => !e._deleted);
+
+    // Filter Month
+    expenses = expenses.filter(e => {
+        const d = new Date(e.date);
+        return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
+    });
+
+    // Sort descending
+    expenses.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    let total = 0;
+    expensesList.innerHTML = '';
+
+    if (expenses.length === 0) {
+        expensesList.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--text-muted);">No hay gastos este mes.</div>';
+    }
+
+    expenses.forEach((expense) => {
+        total += parseFloat(expense.amount);
+
+        const item = document.createElement('div');
+        item.className = 'expense-item';
+
+        const dateOpts = { day: 'numeric', month: 'short' };
+        const dateStr = new Date(expense.date).toLocaleDateString('es-ES', dateOpts);
+
+        const categoryIcon = CATEGORY_ICONS[expense.category] || '📦';
+        const categoryName = CATEGORY_NAMES[expense.category] || 'Otros';
+
+        item.innerHTML = `
+                <div style="font-size: 1.5rem; margin-right: 1rem;">${categoryIcon}</div>
+                <div style="flex-grow: 1;">
+                <div style="font-weight: 600;">${expense.title}</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">
+                    <span style="background: #F3F4F6; padding: 2px 6px; border-radius: 4px; border: 1px solid #E5E7EB;">${categoryName}</span>
+                    • ${dateStr}
+                    ${expense.createdBy ? `• <small>${expense.createdBy}</small>` : ''}
+                </div>
+                </div>
+                <div class="amount" style="margin-right: 1rem; font-weight: 600; font-size: 1.1rem;">
+                ${parseFloat(expense.amount).toFixed(2)} €
+                </div>
+                <button class="btn-delete" data-id="${expense.id}" data-type="normal">✕</button>
+            `;
+        expensesList.appendChild(item);
+    });
+
+    totalAmountEl.textContent = `${total.toFixed(2)} €`;
+    setupDeleteListeners();
+}
+
+function renderRecurring() {
+    let bills = StorageService.getRecurringBills();
+
+    // Filter Soft Deleted
+    bills = bills.filter(b => !b._deleted);
+
+    recurringList.innerHTML = '';
+
+    if (bills.length === 0) {
+        recurringList.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--text-muted); line-height: 1.6;">No tienes gastos fijos configurados.<br>Añade la luz, agua, internet...</div>';
+        return;
+    }
+
+    bills.sort((a, b) => a.day - b.day);
+
+    bills.forEach(bill => {
+        const item = document.createElement('div');
+        item.className = 'expense-item';
+        // Different border or style for recurring?
+        item.style.borderLeft = '4px solid #F59E0B'; // Orange for recurring
+
+        const categoryIcon = CATEGORY_ICONS[bill.category] || '📦';
+
+        item.innerHTML = `
+                <div style="font-size: 1.5rem; margin-right: 1rem;">${categoryIcon}</div>
+                <div style="flex-grow: 1;">
+                    <div style="font-weight: 600;">${bill.title}</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">
+                        🔄 Día ${bill.day} de cada mes
+                    </div>
+                </div>
+                <div class="amount" style="margin-right: 1rem; font-weight: 600; font-size: 1.1rem;">
+                    ${parseFloat(bill.amount).toFixed(2)} €
+                </div>
+                <button class="btn-delete" data-id="${bill.id}" data-type="recurring">✕</button>
+            `;
+        recurringList.appendChild(item);
+    });
+
+    setupDeleteListeners();
+}
+
+function setupDeleteListeners() {
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.onclick = (e) => {
+            const id = e.target.dataset.id;
+            const type = e.target.dataset.type;
+            if (type === 'normal') deleteExpense(id);
+            else deleteRecurring(id);
+        };
+    });
+}
+
+function deleteExpense(id) {
+    if (confirm('¿Eliminar este gasto del historial?')) {
+        let expenses = StorageService.getExpenses();
+        // SOFT DELETE: Find and mark
+        const idx = expenses.findIndex(e => e.id === id);
+        if (idx !== -1) {
+            expenses[idx]._deleted = true;
+            expenses[idx]._deletedAt = new Date().toISOString(); // optional metadata
+            StorageService.saveExpenses(expenses);
+            StorageService.triggerAutoSync(); // MANUAL SYNC
+            renderExpenses();
+        }
+    }
+}
+
+function deleteRecurring(id) {
+    if (confirm('¿Eliminar este gasto fijo? Dejará de avisarte.')) {
+        let bills = StorageService.getRecurringBills();
+        // SOFT DELETE
+        const idx = bills.findIndex(b => b.id === id);
+        if (idx !== -1) {
+            bills[idx]._deleted = true;
+            StorageService.saveRecurringBills(bills);
+            StorageService.triggerAutoSync(); // MANUAL SYNC
+            renderRecurring();
+        }
+    }
+}
+
+
+addBtn.addEventListener('click', addExpense);
+amountInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') addExpense();
+});
+
+// Init
+renderExpenses();
+
+// Auto-refresh logic without reload (INSIDE THE SCOPE)
+window.addEventListener('storage-updated', () => {
+    // Decide which one to render based on visibility?
+    // Or just render both (cheap)
+    renderExpenses();
+    renderRecurring();
+});
 });
