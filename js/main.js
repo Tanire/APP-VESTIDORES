@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const div = document.createElement('div');
     div.id = 'sync-indicator';
     // Bottom center pill styling
-    div.style.cssText = "position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; padding: 8px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 9999; display: flex; align-items: center; gap: 8px; border: 1px solid #E5E7EB; white-space: nowrap;";
+    div.className = 'sync-indicator';
     // Default text 
     div.innerHTML = '<span style="color: #9CA3AF;">●</span> Iniciando...';
 

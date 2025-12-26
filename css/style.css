@@ -605,9 +605,7 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
-font-size: 2.5rem;
-font-weight: 800;
-}
+
 
 /* Balance & Stats */
 .balance-card {
@@ -660,4 +658,31 @@ font-weight: 800;
 
 .item-expense {
   border-left: 4px solid var(--danger);
+}
+
+/* --- Sync Indicator --- */
+.sync-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #E5E7EB;
+  white-space: nowrap;
+  transition: opacity 0.3s;
+}
+
+body.dark-mode .sync-indicator {
+  background: #1F2937;
+  border-color: #374151;
+  color: #F3F4F6;
 }

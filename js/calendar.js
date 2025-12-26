@@ -41,10 +41,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let startDay = firstDay.getDay() - 1;
     if (startDay === -1) startDay = 6;
 
-    // Filter Soft Deleted
+    // --- Optimization: Pre-process Events ---
     const allEvents = StorageService.getEvents().filter(e => !e._deleted);
     const recurringBills = StorageService.getRecurringBills().filter(b => !b._deleted);
 
+    // split into recurring and single-time
+    const singleEventsMap = new Map(); // "YYYY-MM-DD" -> [events]
+    const recurringEvents = [];
+
+    allEvents.forEach(e => {
+      if (e.recurrence && e.recurrence !== 'none') {
+        recurringEvents.push(e);
+      } else {
+        if (!singleEventsMap.has(e.date)) {
+          singleEventsMap.set(e.date, []);
+        }
+        singleEventsMap.get(e.date).push(e);
+      }
+    });
 
     for (let i = 0; i < startDay; i++) {
       const emptyCell = document.createElement('div');
@@ -53,15 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
       calendarGrid.appendChild(emptyCell);
     }
 
-    const todayStr = new Date().toISOString().split('T')[0];
+    // Timezone Fix: Use local ISO string
+    const nowLocal = new Date();
+    const todayStr = new Date(nowLocal.getTime() - (nowLocal.getTimezoneOffset() * 60000))
+      .toISOString().split('T')[0];
 
     for (let i = 1; i <= daysInMonth; i++) {
       const dayCell = document.createElement('div');
       dayCell.className = 'day';
 
       // Current Day Object
-      const dayDate = new Date(year, month, i);
-      // Format YYYY-MM-DD manually to avoid timezone shifts
+      const dayDate = new Date(year, month, i); // Local time 00:00:00
       const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
 
       if (dateString === todayStr) dayCell.classList.add('today');
@@ -72,51 +88,34 @@ document.addEventListener('DOMContentLoaded', () => {
       dayNumber.textContent = i;
       dayCell.appendChild(dayNumber);
 
-      // --- RENDER EVENTS Logic ---
+      // 1. Render Single Events (O(1) Lookup)
+      if (singleEventsMap.has(dateString)) {
+        singleEventsMap.get(dateString).forEach(event => {
+          renderEventChip(dayCell, event);
+        });
+      }
 
-      allEvents.forEach(event => {
+      // 2. Render Recurring Events (Optimized Filter)
+      recurringEvents.forEach(event => {
+        const eventStart = new Date(event.date);
+        if (dayDate < eventStart) return; // Not started yet
+
         let shouldRender = false;
-        const eventStart = new Date(event.date); // Event original date
-
-        if (!event.recurrence || event.recurrence === 'none') {
-          // 1. Normal Event: Match exact date
-          if (event.date === dateString) shouldRender = true;
-        } else {
-          // 2. Recurring Event Logic
-
-          // Only start showing AFTER start date
-          if (dayDate >= eventStart) {
-
-            if (event.recurrence === 'weekly') {
-              // Diff in days needs to be multiple of 7
-              const diffTime = Math.abs(dayDate - eventStart);
-              const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-              // Use round/ceil carefully with timezones. 
-              // Better: Check day of week?
-              if (dayDate.getDay() === eventStart.getDay()) shouldRender = true;
-            }
-            else if (event.recurrence === 'monthly') {
-              // Same day number (e.g. 15th)
-              if (dayDate.getDate() === eventStart.getDate()) shouldRender = true;
-            }
-            else if (event.recurrence === 'yearly') {
-              // Same Month and Day
-              if (dayDate.getMonth() === eventStart.getMonth() && dayDate.getDate() === eventStart.getDate()) shouldRender = true;
-            }
-          }
+        if (event.recurrence === 'weekly') {
+          if (dayDate.getDay() === eventStart.getDay()) shouldRender = true;
+        } else if (event.recurrence === 'monthly') {
+          if (dayDate.getDate() === eventStart.getDate()) shouldRender = true;
+        } else if (event.recurrence === 'yearly') {
+          if (dayDate.getMonth() === eventStart.getMonth() &&
+            dayDate.getDate() === eventStart.getDate()) shouldRender = true;
         }
 
         if (shouldRender) {
-          const chip = document.createElement('div');
-          chip.className = 'event-chip';
-          chip.style.backgroundColor = event.color || '#4F46E5';
-          chip.textContent = event.title + (event.recurrence && event.recurrence !== 'none' ? ' 🔄' : '');
-          dayCell.appendChild(chip);
+          renderEventChip(dayCell, event);
         }
       });
 
-      // 2. Render Recurring Bills (Virtual Events)
-      // Check if any bill falls on day 'i'
+      // 3. Render Recurring Bills
       recurringBills.forEach(bill => {
         if (bill.day === i) {
           const chip = document.createElement('div');
@@ -137,6 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       calendarGrid.appendChild(dayCell);
     }
+  }
+
+  function renderEventChip(container, event) {
+    const chip = document.createElement('div');
+    chip.className = 'event-chip';
+    chip.style.backgroundColor = event.color || '#4F46E5';
+    const isRecur = event.recurrence && event.recurrence !== 'none';
+    chip.textContent = event.title + (isRecur ? ' 🔄' : '');
+    container.appendChild(chip);
   }
 
   function showDayDetails(dateStr) {
