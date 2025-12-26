@@ -148,9 +148,16 @@ const SyncService = {
         };
 
         // 4. Update Local (Suppress Sync!)
+        const oldShoppingList = localData.shopping_list; // Capture OLD
+
         this.restoreData(mergedData);
 
-        // 5. Update Cloud
+        // 5. Notifications?
+        if (typeof NotificationSystem !== 'undefined') {
+            NotificationSystem.checkNewShoppingItems(oldShoppingList, mergedData.shopping_list);
+        }
+
+        // 6. Update Cloud
         return await this.updateGist(token, gistId, mergedData);
     }
 };

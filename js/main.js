@@ -43,6 +43,11 @@ function navigateTo(page) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Check for Daily Bills
+  if (typeof NotificationSystem !== 'undefined' && typeof StorageService !== 'undefined') {
+    NotificationSystem.checkDailyBills(StorageService.getRecurringBills());
+  }
+
   // Inject PROMINENT Indicator if not exists
   if (!document.getElementById('sync-indicator')) {
     const div = document.createElement('div');
