@@ -727,22 +727,32 @@ body.dark-mode .sync-indicator {
 
   /* --- Mobile Modal Fix --- */
   .modal-content {
-      width: 95%;
-      padding: 1.5rem;
-      max-height: 85vh; /* Prevent overflowing screen height */
-      overflow-y: auto; /* Enable scrolling */
+    width: 95%;
+    padding: 1.5rem;
+    max-height: 85vh;
+    /* Prevent overflowing screen height */
+    overflow-y: auto;
+    /* Enable scrolling */
   }
 
   .modal h2 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   .form-group {
-      margin-bottom: 1rem;
+    margin-bottom: 1rem;
   }
 
-  .form-input, .form-select {
-      padding: 0.5rem; /* Slightly smaller inputs */
+  .form-input,
+  .form-select {
+    padding: 0.5rem;
+    /* Slightly smaller inputs */
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+    /* Stack vertically on mobile */
+    gap: 0.5rem;
   }
 }
