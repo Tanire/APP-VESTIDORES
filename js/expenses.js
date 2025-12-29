@@ -50,20 +50,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const viewChartsBtn = document.getElementById('view-charts-btn');
+    const chartsView = document.getElementById('charts-view');
+
     viewExpensesBtn.addEventListener('click', () => {
         expensesList.classList.remove('hidden');
         recurringList.classList.add('hidden');
+        chartsView.classList.add('hidden');
+
         viewExpensesBtn.className = 'btn btn-sm btn-primary';
         viewRecurringBtn.className = 'btn btn-sm btn-secondary';
+        viewChartsBtn.className = 'btn btn-sm btn-secondary';
+
         renderExpenses();
     });
 
     viewRecurringBtn.addEventListener('click', () => {
         expensesList.classList.add('hidden');
         recurringList.classList.remove('hidden');
+        chartsView.classList.add('hidden');
+
         viewExpensesBtn.className = 'btn btn-sm btn-secondary';
         viewRecurringBtn.className = 'btn btn-sm btn-primary';
+        viewChartsBtn.className = 'btn btn-sm btn-secondary';
+
         renderRecurring();
+    });
+
+    viewChartsBtn.addEventListener('click', () => {
+        expensesList.classList.add('hidden');
+        recurringList.classList.add('hidden');
+        chartsView.classList.remove('hidden');
+
+        viewExpensesBtn.className = 'btn btn-sm btn-secondary';
+        viewRecurringBtn.className = 'btn btn-sm btn-secondary';
+        viewChartsBtn.className = 'btn btn-sm btn-primary';
+
+        if (window.renderCharts) {
+            window.renderCharts(currentDate);
+        }
     });
 
     // --- Logic ---
@@ -293,11 +318,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prevMonthBtn) prevMonthBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
         renderExpenses();
+        if (!chartsView.classList.contains('hidden') && window.renderCharts) window.renderCharts(currentDate);
     });
 
     if (nextMonthBtn) nextMonthBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() + 1);
         renderExpenses();
+        if (!chartsView.classList.contains('hidden') && window.renderCharts) window.renderCharts(currentDate);
     });
 
     addBtn.addEventListener('click', addExpense);
