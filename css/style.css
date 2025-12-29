@@ -608,6 +608,12 @@ h3 {
 
 
 /* Balance & Stats */
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
 .balance-card {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
@@ -726,13 +732,14 @@ body.dark-mode .sync-indicator {
   }
 
   /* --- Mobile Modal Fix --- */
+  /* --- Mobile Modal Fix --- */
   .modal-content {
-    width: 95%;
-    /* Safer height calculation */
+    width: 90vw !important;
+    max-width: 90vw !important;
+    min-width: 300px;
+    padding: 1rem !important;
     max-height: 80vh;
     overflow-y: auto;
-    padding: 1.25rem;
-    /* Ensure it doesn't get stuck at top */
     margin: auto;
     display: block;
   }
