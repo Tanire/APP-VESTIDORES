@@ -44,55 +44,80 @@ const OCRService = {
     },
 
     parseReceiptText: function (text) {
-        // Simple heuristic to extract Total
-        // Look for lines containing "TOTAL" or "IMPORTE" and a number
         const lines = text.split('\n');
         let maxPrice = 0.0;
-        let bestLine = "";
+        let items = [];
 
         // Regex for Price: 12,34 or 12.34 options
+        // We look for a price at the END of the line usually
         const priceRegex = /(\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2}))/g;
+        
+        // Keywords to identify total (to exclude from items)
+        const totalKeywords = ['TOTAL', 'VENTA', 'IMPORTE', 'PAGAR', 'SUMA', 'TARJETA', 'EFECTIVO', 'CAMBIO', 'ENTREGADO'];
+        const badStartKeywords = ['TEL', 'CIF', 'NIF', 'CALLE', 'PLAZA', 'AVDA', 'C/', 'FACTURA', 'TICKET'];
 
-        // Keywords to identify total
-        const totalKeywords = ['TOTAL', 'VENTA', 'IMPORTE', 'PAGAR'];
-
-        // Strategy 1: Find line with "Total" and get the biggest number in it
         for (let line of lines) {
-            const upperLine = line.toUpperCase();
+            const trimmedLine = line.trim();
+            if (trimmedLine.length < 3) continue;
 
-            // Check if it's a "total" line
-            const isTotalLine = totalKeywords.some(k => upperLine.includes(k));
+            const upperLine = trimmedLine.toUpperCase();
+            
+            // Check for price matches
+            const matches = trimmedLine.match(priceRegex);
+             
+            if (matches) {
+                // Potential price line
+                // Pick the last match as the likely price for the line
+                const priceStr = matches[matches.length - 1];
+                
+                // Parse Price
+                let cleanNum = priceStr.replace(',', '.'); // Try simple replace
+                // Handle 1.000,00 situation vs 12,34
+                // If it has multiple dots/commas, it needs careful parsing, but let's keep it simple for now as per v1 logic inheritance
+                let num = parseFloat(priceStr.replace(',', '.'));
+                if (isNaN(num)) {
+                     // Try reversing separator logic if failed
+                     num = parseFloat(priceStr.replace('.', '').replace(',', '.'));
+                }
 
-            if (isTotalLine) {
-                const matches = line.match(priceRegex);
-                if (matches) {
-                    matches.forEach(m => {
-                        // Normalize 1.200,50 -> 1200.50
-                        let cleanNum = m.replace('.', '').replace(',', '.');
-                        // Edge case: if comma was used as decimal separator but no thousands separator
-                        // Example: 12,50 -> 12.50. Code above works for 1.000,00 -> 1000.00
-                        // What if 50,05? -> 50.05
+                if (isNaN(num)) continue;
 
-                        // Robust Parse
-                        let num = parseFloat(m.replace(',', '.')); // Try A (12,50 -> 12.50)
-                        if (isNaN(num)) {
-                            num = parseFloat(m.replace('.', '').replace(',', '.')); // Try B (1.200,50 -> 1200.50)
-                        }
+                // Is it the TOTAL?
+                const isTotalLine = totalKeywords.some(k => upperLine.includes(k));
 
-                        if (!isNaN(num) && num > maxPrice) {
-                            maxPrice = num;
-                        }
-                    });
+                if (isTotalLine) {
+                    if (num > maxPrice) {
+                        maxPrice = num;
+                    }
+                } else {
+                    // Likely an ITEM, if it's not some header info
+                    // Filter out headers/addresses
+                    const isHeader = badStartKeywords.some(k => upperLine.startsWith(k));
+                    
+                    if (!isHeader && num > 0 && num < 1000) { // Sanity check for item price
+                         // Extract Name: Everything before the price
+                         // Using lastIndexOf to split
+                         const priceIdx = trimmedLine.lastIndexOf(priceStr);
+                         let itemName = trimmedLine.substring(0, priceIdx).trim();
+                         
+                         // Cleanup noise characters
+                         itemName = itemName.replace(/[^a-zA-Z0-9\sñÑáéíóúÁÉÍÓÚ%]/g, '');
+                         
+                         if (itemName.length > 2) {
+                             items.push({ name: itemName, price: num });
+                         }
+                    }
                 }
             }
         }
-
-        // Strategy 2: If no "Total" keyword found, just get the biggest number at the bottom half?
-        // Too risky. Let's return what we have.
+        
+        // Fallback: If no maxPrice found via keywords, try biggest number? 
+        // We'll stick to safe logic for now.
 
         return {
             text: text,
-            total: maxPrice > 0 ? maxPrice : null
+            total: maxPrice > 0 ? maxPrice : null,
+            items: items
         };
     }
 };

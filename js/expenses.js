@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const addBtn = document.getElementById('add-expense-btn');
 
+    // Store scanned items temporarily
+    let currentScannedItems = [];
+
     // Header Stats
     const prevMonthBtn = document.getElementById('prev-month-stats');
     const nextMonthBtn = document.getElementById('next-month-stats');
@@ -135,8 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 category,
                 type: type, // 'income' or 'expense'
                 date: new Date().toISOString(),
-                createdBy: localStorage.getItem('user_profile') || ''
+                createdBy: localStorage.getItem('user_profile') || '',
+                items: currentScannedItems || [] // Store scanned items
             };
+
+            // Clear temp storage
+            currentScannedItems = [];
 
             const expenses = StorageService.getExpenses();
             expenses.push(newMov);
@@ -193,15 +200,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (result.total) {
                         amountInput.value = result.total.toFixed(2);
-                        alert(`¡Detectado! Importe: ${result.total}€\n(Revisa si es correcto)`);
+
+                        if (result.items && result.items.length > 0) {
+                            currentScannedItems = result.items;
+                            alert(`¡Detectado! Importe: ${result.total}€\nProductos encontrados: ${result.items.length}`);
+                        } else {
+                            currentScannedItems = [];
+                            alert(`¡Detectado! Importe: ${result.total}€\n(Revisa si es correcto)`);
+                        }
 
                         // Try to suggest a title? Not easy without AI.
                         // titleInput.value = "Ticket Escaneado";
                     } else {
                         alert("No he encontrado el precio total claro. Por favor, escríbelo tú.");
                     }
-
-                    // Put raw text in title as hint? No, messy.
                 }
 
             } catch (error) {
@@ -266,20 +278,41 @@ document.addEventListener('DOMContentLoaded', () => {
             const categoryName = CATEGORY_NAMES[mov.category] || (isIncome ? 'Ingreso' : 'Otros');
 
             item.innerHTML = `
-                <div style="font-size: 1.5rem; margin-right: 1rem;">${categoryIcon}</div>
-                <div style="flex-grow: 1;">
-                <div style="font-weight: 600;">${mov.title}</div>
-                <div style="font-size: 0.8rem; color: var(--text-muted);">
-                    <span style="background: var(--bg-body); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--text-light);">${categoryName}</span>
-                    • ${dateStr}
-                    ${mov.createdBy ? `• <small>${mov.createdBy}</small>` : ''}
+                <div style="display:flex; align-items:center;">
+                    <div style="font-size: 1.5rem; margin-right: 1rem;">${categoryIcon}</div>
+                    <div style="flex-grow: 1;">
+                    <div style="font-weight: 600;">${mov.title}</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">
+                        <span style="background: var(--bg-body); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--text-light);">${categoryName}</span>
+                        • ${dateStr}
+                        ${mov.createdBy ? `• <small>${mov.createdBy}</small>` : ''}
+                        ${mov.items && mov.items.length > 0 ? `• <small style="color:var(--primary);">📄 Ver Ticket (${mov.items.length})</small>` : ''}
+                    </div>
+                    </div>
+                    <div class="amount" style="margin-right: 1rem; font-weight: 600; font-size: 1.1rem; color: ${isIncome ? 'var(--secondary)' : 'inherit'}">
+                    ${isIncome ? '+' : '-'}${val.toFixed(2)} €
+                    </div>
+                    <button class="btn-delete" data-id="${mov.id}" data-type="normal">✕</button>
                 </div>
-                </div>
-                <div class="amount" style="margin-right: 1rem; font-weight: 600; font-size: 1.1rem; color: ${isIncome ? 'var(--secondary)' : 'inherit'}">
-                ${isIncome ? '+' : '-'}${val.toFixed(2)} €
-                </div>
-                <button class="btn-delete" data-id="${mov.id}" data-type="normal">✕</button>
+                ${renderExpenseDetails(mov)}
             `;
+
+            // Toggle Details Click
+            if (mov.items && mov.items.length > 0) {
+                item.onclick = (e) => {
+                    // Don't trigger if clicked delete
+                    if (e.target.classList.contains('btn-delete')) return;
+
+                    const details = item.querySelector('.expense-details');
+                    if (details) {
+                        if (details.style.display === 'none') {
+                            details.style.display = 'block';
+                        } else {
+                            details.style.display = 'none';
+                        }
+                    }
+                };
+            }
             expensesList.appendChild(item);
         });
 
@@ -395,5 +428,23 @@ document.addEventListener('DOMContentLoaded', () => {
         renderExpenses();
         renderRecurring();
     });
+
+    function renderExpenseDetails(mov) {
+        if (!mov.items || mov.items.length === 0) return '';
+
+        let html = `<div class="expense-details" style="display:none; margin-top: 0.75rem; border-top: 1px dashed #E5E7EB; padding-top: 0.5rem;">`;
+        html += `<div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; font-weight:600;">ARTÍCULOS DEL TICKET:</div>`;
+
+        mov.items.forEach(item => {
+            html += `
+            <div class="item-row" style="display:flex; justify-content:space-between; font-size: 0.85rem; margin-bottom: 2px;">
+                <span>${item.name}</span>
+                <span style="font-family:monospace;">${item.price.toFixed(2)}</span>
+            </div>`;
+        });
+
+        html += `</div>`;
+        return html;
+    }
 });
 
