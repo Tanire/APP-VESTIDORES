@@ -20,99 +20,72 @@
 
         <header class="home-header" style="margin-bottom: 2rem;">
             <h2>Ajustes y Nube</h2>
-            <p style="color: var(--text-muted);">Sincronización con GitHub</p>
+            <p style="color: var(--text-muted);">Estado del Sistema</p>
         </header>
 
-        <div class="card" style="margin-bottom: 2rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+        <!-- 1. App State -->
+        <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--primary);">
+            <h3 style="margin-bottom: 0.5rem;">📱 Aplicación</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div>
-                    <h3 style="margin: 0;">Notificaciones</h3>
-                    <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">Avisos de recibos y lista compra
-                    </p>
+                    <div style="font-weight: 600;">Versión Instalada</div>
+                    <div style="color: var(--text-muted); font-size: 0.9rem;">v1.20.0</div>
                 </div>
-                <div style="display: flex; gap: 0.5rem;">
-                    <button id="test-notifs-btn" class="btn btn-secondary" style="padding: 0.5rem 1rem;">
-                        🔔 Probar
-                    </button>
-                    <button id="enable-notifs-btn" class="btn btn-primary" style="padding: 0.5rem 1rem;">
-                        Activar
-                    </button>
-                </div>
+                <button onclick="window.location.reload()" class="btn btn-sm btn-secondary">
+                    ⟳ Recargar
+                </button>
             </div>
         </div>
 
-        <div class="card" style="margin-top: 2rem;">
-            <h3 style="margin-bottom: 1rem;">Personalización</h3>
-            <div class="form-group">
-                <label class="form-label">Cambiar Foto Familiar</label>
-                <input type="file" id="photo-upload" accept="image/*" class="form-input">
-                <small style="color: var(--text-muted);">Se recomienda una foto cuadrada.</small>
+        <!-- 2. Data State -->
+        <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--success);">
+            <h3 style="margin-bottom: 0.5rem;">☁️ Datos (Nube)</h3>
+
+            <div id="sync-status-display"
+                style="background: #F3F4F6; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center;">
+                <div style="font-weight: 600; font-size: 1.1rem; color: var(--text-main);">Comprobando...</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Gist ID: <span id="gist-id-display">...</span>
+                </div>
             </div>
-            <button id="reset-photo-btn" class="btn btn-secondary" style="width: 100%;">
-                Restaurar Foto Original
+
+            <button id="manual-sync-btn" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                🔄 Sincronizar Ahora
             </button>
+            <div id="sync-feedback"
+                style="text-align: center; margin-top: 0.5rem; font-size: 0.9rem; min-height: 1.2em;"></div>
         </div>
 
-        <div class="card" style="margin-top: 2rem;">
+        <!-- 3. Advanced Config -->
+        <div class="card">
             <details>
-                <summary style="cursor: pointer; font-weight: 600; color: var(--text-muted); padding: 0.5rem 0;">⚠️
-                    Configuración Avanzada (GitHub)</summary>
+                <summary style="cursor: pointer; font-weight: 600; color: var(--text-muted); padding: 0.5rem 0;">⚙️
+                    Configuración de Conexión</summary>
                 <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #E5E7EB;">
                     <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
-                        Para sincronizar entre dispositivos, necesitas un <strong>Personal Access Token</strong> de
-                        GitHub (con
-                        permiso de 'gist') y el ID de un Gist secreto.
+                        Credenciales de GitHub para la sincronización.
                     </p>
 
                     <div class="form-group">
-                        <label class="form-label">GitHub Access Token</label>
-                        <input type="password" id="gh-token" class="form-input" placeholder="ghp_xxxxxxxxxxxx">
+                        <label class="form-label">GitHub Token</label>
+                        <input type="password" id="gh-token" class="form-input" placeholder="ghp_...">
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Gist ID (Archivo de Datos)</label>
-                        <input type="text" id="gh-gist-id" class="form-input" placeholder="Ej: a1b2c3d4e5...">
-                        <small style="color: var(--text-muted);">Si lo dejas vacío, crearemos uno nuevo al
-                            guardar.</small>
+                        <label class="form-label">Gist ID (Base de Datos)</label>
+                        <input type="text" id="gh-gist-id" class="form-input" placeholder="ID del Gist...">
                     </div>
 
-                    <button id="save-config-btn" class="btn btn-primary" style="width: 100%; margin-bottom: 2rem;">
-                        💾 Guardar Configuración
+                    <button id="save-config-btn" class="btn btn-secondary" style="width: 100%;">
+                        💾 Guardar Credenciales
                     </button>
                 </div>
             </details>
-
-            <hr style="border: 0; border-top: 1px solid #E5E7EB; margin-bottom: 2rem;">
-
-            <h3 style="margin-bottom: 1rem;">Acciones de Sincronización</h3>
-
-            <div style="display: grid; gap: 1rem;">
-                <button id="sync-upload-btn" class="btn btn-secondary">
-                    ☁️ Subir Datos (Local → Nube)
-                </button>
-                <button id="sync-download-btn" class="btn btn-secondary">
-                    📥 Descargar Datos (Nube → Local)
-                </button>
-            </div>
-
-            <div id="sync-status" style="margin-top: 1rem; text-align: center; font-weight: 500;"></div>
-        </div>
-
-        <div class="card" style="margin-top: 2rem;">
-            <h3>Datos Locales</h3>
-            <button id="export-json-btn" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">
-                Descargar Copia de Seguridad (.json)
-            </button>
-            <input type="file" id="import-json-file" style="display: none;" accept=".json">
-            <button id="import-json-btn" class="btn btn-secondary" style="margin-top: 0.5rem; width: 100%;">
-                Restaurar Copia...
-            </button>
         </div>
 
     </div>
 
     <script src="js/storage.js"></script>
-
+    <script src="js/main.js"></script>
     <script src="js/sync-service.js"></script>
 </body>
 

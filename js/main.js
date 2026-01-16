@@ -7,14 +7,17 @@ async function checkAutoSync() {
   if (!token || !gistId || typeof SyncService === 'undefined') {
     if (indicator) {
       indicator.innerHTML = '<span style="color: #9CA3AF;">●</span> Desconectado';
-      // Optional: Make it clickable or just informative
     }
     return;
   }
 
   if (indicator) {
-    indicator.innerHTML = '<span style="color: #F59E0B;">●</span> Sincronizando...';
+    indicator.innerHTML = '<span style="color: #F59E0B;">●</span> Conectando...';
   }
+
+  // Update Gist ID display in settings if present
+  const gistDisplay = document.getElementById('gist-id-display');
+  if (gistDisplay) gistDisplay.textContent = gistId.substring(0, 8) + '...';
 
   // Smart Sync on Load
   try {
@@ -24,8 +27,18 @@ async function checkAutoSync() {
       if (success) {
         indicator.innerHTML = '<span style="color: #10B981;">●</span> En línea';
         setTimeout(() => { indicator.style.opacity = '0.7'; }, 2000);
+
+        const statusDisplay = document.getElementById('sync-status-display');
+        if (statusDisplay) {
+          statusDisplay.innerHTML = `
+                <div style="font-weight: 600; font-size: 1.1rem; color: var(--success);">¡Sincronizado!</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Última vez: ${new Date().toLocaleTimeString()}</div>
+             `;
+        }
       } else {
         indicator.innerHTML = '<span style="color: #EF4444;">●</span> Error Sync';
+        const statusDisplay = document.getElementById('sync-status-display');
+        if (statusDisplay) statusDisplay.innerHTML = '<div style="color: var(--danger);">Error al sincronizar</div>';
       }
     }
 
@@ -42,15 +55,7 @@ function navigateTo(page) {
   window.location.href = page;
 }
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
-
-
-  // Check for Daily Bills
-  if (typeof NotificationSystem !== 'undefined' && typeof StorageService !== 'undefined') {
-    NotificationSystem.checkDailyBills(StorageService.getRecurringBills());
-  }
 
   // Check User Profile
   const user = localStorage.getItem('user_profile');
@@ -59,92 +64,61 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = prompt("¡Bienvenido! ¿Cómo te llamas? (Para saber quién apunta las cosas)");
       if (name && name.trim()) {
         localStorage.setItem('user_profile', name.trim());
-        location.reload(); // Reload to apply changes if any (or just proceed)
+        location.reload();
       }
     }, 500);
-  }
-
-  // Costum Photo Logic
-  const customPhoto = localStorage.getItem('family_photo_custom');
-  if (customPhoto) {
-    const img = document.querySelector('.family-photo');
-    if (img) img.src = customPhoto;
-  }
-
-  // Settings Page Logic
-  const photoInput = document.getElementById('photo-upload');
-  const resetPhotoBtn = document.getElementById('reset-photo-btn');
-
-  if (photoInput) {
-    photoInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const img = new Image();
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-
-          // Resize to max 300x300
-          const maxSize = 300;
-          let width = img.width;
-          let height = img.height;
-
-          if (width > height) {
-            if (width > maxSize) {
-              height *= maxSize / width;
-              width = maxSize;
-            }
-          } else {
-            if (height > maxSize) {
-              width *= maxSize / height;
-              height = maxSize;
-            }
-          }
-
-          canvas.width = width;
-          canvas.height = height;
-          ctx.drawImage(img, 0, 0, width, height);
-
-          const base64 = canvas.toDataURL('image/jpeg', 0.8);
-          localStorage.setItem('family_photo_custom', base64);
-          alert('¡Foto actualizada!');
-        };
-        img.src = event.target.result;
-      };
-      reader.readAsDataURL(file);
-    });
-  }
-
-  if (resetPhotoBtn) {
-    resetPhotoBtn.addEventListener('click', () => {
-      if (confirm('¿Volver a la foto original?')) {
-        localStorage.removeItem('family_photo_custom');
-        window.location.reload();
-      }
-    });
   }
 
   // Inject PROMINENT Indicator if not exists
   if (!document.getElementById('sync-indicator')) {
     const div = document.createElement('div');
     div.id = 'sync-indicator';
-    // Bottom center pill styling
     div.className = 'sync-indicator';
-    // Default text 
     div.innerHTML = '<span style="color: #9CA3AF;">●</span> Iniciando...';
 
     // Add click listener to go to settings if disconnected
     div.addEventListener('click', () => {
-      const txt = div.innerText;
-      if (txt.includes('Desconectado') || txt.includes('Error')) {
-        navigateTo('settings.html');
-      }
+      navigateTo('settings.html');
     });
 
     document.body.appendChild(div);
+  }
+
+  // ---- Settings Page Logic (v1.20 Clean) ----
+  const tokenInput = document.getElementById('gh-token');
+  const gistIdInput = document.getElementById('gh-gist-id');
+  const saveConfigBtn = document.getElementById('save-config-btn');
+  const manualSyncBtn = document.getElementById('manual-sync-btn');
+  const syncFeedback = document.getElementById('sync-feedback');
+
+  if (tokenInput && gistIdInput) {
+    // Load saved
+    tokenInput.value = localStorage.getItem('gh_token') || '';
+    gistIdInput.value = localStorage.getItem('gh_gist_id') || '';
+
+    saveConfigBtn.addEventListener('click', () => {
+      const token = tokenInput.value.trim();
+      const gistId = gistIdInput.value.trim();
+      if (token) localStorage.setItem('gh_token', token);
+      if (gistId) localStorage.setItem('gh_gist_id', gistId);
+      alert('Credenciales guardadas. Recargando...');
+      window.location.reload();
+    });
+  }
+
+  if (manualSyncBtn) {
+    manualSyncBtn.addEventListener('click', async () => {
+      manualSyncBtn.disabled = true;
+      manualSyncBtn.textContent = 'Sincronizando...';
+      syncFeedback.textContent = '';
+
+      await checkAutoSync();
+
+      manualSyncBtn.disabled = false;
+      manualSyncBtn.textContent = '🔄 Sincronizar Ahora';
+      syncFeedback.textContent = 'Proceso finalizado.';
+      syncFeedback.style.color = 'var(--text-muted)';
+    });
   }
 
   // Wait a bit to ensure SyncService is loaded
