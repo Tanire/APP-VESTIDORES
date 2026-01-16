@@ -41,12 +41,26 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" style="margin-top: 2rem;">
+            <h3 style="margin-bottom: 1rem;">Personalización</h3>
+            <div class="form-group">
+                <label class="form-label">Cambiar Foto Familiar</label>
+                <input type="file" id="photo-upload" accept="image/*" class="form-input">
+                <small style="color: var(--text-muted);">Se recomienda una foto cuadrada.</small>
+            </div>
+            <button id="reset-photo-btn" class="btn btn-secondary" style="width: 100%;">
+                Restaurar Foto Original
+            </button>
+        </div>
+
+        <div class="card" style="margin-top: 2rem;">
             <details>
-                <summary style="cursor: pointer; font-weight: 600; color: var(--text-muted); padding: 0.5rem 0;">⚠️ Configuración Avanzada (GitHub)</summary>
+                <summary style="cursor: pointer; font-weight: 600; color: var(--text-muted); padding: 0.5rem 0;">⚠️
+                    Configuración Avanzada (GitHub)</summary>
                 <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #E5E7EB;">
                     <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
-                        Para sincronizar entre dispositivos, necesitas un <strong>Personal Access Token</strong> de GitHub (con
+                        Para sincronizar entre dispositivos, necesitas un <strong>Personal Access Token</strong> de
+                        GitHub (con
                         permiso de 'gist') y el ID de un Gist secreto.
                     </p>
 
@@ -58,7 +72,8 @@
                     <div class="form-group">
                         <label class="form-label">Gist ID (Archivo de Datos)</label>
                         <input type="text" id="gh-gist-id" class="form-input" placeholder="Ej: a1b2c3d4e5...">
-                        <small style="color: var(--text-muted);">Si lo dejas vacío, crearemos uno nuevo al guardar.</small>
+                        <small style="color: var(--text-muted);">Si lo dejas vacío, crearemos uno nuevo al
+                            guardar.</small>
                     </div>
 
                     <button id="save-config-btn" class="btn btn-primary" style="width: 100%; margin-bottom: 2rem;">

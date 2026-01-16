@@ -64,6 +64,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
   }
 
+  // Costum Photo Logic
+  const customPhoto = localStorage.getItem('family_photo_custom');
+  if (customPhoto) {
+    const img = document.querySelector('.family-photo');
+    if (img) img.src = customPhoto;
+  }
+
+  // Settings Page Logic
+  const photoInput = document.getElementById('photo-upload');
+  const resetPhotoBtn = document.getElementById('reset-photo-btn');
+
+  if (photoInput) {
+    photoInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+
+          // Resize to max 300x300
+          const maxSize = 300;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > maxSize) {
+              height *= maxSize / width;
+              width = maxSize;
+            }
+          } else {
+            if (height > maxSize) {
+              width *= maxSize / height;
+              height = maxSize;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const base64 = canvas.toDataURL('image/jpeg', 0.8);
+          localStorage.setItem('family_photo_custom', base64);
+          alert('¡Foto actualizada!');
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  if (resetPhotoBtn) {
+    resetPhotoBtn.addEventListener('click', () => {
+      if (confirm('¿Volver a la foto original?')) {
+        localStorage.removeItem('family_photo_custom');
+        window.location.reload();
+      }
+    });
+  }
+
   // Inject PROMINENT Indicator if not exists
   if (!document.getElementById('sync-indicator')) {
     const div = document.createElement('div');

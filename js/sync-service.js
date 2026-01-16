@@ -84,7 +84,8 @@ const SyncService = {
             calendar_events: StorageService.getEvents(),
             expenses: StorageService.getExpenses(),
             shopping_list: StorageService.get('shopping_list', []),
-            recurring_bills: StorageService.getRecurringBills()
+            recurring_bills: StorageService.getRecurringBills(),
+            household_tasks: StorageService.getTasks()
         };
     },
 
@@ -94,6 +95,7 @@ const SyncService = {
         if (data.expenses) StorageService.saveExpenses(data.expenses, true);
         if (data.shopping_list) StorageService.set('shopping_list', data.shopping_list, true);
         if (data.recurring_bills) StorageService.saveRecurringBills(data.recurring_bills, true);
+        if (data.household_tasks) StorageService.saveTasks(data.household_tasks, true);
     },
 
     // ---- Smart Merge Logic (with Soft Delete Support) ----
@@ -144,7 +146,8 @@ const SyncService = {
             calendar_events: this.mergeArrays(localData.calendar_events, cloudData.calendar_events),
             expenses: this.mergeArrays(localData.expenses, cloudData.expenses),
             shopping_list: this.mergeArrays(localData.shopping_list, cloudData.shopping_list),
-            recurring_bills: this.mergeArrays(localData.recurring_bills, cloudData.recurring_bills)
+            recurring_bills: this.mergeArrays(localData.recurring_bills, cloudData.recurring_bills),
+            household_tasks: this.mergeArrays(localData.household_tasks, cloudData.household_tasks)
         };
 
         // 4. Update Local (Suppress Sync!)
