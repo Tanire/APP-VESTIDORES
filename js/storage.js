@@ -69,5 +69,8 @@ const StorageService = {
   saveExpenses(expenses, suppress = false) { this.set('expenses', expenses, suppress); },
 
   getRecurringBills() { return this.get('recurring_bills', []); },
-  saveRecurringBills(bills, suppress = false) { this.set('recurring_bills', bills, suppress); }
+  saveRecurringBills(bills, suppress = false) { this.set('recurring_bills', bills, suppress); },
+
+  getTasks() { return this.get('household_tasks', []); },
+  saveTasks(tasks, suppress = false) { this.set('household_tasks', tasks, suppress); }
 };

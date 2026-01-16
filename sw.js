@@ -1,10 +1,11 @@
-const CACHE_NAME = 'familia-app-v1.18.3';
+const CACHE_NAME = 'familia-app-v1.19.0';
 const ASSETS = [
     './',
     './index.html',
     './calendar.html',
     './expenses.html',
     './shopping.html',
+    './tasks.html',
     './settings.html',
     './css/style.css',
     './js/main.js',
@@ -12,6 +13,7 @@ const ASSETS = [
     './js/calendar.js',
     './js/expenses.js',
     './js/shopping.js',
+    './js/tasks.js',
     './js/storage.js',
     './js/sync-service.js',
     './js/ocr-service.js',
