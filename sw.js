@@ -1,4 +1,4 @@
-const CACHE_NAME = 'familia-app-v1.20.0';
+const CACHE_NAME = 'familia-app-v1.20.1-FORCE';
 const ASSETS = [
     './',
     './index.html',
