@@ -314,6 +314,38 @@ h3 {
   margin-top: 1.5rem;
 }
 
+/* Floating Action Button (FAB) - Enhanced */
+.fab-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 70px; /* Larger */
+  height: 70px; /* Larger */
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 2.5rem; /* Larger icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.5); /* Stronger shadow */
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  z-index: 1000;
+}
+
+.fab-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.7);
+}
+
+.fab-btn:active {
+  transform: scale(0.95);
+}
+
 /* --- Sync Indicator --- */
 .sync-indicator {
   position: fixed;

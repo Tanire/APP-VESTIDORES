@@ -161,6 +161,41 @@ function renderVestidoresList() {
     });
 }
 
+// --- Export Logic ---
+function exportVestidoresToCSV() {
+    const list = StorageService.getVestidores();
+    if (list.length === 0) {
+        alert("No hay datos para exportar.");
+        return;
+    }
+
+    // Headers
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Nombre,Apellidos,DNI,Telefono,Categoria,Fecha Registro\n";
+
+    // Rows
+    list.forEach(item => {
+        const row = [
+            item.name,
+            item.surname,
+            item.dni,
+            item.phone,
+            item.category,
+            new Date(item.createdAt).toLocaleDateString()
+        ].map(e => `"${e || ''}"`).join(","); // Quote fields to handle commas
+        csvContent += row + "\r\n";
+    });
+
+    // Download Trigger
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `vestidores_listado_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link); // Required for FF
+    link.click();
+    document.body.removeChild(link);
+}
+
 // --- Utilities ---
 function generateUUID() { // Simple UUID generator
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
