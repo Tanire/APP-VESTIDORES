@@ -91,73 +91,123 @@ function showMainMenu() {
   document.getElementById("main-menu").style.display = "grid"; // Restore grid display
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Check User Profile
-  const user = localStorage.getItem("user_profile");
-  if (!user) {
+document.addEventListener('DOMContentLoaded', () => {
+
+  // --- AUTHENTICATION LOGIC ---
+  const loginSection = document.getElementById('login-section');
+  const protectedContent = document.getElementById('protected-content');
+  const loginBtn = document.getElementById('login-btn');
+  const tokenInput = document.getElementById('access-token-input');
+  const gistIdInput = document.getElementById('gist-id-input');
+  const loginError = document.getElementById('login-error');
+
+  // Check if we have credentials
+  const savedToken = localStorage.getItem('gh_token');
+  const savedGistId = localStorage.getItem('gh_gist_id');
+
+  if (savedToken && savedGistId) {
+      // Auto-login
+      showProtectedContent();
+  } else {
+      // Show login
+      loginSection.style.display = 'flex';
+      protectedContent.style.display = 'none';
+  }
+
+  function showProtectedContent() {
+      loginSection.style.display = 'none';
+      protectedContent.style.display = 'block';
+      // Initialize App
+      checkAutoSync();
+  }
+
+  if(loginBtn) {
+      loginBtn.addEventListener('click', () => {
+          const token = tokenInput.value.trim();
+          const gistId = gistIdInput.value.trim();
+
+          if(token && gistId) {
+              localStorage.setItem('gh_token', token);
+              localStorage.setItem('gh_gist_id', gistId);
+              // Optional: Validate here if needed, for now just allow entry
+              showProtectedContent();
+              location.reload(); // Reload to trigger sync clean
+          } else {
+              loginError.style.display = 'block';
+          }
+      });
+  }
+  // --- END AUTH LOGIC ---
+
+  // Check User Profile (Only if auth passed, but we handle that by visibility)
+  const user = localStorage.getItem('user_profile');
+  if (!user && localStorage.getItem('gh_token')) {
+    // Only ask name if logged in
     setTimeout(() => {
-      const name = prompt(
-        "¡Bienvenido! ¿Cómo te llamas? (Para saber quién apunta las cosas)",
-      );
+      const name = prompt("¡Bienvenido! ¿Cómo te llamas? (Para saber quién apunta las cosas)");
       if (name && name.trim()) {
-        localStorage.setItem("user_profile", name.trim());
+        localStorage.setItem('user_profile', name.trim());
         location.reload();
       }
     }, 500);
   }
 
   // Inject PROMINENT Indicator if not exists
-  if (!document.getElementById("sync-indicator")) {
-    const div = document.createElement("div");
-    div.id = "sync-indicator";
-    div.className = "sync-indicator";
+  if (!document.getElementById('sync-indicator')) {
+    const div = document.createElement('div');
+    div.id = 'sync-indicator';
+    div.className = 'sync-indicator';
     div.innerHTML = '<span style="color: #9CA3AF;">●</span> Iniciando...';
 
     // Add click listener to go to settings if disconnected
-    div.addEventListener("click", () => {
-      navigateTo("settings.html");
+    div.addEventListener('click', () => {
+       // Only navigate if visible
+       if(protectedContent.style.display !== 'none') {
+          navigateTo('settings.html');
+       }
     });
 
     document.body.appendChild(div);
   }
 
   // ---- Settings Page Logic (v1.20 Clean) ----
-  const tokenInput = document.getElementById("gh-token");
-  const gistIdInput = document.getElementById("gh-gist-id");
-  const saveConfigBtn = document.getElementById("save-config-btn");
-  const manualSyncBtn = document.getElementById("manual-sync-btn");
-  const syncFeedback = document.getElementById("sync-feedback");
+  const tokenInputSettings = document.getElementById('gh-token');
+  const gistIdInputSettings = document.getElementById('gh-gist-id');
+  const saveConfigBtn = document.getElementById('save-config-btn');
+  const manualSyncBtn = document.getElementById('manual-sync-btn');
+  const syncFeedback = document.getElementById('sync-feedback');
 
-  if (tokenInput && gistIdInput) {
+  if (tokenInputSettings && gistIdInputSettings) {
     // Load saved
-    tokenInput.value = localStorage.getItem("gh_token") || "";
-    gistIdInput.value = localStorage.getItem("gh_gist_id") || "";
+    tokenInputSettings.value = localStorage.getItem('gh_token') || '';
+    gistIdInputSettings.value = localStorage.getItem('gh_gist_id') || '';
 
-    saveConfigBtn.addEventListener("click", () => {
-      const token = tokenInput.value.trim();
-      const gistId = gistIdInput.value.trim();
-      if (token) localStorage.setItem("gh_token", token);
-      if (gistId) localStorage.setItem("gh_gist_id", gistId);
-      alert("Credenciales guardadas. Recargando...");
+    saveConfigBtn.addEventListener('click', () => {
+      const token = tokenInputSettings.value.trim();
+      const gistId = gistIdInputSettings.value.trim();
+      if (token) localStorage.setItem('gh_token', token);
+      if (gistId) localStorage.setItem('gh_gist_id', gistId);
+      alert('Credenciales guardadas. Recargando...');
       window.location.reload();
     });
   }
 
   if (manualSyncBtn) {
-    manualSyncBtn.addEventListener("click", async () => {
+    manualSyncBtn.addEventListener('click', async () => {
       manualSyncBtn.disabled = true;
-      manualSyncBtn.textContent = "Sincronizando...";
-      syncFeedback.textContent = "";
+      manualSyncBtn.textContent = 'Sincronizando...';
+      syncFeedback.textContent = '';
 
       await checkAutoSync();
 
       manualSyncBtn.disabled = false;
-      manualSyncBtn.textContent = "🔄 Sincronizar Ahora";
-      syncFeedback.textContent = "Proceso finalizado.";
-      syncFeedback.style.color = "var(--text-muted)";
+      manualSyncBtn.textContent = '🔄 Sincronizar Ahora';
+      syncFeedback.textContent = 'Proceso finalizado.';
+      syncFeedback.style.color = 'var(--text-muted)';
     });
   }
 
   // Wait a bit to ensure SyncService is loaded
+  // Only sync if we are already logged in logic handled by checkAutoSync internal check but good to delay
   setTimeout(checkAutoSync, 1000);
 });
