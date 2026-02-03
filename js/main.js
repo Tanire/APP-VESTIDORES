@@ -122,16 +122,46 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if(loginBtn) {
-      loginBtn.addEventListener('click', () => {
+      loginBtn.addEventListener('click', async () => {
           const token = tokenInput.value.trim();
-          const gistId = gistIdInput.value.trim();
+          let gistId = gistIdInput.value.trim();
 
-          if(token && gistId) {
-              localStorage.setItem('gh_token', token);
-              localStorage.setItem('gh_gist_id', gistId);
-              // Optional: Validate here if needed, for now just allow entry
-              showProtectedContent();
-              location.reload(); // Reload to trigger sync clean
+          if(token) {
+              loginBtn.disabled = true;
+              loginBtn.textContent = "Verificando...";
+              
+              if (!gistId) {
+                  // Try to create Gist automatically
+                  try {
+                      if (typeof SyncService !== 'undefined') {
+                          loginBtn.textContent = "Creando Nube...";
+                          const newId = await SyncService.createGist(token);
+                          if (newId) {
+                              gistId = newId;
+                              alert('¡Nube creada con éxito! Guardando credenciales...');
+                          } else {
+                               throw new Error("No se pudo crear el Gist.");
+                          }
+                      }
+                  } catch (e) {
+                      console.error(e);
+                      alert("Error creando la base de datos automáticamente. Verifica que el token tenga permisos de 'gist'.");
+                      loginBtn.disabled = false;
+                      loginBtn.textContent = "Entrar";
+                      return;
+                  }
+              }
+
+              if (gistId) {
+                  localStorage.setItem('gh_token', token);
+                  localStorage.setItem('gh_gist_id', gistId);
+                  showProtectedContent();
+                  location.reload(); 
+              } else {
+                  loginError.style.display = 'block';
+                  loginBtn.disabled = false;
+                  loginBtn.textContent = "Entrar";
+              }
           } else {
               loginError.style.display = 'block';
           }
