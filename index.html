@@ -1,84 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casa Mocholí Chordà</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- PWA Manifest & Icons -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#4F46E5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casa Mocholí Chordà</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- PWA Manifest & Icons -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#4F46E5">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-</head>
+  <body>
+    <div class="main-container">
+      <header class="home-header">
+        <div class="family-photo-container">
+          <img
+            src="assets/family_photo.jpg"
+            alt="Foto familiar"
+            class="family-photo"
+          />
+        </div>
+        <h1 class="app-title">Casa Mocholí Chordà</h1>
+        <p style="color: var(--text-muted)">Ofrenda y Vestidores</p>
+      </header>
 
-<body>
-  <div class="main-container">
-    <header class="home-header">
-      <div class="family-photo-container">
-        <img src="assets/family_photo.jpg" alt="Foto familiar" class="family-photo">
+      <!-- Main Navigation Menu -->
+      <div
+        id="main-menu"
+        class="menu-grid"
+        style="grid-template-columns: 1fr; max-width: 400px"
+      >
+        <!-- Ofrenda Button -->
+        <div
+          class="menu-card"
+          onclick="showSection('ofrenda-section')"
+          style="flex-direction: row; justify-content: start; gap: 1.5rem"
+        >
+          <div class="menu-icon" style="margin-bottom: 0; font-size: 2.5rem">
+            💐
+          </div>
+          <div style="text-align: left">
+            <div class="menu-title" style="margin-bottom: 0.2rem">OFRENDA</div>
+            <div class="menu-desc">Gasto Años 2025, 2026...</div>
+          </div>
+        </div>
+
+        <!-- Vestidores Button -->
+        <div
+          class="menu-card"
+          onclick="showSection('vestidores-section')"
+          style="flex-direction: row; justify-content: start; gap: 1.5rem"
+        >
+          <div class="menu-icon" style="margin-bottom: 0; font-size: 2.5rem">
+            👔
+          </div>
+          <div style="text-align: left">
+            <div class="menu-title" style="margin-bottom: 0.2rem">
+              VESTIDORES
+            </div>
+            <div class="menu-desc">Listados y Posiciones</div>
+          </div>
+        </div>
+
+        <!-- Ajustes Button -->
+        <div
+          class="menu-card"
+          onclick="navigateTo('settings.html')"
+          style="flex-direction: row; justify-content: start; gap: 1.5rem"
+        >
+          <div class="menu-icon" style="margin-bottom: 0; font-size: 2.5rem">
+            ⚙️
+          </div>
+          <div style="text-align: left">
+            <div class="menu-title" style="margin-bottom: 0.2rem">AJUSTES</div>
+            <div class="menu-desc">Configuración</div>
+          </div>
+        </div>
       </div>
-      <h1 class="app-title">Casa Mocholí Chordà</h1>
-      <p style="color: var(--text-muted);">Organización y gastos familiares</p>
-    </header>
 
-    <div class="menu-grid">
-      <!-- Calendar Card -->
-      <div class="menu-card" onclick="navigateTo('calendar.html')">
-        <div class="menu-icon">📅</div>
-        <div class="menu-title">Calendario</div>
-        <div class="menu-desc">Eventos y recordatorios</div>
+      <!-- OFRENDA SECTION (Hidden by default) -->
+      <div id="ofrenda-section" style="display: none">
+        <button class="btn btn-secondary back-button" onclick="showMainMenu()">
+          ⬅ Volver
+        </button>
+        <h2 style="margin-bottom: 1.5rem; text-align: center">Ofrenda</h2>
+        <div class="menu-grid" style="grid-template-columns: 1fr 1fr">
+          <div
+            class="menu-card"
+            onclick="alert('Funcionalidad 2025 en desarrollo')"
+          >
+            <div class="menu-title">2025</div>
+          </div>
+          <div
+            class="menu-card"
+            onclick="alert('Funcionalidad 2026 en desarrollo')"
+          >
+            <div class="menu-title">2026</div>
+          </div>
+          <!-- Add more years here as needed -->
+        </div>
       </div>
 
-      <!-- Expenses Card -->
-      <div class="menu-card" onclick="navigateTo('expenses.html')">
-        <div class="menu-icon">💶</div>
-        <div class="menu-title">Gastos Mensuales</div>
-        <div class="menu-desc">Control de economía</div>
+      <!-- VESTIDORES SECTION (Hidden by default) -->
+      <div id="vestidores-section" style="display: none">
+        <button class="btn btn-secondary back-button" onclick="showMainMenu()">
+          ⬅ Volver
+        </button>
+        <h2 style="margin-bottom: 1.5rem; text-align: center">Vestidores</h2>
+        <div class="menu-grid" style="grid-template-columns: 1fr">
+          <div class="menu-card" onclick="alert('Listado en desarrollo')">
+            <div class="menu-icon">📋</div>
+            <div class="menu-title">LISTADO</div>
+          </div>
+          <div class="menu-card" onclick="alert('Posiciones en desarrollo')">
+            <div class="menu-icon">📍</div>
+            <div class="menu-title">POSICIONES</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Shopping List Card -->
-      <div class="menu-card" onclick="navigateTo('shopping.html')">
-        <div class="menu-icon">🛒</div>
-        <div class="menu-title">Lista Compra</div>
-        <div class="menu-desc">Añadir productos</div>
-      </div>
-
-      <!-- Tasks Card -->
-      <div class="menu-card" onclick="navigateTo('tasks.html')">
-        <div class="menu-icon">🧹</div>
-        <div class="menu-title">Tareas</div>
-        <div class="menu-desc">Limpieza y Orden</div>
-      </div>
-
-      <!-- Settings Card -->
-      <div class="menu-card" onclick="navigateTo('settings.html')">
-        <div class="menu-icon">⚙️</div>
-        <div class="menu-title">Ajustes / Nube</div>
-        <div class="menu-desc">Sincronización y Config</div>
-      </div>
+      <footer
+        style="
+          margin-top: auto;
+          padding: 2rem 0 4rem 0;
+          text-align: center;
+          color: var(--text-muted);
+        "
+      >
+        <p
+          style="
+            font-family: &quot;Inter&quot;, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+          "
+        >
+          By JMSystems
+        </p>
+        <p
+          style="
+            font-family: &quot;Inter&quot;, sans-serif;
+            font-size: 0.75rem;
+            opacity: 0.7;
+          "
+        >
+          Versión 2.0.0
+        </p>
+      </footer>
     </div>
-    <footer style="margin-top: auto; padding: 2rem 0 4rem 0; text-align: center; color: var(--text-muted);">
-      <p style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem;">By
-        JMSystems</p>
-      <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; opacity: 0.7;">Versión 1.20.1</p>
-    </footer>
-  </div>
 
-  <script src="js/storage.js"></script>
-  <script src="js/notifications.js"></script>
-  <script src="js/sync-service.js"></script>
-  <script src="js/main.js"></script>
-  <!-- Simple Service Worker Registration for PWA -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(err => console.log('SW fail', err));
-      });
-    }
-  </script>
-</body>
-
+    <script src="js/storage.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/sync-service.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Simple Service Worker Registration for PWA -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("sw.js")
+            .catch((err) => console.log("SW fail", err));
+        });
+      }
+    </script>
+  </body>
 </html>
