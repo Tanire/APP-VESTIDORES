@@ -203,6 +203,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Wait a bit to ensure SyncService is loaded
-  // Only sync if we are already logged in logic handled by checkAutoSync internal check but good to delay
   setTimeout(checkAutoSync, 1000);
+
+  // --- Global Event Listeners ---
+  window.addEventListener('storage-updated', () => {
+      console.log('Storage updated, refreshing views...');
+      // If Vestidores List is visible, re-render it
+      if (document.getElementById('vestidores-list-view').style.display !== 'none') {
+          renderVestidoresList();
+      }
+      // Add other views here as we build them (e.g., Ofrenda)
+  });
 });
