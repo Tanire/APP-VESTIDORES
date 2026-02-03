@@ -141,11 +141,45 @@ document.addEventListener('DOMContentLoaded', () => {
     tokenInputSettings.value = localStorage.getItem('gh_token') || '';
     gistIdInputSettings.value = localStorage.getItem('gh_gist_id') || '';
 
-    saveConfigBtn.addEventListener('click', () => {
+    saveConfigBtn.addEventListener('click', async () => {
       const token = tokenInputSettings.value.trim();
-      const gistId = gistIdInputSettings.value.trim();
+      let gistId = gistIdInputSettings.value.trim();
+
+      if (!token) {
+        alert("Por favor, introduce el Token.");
+        return;
+      }
+
+      if (token && !gistId) {
+          // Offer to create
+          const create = confirm("No has puesto Gist ID. ¿Quieres crear una NUEVA base de datos en la nube?");
+          if (create) {
+             saveConfigBtn.disabled = true;
+             saveConfigBtn.textContent = "Creando...";
+             try {
+                const newId = await SyncService.createGist(token);
+                if (newId) {
+                    gistId = newId;
+                    alert("¡Base de datos creada con éxito!");
+                } else {
+                    alert("Error creando la base de datos.");
+                    saveConfigBtn.disabled = false;
+                    saveConfigBtn.textContent = "💾 Guardar Credenciales";
+                    return;
+                }
+             } catch (e) {
+                 console.error(e);
+                 alert("Error: " + e.message);
+                 saveConfigBtn.disabled = false;
+                 saveConfigBtn.textContent = "💾 Guardar Credenciales";
+                 return;
+             }
+          }
+      }
+
       if (token) localStorage.setItem('gh_token', token);
       if (gistId) localStorage.setItem('gh_gist_id', gistId);
+      
       alert('Credenciales guardadas. Recargando...');
       window.location.reload();
     });
