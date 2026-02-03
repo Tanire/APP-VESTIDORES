@@ -1,22 +1,16 @@
-const CACHE_NAME = 'familia-app-v1.20.2';
+const CACHE_NAME = 'vestidores-v3';
 const ASSETS = [
     './',
     './index.html',
-    './calendar.html',
-    './expenses.html',
-    './shopping.html',
-    './tasks.html',
     './settings.html',
     './css/style.css',
     './js/main.js',
-    './js/calendar.js',
-    './js/expenses.js',
-    './js/shopping.js',
-    './js/tasks.js',
+    './js/vestidores.js',
     './js/storage.js',
     './js/sync-service.js',
-    './js/ocr-service.js',
+    './js/notifications.js',
     './manifest.json',
+    './assets/logo.jpg',
     './assets/icon-192.png',
     './assets/icon-512.png'
 ];
