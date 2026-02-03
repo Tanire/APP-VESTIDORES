@@ -74,6 +74,7 @@ function showSection(sectionId) {
   // Hide all sections just in case
   document.getElementById("ofrenda-section").style.display = "none";
   document.getElementById("vestidores-section").style.display = "none";
+  document.getElementById("vestidores-list-view").style.display = "none"; // New View
 
   // Show requested section
   const section = document.getElementById(sectionId);
@@ -86,6 +87,7 @@ function showMainMenu() {
   // Hide all sections
   document.getElementById("ofrenda-section").style.display = "none";
   document.getElementById("vestidores-section").style.display = "none";
+  document.getElementById("vestidores-list-view").style.display = "none"; // New View
 
   // Show main menu
   document.getElementById("main-menu").style.display = "grid"; // Restore grid display
