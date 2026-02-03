@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Casa Mocholí Chordà</title>
+    <title>Vestidores de la Virgen</title>
     <link rel="stylesheet" href="css/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
@@ -22,29 +22,29 @@
   <body>
   <!-- LOGIN SECTION -->
   <div id="login-section" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; padding: 2rem; background: var(--bg-body); text-align: center;">
-      <div class="family-photo-container" style="width: 120px; height: 120px; margin-bottom: 2rem;">
+      <div class="family-photo-container" style="width: 150px; height: 150px; margin-bottom: 2rem;">
         <img src="assets/family_photo.jpg" alt="Logo" class="family-photo">
       </div>
-      <h2 style="margin-bottom: 0.5rem;">Bienvenido</h2>
-      <p style="color: var(--text-muted); margin-bottom: 2rem;">Casa Mocholí Chordà</p>
+      <h2 style="margin-bottom: 0.5rem; font-size: 1.8rem; color: var(--primary);">VESTIDORES</h2>
+      <p style="color: var(--text-muted); margin-bottom: 2rem; font-weight: 500;">DE LA VIRGEN</p>
       
       <div style="width: 100%; max-width: 320px;">
-          <input type="password" id="access-token-input" placeholder="Token de Acceso (GitHub/App)" class="form-input" style="margin-bottom: 1rem; text-align: center;">
-          <input type="text" id="gist-id-input" placeholder="ID de Datos (Gist ID)" class="form-input" style="margin-bottom: 1.5rem; text-align: center;">
+          <input type="password" id="access-token-input" placeholder="Token de Acceso (GitHub)" class="form-input" style="margin-bottom: 1rem; text-align: center;">
+          <input type="text" id="gist-id-input" placeholder="Gist ID (Opcional)" class="form-input" style="margin-bottom: 1.5rem; text-align: center;">
           <button id="login-btn" class="btn btn-primary" style="width: 100%;">Entrar</button>
       </div>
-      <p id="login-error" style="color: var(--danger); margin-top: 1rem; display: none; font-size: 0.9rem;">Token incorrecto o falta información</p>
-      <p style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-muted);">El token debe ser indefinido para acceso permanente.</p>
+      <p id="login-error" style="color: var(--danger); margin-top: 1rem; display: none; font-size: 0.9rem;">Token incorrecto</p>
+      <p style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-muted);">v0.2</p>
   </div>
 
   <!-- PROTECTED CONTENT (Hidden by default) -->
   <div id="protected-content" class="main-container" style="display: none;">
     <header class="home-header">
       <div class="family-photo-container">
-        <img src="assets/family_photo.jpg" alt="Foto familiar" class="family-photo">
+        <img src="assets/family_photo.jpg" alt="Logo" class="family-photo">
       </div>
-      <h1 class="app-title">Casa Mocholí Chordà</h1>
-      <p style="color: var(--text-muted);">Ofrenda y Vestidores</p>
+      <h1 class="app-title" style="font-size: 2rem;">VESTIDORES</h1>
+      <p style="color: var(--text-muted); font-weight: 600;">DE LA VIRGEN</p>
     </header>
 
       <!-- Main Navigation Menu -->

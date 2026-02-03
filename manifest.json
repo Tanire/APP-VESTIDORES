@@ -1,11 +1,11 @@
 {
-  "name": "Casa Mocholí Chordà",
-  "short_name": "CasaMocholi",
+  "name": "Vestidores de la Virgen",
+  "short_name": "Vestidores",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#F3F4F6",
   "theme_color": "#4F46E5",
-  "description": "App para la gestión familiar y gastos.",
+  "description": "App para la gestión de ofrendas y vestidores.",
   "icons": [
     {
       "src": "assets/icon-192.png",
