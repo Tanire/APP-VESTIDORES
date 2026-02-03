@@ -93,81 +93,10 @@ function showMainMenu() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- AUTHENTICATION LOGIC ---
-  const loginSection = document.getElementById('login-section');
-  const protectedContent = document.getElementById('protected-content');
-  const loginBtn = document.getElementById('login-btn');
-  const tokenInput = document.getElementById('access-token-input');
-  const gistIdInput = document.getElementById('gist-id-input');
-  const loginError = document.getElementById('login-error');
-
-  // Check if we have credentials
-  const savedToken = localStorage.getItem('gh_token');
-  const savedGistId = localStorage.getItem('gh_gist_id');
-
-  if (savedToken && savedGistId) {
-      // Auto-login
-      showProtectedContent();
-  } else {
-      // Show login
-      loginSection.style.display = 'flex';
-      protectedContent.style.display = 'none';
-  }
-
-  function showProtectedContent() {
-      loginSection.style.display = 'none';
-      protectedContent.style.display = 'block';
-      // Initialize App
-      checkAutoSync();
-  }
-
-  if(loginBtn) {
-      loginBtn.addEventListener('click', async () => {
-          const token = tokenInput.value.trim();
-          let gistId = gistIdInput.value.trim();
-
-          if(token) {
-              loginBtn.disabled = true;
-              loginBtn.textContent = "Verificando...";
-              
-              if (!gistId) {
-                  // Try to create Gist automatically
-                  try {
-                      if (typeof SyncService !== 'undefined') {
-                          loginBtn.textContent = "Creando Nube...";
-                          const newId = await SyncService.createGist(token);
-                          if (newId) {
-                              gistId = newId;
-                              alert('¡Nube creada con éxito! Guardando credenciales...');
-                          } else {
-                               throw new Error("No se pudo crear el Gist.");
-                          }
-                      }
-                  } catch (e) {
-                      console.error(e);
-                      alert("Error creando la base de datos automáticamente. Verifica que el token tenga permisos de 'gist'.");
-                      loginBtn.disabled = false;
-                      loginBtn.textContent = "Entrar";
-                      return;
-                  }
-              }
-
-              if (gistId) {
-                  localStorage.setItem('gh_token', token);
-                  localStorage.setItem('gh_gist_id', gistId);
-                  showProtectedContent();
-                  location.reload(); 
-              } else {
-                  loginError.style.display = 'block';
-                  loginBtn.disabled = false;
-                  loginBtn.textContent = "Entrar";
-              }
-          } else {
-              loginError.style.display = 'block';
-          }
-      });
-  }
-  // --- END AUTH LOGIC ---
+  // --- AUTH REMOVED (Public Access) ---
+  // Initialize App directly
+  checkAutoSync();
+  // --- END AUTH REMOVED ---
 
   // Check User Profile (Only if auth passed, but we handle that by visibility)
   const user = localStorage.getItem('user_profile');
