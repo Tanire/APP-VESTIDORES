@@ -4,5 +4,20 @@
   "shopping_list": [],
   "recurring_bills": [],
   "household_tasks": [],
-  "vestidores_people": []
+  "vestidores_people": [
+    {
+      "id": "c3f6b7fc-8d26-4f34-a790-b6bdbe6c993b",
+      "name": "JAVIER",
+      "surname": "MOCHOLI IGLESIAS",
+      "dni": "26744334A",
+      "phone": "669481893",
+      "address": "DFASGFS",
+      "birthYear": "1986",
+      "admissionYear": "2024",
+      "birthPlace": "VALENCIA",
+      "category": "Vestidor",
+      "createdAt": "2026-06-19T08:16:15.785Z",
+      "updatedAt": "2026-06-19T08:16:15.785Z"
+    }
+  ]
 }
