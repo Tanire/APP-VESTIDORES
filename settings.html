@@ -42,10 +42,10 @@
             <h3 style="margin-bottom: 0.5rem;">☁️ Datos (Nube)</h3>
 
             <div id="sync-status-display"
-                style="background: #F3F4F6; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center;">
-                <div style="font-weight: 600; font-size: 1.1rem; color: var(--text-main);">Comprobando...</div>
-                <div style="font-size: 0.8rem; color: var(--text-muted);">Gist ID: <span id="gist-id-display">...</span>
-                </div>
+                style="background: #F3F4F6; padding: 1.25rem 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: left; font-size: 0.9rem;">
+                <div style="font-weight: 600; font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.75rem; text-align: center;">Comprobando...</div>
+                <div style="margin-top: 0.5rem;"><strong>Repositorio:</strong> <span id="repo-display" style="font-family: monospace;">...</span></div>
+                <div style="margin-top: 0.25rem;"><strong>Archivo:</strong> <span id="file-display" style="font-family: monospace;">...</span></div>
             </div>
 
             <button id="manual-sync-btn" class="btn btn-primary" style="width: 100%; padding: 1rem;">
@@ -55,36 +55,27 @@
                 style="text-align: center; margin-top: 0.5rem; font-size: 0.9rem; min-height: 1.2em;"></div>
         </div>
 
-        <!-- 3. Advanced Config -->
+        <!-- 3. Local Backup Actions -->
         <div class="card">
-            <details>
-                <summary style="cursor: pointer; font-weight: 600; color: var(--text-muted); padding: 0.5rem 0;">⚙️
-                    Configuración de Conexión</summary>
-                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #E5E7EB;">
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
-                        Credenciales de GitHub para la sincronización.
-                    </p>
-
-                    <div class="form-group">
-                        <label class="form-label">GitHub Token</label>
-                        <input type="password" id="gh-token" class="form-input" placeholder="ghp_...">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Gist ID (Base de Datos)</label>
-                        <input type="text" id="gh-gist-id" class="form-input" placeholder="ID del Gist...">
-                    </div>
-
-                    <button id="save-config-btn" class="btn btn-secondary" style="width: 100%;">
-                        💾 Guardar Credenciales
-                    </button>
-                </div>
-            </details>
+            <h3 style="margin-bottom: 0.75rem;">💾 Copia de Seguridad</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                Exporta o restaura una copia de seguridad local en formato JSON con todos tus datos.
+            </p>
+            
+            <div style="display: flex; gap: 0.75rem; flex-direction: column;">
+                <button id="export-json-btn" class="btn btn-secondary" style="width: 100%;">
+                    📤 Exportar Copia Local
+                </button>
+                <button id="import-json-btn" class="btn btn-secondary" style="width: 100%;">
+                    📥 Importar Copia Local
+                </button>
+                <input type="file" id="import-json-file" accept=".json" style="display: none;" />
+            </div>
         </div>
-
     </div>
 
     <script src="js/storage.js"></script>
+    <script src="js/notifications.js"></script>
     <script src="js/sync-service.js"></script>
     <script src="js/main.js"></script>
 </body>

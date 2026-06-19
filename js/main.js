@@ -1,10 +1,7 @@
 async function checkAutoSync() {
-  const token = localStorage.getItem("gh_token");
-  const gistId = localStorage.getItem("gh_gist_id");
-
   const indicator = document.getElementById("sync-indicator");
 
-  if (!token || !gistId || typeof SyncService === "undefined") {
+  if (typeof SyncService === "undefined") {
     if (indicator) {
       indicator.innerHTML =
         '<span style="color: #9CA3AF;">●</span> Desconectado';
@@ -17,14 +14,16 @@ async function checkAutoSync() {
       '<span style="color: #F59E0B;">●</span> Conectando...';
   }
 
-  // Update Gist ID display in settings if present
-  const gistDisplay = document.getElementById("gist-id-display");
-  if (gistDisplay) gistDisplay.textContent = gistId.substring(0, 8) + "...";
+  // Update repository path display in settings if elements exist
+  const repoDisplay = document.getElementById("repo-display");
+  if (repoDisplay) repoDisplay.textContent = "Tanire/APP-VESTIDORES";
+  
+  const fileDisplay = document.getElementById("file-display");
+  if (fileDisplay) fileDisplay.textContent = "data/vestidores_data.json";
 
   // Smart Sync on Load
   try {
-    const result = await SyncService.syncWithCloud(token, gistId);
-    // Support both old boolean return and new object return
+    const result = await SyncService.syncWithCloud();
     const success = typeof result === "boolean" ? result : result.success;
     const errorMsg = result.error || "Error desconocido";
 
@@ -46,8 +45,9 @@ async function checkAutoSync() {
         indicator.innerHTML =
           '<span style="color: #EF4444;">●</span> Error Sync';
         const statusDisplay = document.getElementById("sync-status-display");
-        if (statusDisplay)
+        if (statusDisplay) {
           statusDisplay.innerHTML = `<div style="color: var(--danger);">Error: ${errorMsg}</div>`;
+        }
       }
     }
 
@@ -74,7 +74,7 @@ function showSection(sectionId) {
   // Hide all sections just in case
   document.getElementById("ofrenda-section").style.display = "none";
   document.getElementById("vestidores-section").style.display = "none";
-  document.getElementById("vestidores-list-view").style.display = "none"; // New View
+  document.getElementById("vestidores-list-view").style.display = "none";
 
   // Show requested section
   const section = document.getElementById(sectionId);
@@ -87,7 +87,7 @@ function showMainMenu() {
   // Hide all sections
   document.getElementById("ofrenda-section").style.display = "none";
   document.getElementById("vestidores-section").style.display = "none";
-  document.getElementById("vestidores-list-view").style.display = "none"; // New View
+  document.getElementById("vestidores-list-view").style.display = "none";
 
   // Show main menu
   document.getElementById("main-menu").style.display = "grid"; // Restore grid display
@@ -95,15 +95,12 @@ function showMainMenu() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- AUTH REMOVED (Public Access) ---
   // Initialize App directly
   checkAutoSync();
-  // --- END AUTH REMOVED ---
 
-  // Check User Profile (Only if auth passed, but we handle that by visibility)
+  // Check User Profile
   const user = localStorage.getItem('user_profile');
-  if (!user && localStorage.getItem('gh_token')) {
-    // Only ask name if logged in
+  if (!user) {
     setTimeout(() => {
       const name = prompt("¡Bienvenido! ¿Cómo te llamas? (Para saber quién apunta las cosas)");
       if (name && name.trim()) {
@@ -120,85 +117,32 @@ document.addEventListener('DOMContentLoaded', () => {
     div.className = 'sync-indicator';
     div.innerHTML = '<span style="color: #9CA3AF;">●</span> Iniciando...';
 
-    // Add click listener to go to settings if disconnected
+    // Add click listener to go to settings
     div.addEventListener('click', () => {
-       // Only navigate if visible
-       if(protectedContent.style.display !== 'none') {
-          navigateTo('settings.html');
-       }
+      navigateTo('settings.html');
     });
 
     document.body.appendChild(div);
   }
 
   // ---- Settings Page Logic (v1.20 Clean) ----
-  const tokenInputSettings = document.getElementById('gh-token');
-  const gistIdInputSettings = document.getElementById('gh-gist-id');
-  const saveConfigBtn = document.getElementById('save-config-btn');
   const manualSyncBtn = document.getElementById('manual-sync-btn');
   const syncFeedback = document.getElementById('sync-feedback');
-
-  if (tokenInputSettings && gistIdInputSettings) {
-    // Load saved
-    tokenInputSettings.value = localStorage.getItem('gh_token') || '';
-    gistIdInputSettings.value = localStorage.getItem('gh_gist_id') || '';
-
-    saveConfigBtn.addEventListener('click', async () => {
-      const token = tokenInputSettings.value.trim();
-      let gistId = gistIdInputSettings.value.trim();
-
-      if (!token) {
-        alert("Por favor, introduce el Token.");
-        return;
-      }
-
-      if (token && !gistId) {
-          // Offer to create
-          const create = confirm("No has puesto Gist ID. ¿Quieres crear una NUEVA base de datos en la nube?");
-          if (create) {
-             saveConfigBtn.disabled = true;
-             saveConfigBtn.textContent = "Creando...";
-             try {
-                const newId = await SyncService.createGist(token);
-                if (newId) {
-                    gistId = newId;
-                    alert("¡Base de datos creada con éxito!");
-                } else {
-                    alert("Error creando la base de datos.");
-                    saveConfigBtn.disabled = false;
-                    saveConfigBtn.textContent = "💾 Guardar Credenciales";
-                    return;
-                }
-             } catch (e) {
-                 console.error(e);
-                 alert("Error: " + e.message);
-                 saveConfigBtn.disabled = false;
-                 saveConfigBtn.textContent = "💾 Guardar Credenciales";
-                 return;
-             }
-          }
-      }
-
-      if (token) localStorage.setItem('gh_token', token);
-      if (gistId) localStorage.setItem('gh_gist_id', gistId);
-      
-      alert('Credenciales guardadas. Recargando...');
-      window.location.reload();
-    });
-  }
 
   if (manualSyncBtn) {
     manualSyncBtn.addEventListener('click', async () => {
       manualSyncBtn.disabled = true;
       manualSyncBtn.textContent = 'Sincronizando...';
-      syncFeedback.textContent = '';
+      if (syncFeedback) syncFeedback.textContent = '';
 
       await checkAutoSync();
 
       manualSyncBtn.disabled = false;
       manualSyncBtn.textContent = '🔄 Sincronizar Ahora';
-      syncFeedback.textContent = 'Proceso finalizado.';
-      syncFeedback.style.color = 'var(--text-muted)';
+      if (syncFeedback) {
+        syncFeedback.textContent = 'Proceso finalizado.';
+        syncFeedback.style.color = 'var(--text-muted)';
+      }
     });
   }
 
@@ -208,10 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Global Event Listeners ---
   window.addEventListener('storage-updated', () => {
       console.log('Storage updated, refreshing views...');
-      // If Vestidores List is visible, re-render it
       if (document.getElementById('vestidores-list-view').style.display !== 'none') {
           renderVestidoresList();
       }
-      // Add other views here as we build them (e.g., Ofrenda)
   });
 });
