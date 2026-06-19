@@ -63,6 +63,20 @@
       "category": "Vestidor",
       "createdAt": "2026-06-19T07:27:49.842Z",
       "updatedAt": "2026-06-19T07:27:49.842Z"
+    },
+    {
+      "id": "193e7a2c-0650-4114-8dee-4a23ba6f7cc1",
+      "name": "Test2",
+      "surname": "Perez Gomez2",
+      "dni": "87654321B",
+      "phone": "699999999",
+      "address": "Calle Falsa 123, Valencia",
+      "birthYear": "1990",
+      "admissionYear": "2020",
+      "birthPlace": "Valencia",
+      "category": "Voluntario",
+      "createdAt": "2026-06-19T08:34:15.480Z",
+      "updatedAt": "2026-06-19T08:34:15.480Z"
     }
   ]
 }
