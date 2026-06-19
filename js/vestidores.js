@@ -87,8 +87,9 @@ function savePerson() {
 
     const list = StorageService.getVestidores();
     
-    // Check for Duplicates based on Name, Surname and DNI
+    // Check for Duplicates based on Name, Surname and DNI (ignore deleted records)
     const isDup = list.some(p => {
+        if (p.deleted) return false;
         if (isEditingId && p.id === isEditingId) return false;
         
         const nameMatch = normalizeText(p.name) === normalizeText(name) && 
@@ -139,20 +140,25 @@ function savePerson() {
 function deletePerson(id) {
     if(confirm("¿Seguro que quieres borrar a esta persona?")) {
         let list = StorageService.getVestidores();
-        list = list.filter(p => p.id !== id);
-        StorageService.saveVestidores(list);
-        renderVestidoresList();
-        Toast.success("Registro eliminado.");
-        checkAutoSync();
+        const index = list.findIndex(p => p.id === id);
+        if (index !== -1) {
+            list[index].deleted = true;
+            list[index].updatedAt = new Date().toISOString();
+            StorageService.saveVestidores(list);
+            renderVestidoresList();
+            Toast.success("Registro eliminado.");
+            checkAutoSync();
+        }
     }
 }
 
 // --- Stats Logic ---
 function updateDashboardStats(allVestidores) {
-    const total = allVestidores.length;
-    const vestidores = allVestidores.filter(p => p.category === 'Vestidor').length;
-    const voluntarios = allVestidores.filter(p => p.category === 'Voluntario').length;
-    const extras = allVestidores.filter(p => p.category === 'Extra').length;
+    const activeList = allVestidores.filter(p => !p.deleted);
+    const total = activeList.length;
+    const vestidores = activeList.filter(p => p.category === 'Vestidor').length;
+    const voluntarios = activeList.filter(p => p.category === 'Voluntario').length;
+    const extras = activeList.filter(p => p.category === 'Extra').length;
 
     const elTotal = document.getElementById('stat-total');
     const elVestidores = document.getElementById('stat-vestidores');
@@ -169,8 +175,11 @@ function updateDashboardStats(allVestidores) {
 function renderVestidoresList() {
     let list = StorageService.getVestidores();
     
-    // Stats calculated from full dataset
+    // Stats calculated from full dataset (filtering internally)
     updateDashboardStats(list);
+
+    // Filter out deleted items
+    list = list.filter(p => !p.deleted);
 
     // Apply Filters
     if (currentCategoryFilter !== 'all') {
@@ -364,8 +373,9 @@ async function handleExcelImport(event) {
 
                 if (!name) return; // Skip if no name
 
-                // Duplicate Check
+                // Duplicate Check (ignore deleted records)
                 const isDup = list.some(p => {
+                    if (p.deleted) return false;
                     const nameMatch = normalizeText(p.name) === normalizeText(name) && 
                                       normalizeText(p.surname) === normalizeText(surname);
                     const dniMatch = (dni && p.dni) ? (normalizeText(p.dni) === normalizeText(dni)) : true;
@@ -425,7 +435,7 @@ async function handleExcelImport(event) {
 
 // --- Export Logic ---
 function exportVestidoresToCSV() {
-    const list = StorageService.getVestidores();
+    const list = StorageService.getVestidores().filter(p => !p.deleted);
     if (list.length === 0) {
         Toast.warning("No hay datos para exportar.");
         return;
