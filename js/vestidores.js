@@ -270,16 +270,39 @@ function renderVestidoresList() {
                         ${person.category}
                     </span>
                 </div>
-                <button class="btn btn-sm" style="background: none; border: none; box-shadow: none; color: var(--danger); font-size: 1.5rem; padding: 0; margin-top: -5px;" onclick="event.stopPropagation(); deletePerson('${person.id}')">
-                    &times;
-                </button>
+                <span class="card-chevron">▼</span>
             </div>
-            ${detailsHtml ? `<div class="person-details-grid">${detailsHtml}</div>` : ''}
+            <div class="person-collapsible-wrapper">
+                <div class="person-details-grid">
+                    ${detailsHtml || '<div class="detail-item" style="grid-column: span 2; font-style: italic;">Sin datos adicionales registrados.</div>'}
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-secondary btn-sm" onclick="event.stopPropagation(); openAddModal('${person.id}')">
+                        ✏️ Editar
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="event.stopPropagation(); deletePerson('${person.id}')">
+                        🗑️ Borrar
+                    </button>
+                </div>
+            </div>
         `;
         
         card.addEventListener('click', (e) => {
-            if(e.target.tagName !== 'BUTTON') {
-                openAddModal(person.id);
+            // Prevent expansion toggle if click is on buttons
+            if (e.target.closest('.card-actions') || e.target.tagName === 'BUTTON') {
+                return;
+            }
+            
+            const isExpanded = card.classList.contains('expanded');
+            
+            // Accordion: collapse all other cards
+            document.querySelectorAll('.person-card').forEach(c => {
+                c.classList.remove('expanded');
+            });
+            
+            // Toggle current card
+            if (!isExpanded) {
+                card.classList.add('expanded');
             }
         });
 

@@ -562,7 +562,6 @@ h3 {
   border-left: 5px solid var(--primary);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
   padding: 1.25rem;
   animation: fadeInCard 0.35s ease-out;
   cursor: pointer;
@@ -587,7 +586,7 @@ h3 {
 .person-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .person-details-grid {
@@ -614,6 +613,49 @@ h3 {
   display: inline-block;
   width: 1.2rem;
   text-align: center;
+}
+
+.person-collapsible-wrapper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+  transition: max-height 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              margin-top 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.person-card.expanded .person-collapsible-wrapper {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 0.75rem;
+}
+
+.card-chevron {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  margin-left: 0.5rem;
+  align-self: center;
+  pointer-events: none;
+}
+
+.person-card.expanded .card-chevron {
+  transform: rotate(180deg);
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  border-top: 1px dashed #e5e7eb;
+  padding-top: 0.75rem;
+}
+
+.card-actions .btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
 }
 
 @media (max-width: 600px) {
