@@ -17,7 +17,8 @@
       "birthPlace": "VALENCIA",
       "category": "Vestidor",
       "createdAt": "2026-06-19T08:16:15.785Z",
-      "updatedAt": "2026-06-19T08:16:15.785Z"
+      "updatedAt": "2026-06-19T08:28:30.164Z",
+      "deleted": true
     },
     {
       "id": "03e35629-9043-4511-81ee-c4c9abbbd3b7",
