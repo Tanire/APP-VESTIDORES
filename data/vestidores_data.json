@@ -49,6 +49,20 @@
       "createdAt": "2026-06-19T08:17:08.296Z",
       "updatedAt": "2026-06-19T08:28:35.655Z",
       "deleted": true
+    },
+    {
+      "id": "5cea11e5-3598-4ec7-b5b7-0f9036128734",
+      "name": "Test Juan",
+      "surname": "PPerez Gomez",
+      "dni": "12345678A",
+      "phone": "612345678",
+      "address": "Calle Mayor 15, Valencia",
+      "birthYear": "1988",
+      "admissionYear": "2015",
+      "birthPlace": "Valencia",
+      "category": "Vestidor",
+      "createdAt": "2026-06-19T07:27:49.842Z",
+      "updatedAt": "2026-06-19T07:27:49.842Z"
     }
   ]
 }
