@@ -77,7 +77,8 @@
       "birthPlace": "Valencia",
       "category": "Voluntario",
       "createdAt": "2026-06-19T08:34:15.480Z",
-      "updatedAt": "2026-06-19T08:34:15.480Z"
+      "updatedAt": "2026-06-19T08:40:00.142Z",
+      "deleted": true
     }
   ]
 }
