@@ -32,6 +32,20 @@
       "category": "Vestidor",
       "createdAt": "2026-06-19T08:16:48.976Z",
       "updatedAt": "2026-06-19T08:16:48.976Z"
+    },
+    {
+      "id": "6fac82a3-edd5-4188-a817-ea2c17cf7daf",
+      "name": "JAVIER",
+      "surname": "SEVILLEJA",
+      "dni": "13215065",
+      "phone": "",
+      "address": "",
+      "birthYear": "",
+      "admissionYear": "",
+      "birthPlace": "",
+      "category": "Vestidor",
+      "createdAt": "2026-06-19T08:17:08.296Z",
+      "updatedAt": "2026-06-19T08:17:08.296Z"
     }
   ]
 }
