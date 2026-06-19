@@ -46,7 +46,8 @@
       "birthPlace": "",
       "category": "Vestidor",
       "createdAt": "2026-06-19T08:17:08.296Z",
-      "updatedAt": "2026-06-19T08:17:08.296Z"
+      "updatedAt": "2026-06-19T08:28:35.655Z",
+      "deleted": true
     }
   ]
 }
