@@ -5730,7 +5730,7 @@
       "completed": true,
       "id": "1781711851608",
       "createdBy": "Mar",
-      "updatedAt": "2026-06-17T16:56:41.943Z"
+      "updatedAt": "2026-06-18T16:10:00.365Z"
     },
     {
       "name": "Amoníaco",
@@ -5759,6 +5759,55 @@
       "id": "1781808577135",
       "createdBy": "Mar",
       "updatedAt": "2026-06-18T18:49:37.135Z"
+    },
+    {
+      "name": "Gel Mar",
+      "completed": false,
+      "id": "1781895088385",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-19T18:51:28.385Z"
+    },
+    {
+      "name": "Leche Neday",
+      "completed": false,
+      "id": "1781895093866",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-19T18:51:33.866Z"
+    },
+    {
+      "name": "Comida Gatos",
+      "completed": false,
+      "id": "1781895175866",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-19T18:52:55.866Z"
+    },
+    {
+      "name": "Tomate frito",
+      "completed": false,
+      "id": "1781895190726",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-19T18:53:10.726Z"
+    },
+    {
+      "name": "Patatas",
+      "completed": false,
+      "id": "1781895221803",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-19T18:53:41.803Z"
+    },
+    {
+      "name": "Leche",
+      "completed": false,
+      "id": "1781895232377",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-19T18:53:52.377Z"
+    },
+    {
+      "name": "Judías",
+      "completed": false,
+      "id": "1781895266891",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-19T18:54:26.891Z"
     }
   ],
   "recurring_bills": [
