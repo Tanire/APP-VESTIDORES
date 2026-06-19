@@ -32,7 +32,8 @@
       "birthPlace": "CASTELLON",
       "category": "Vestidor",
       "createdAt": "2026-06-19T08:16:48.976Z",
-      "updatedAt": "2026-06-19T08:16:48.976Z"
+      "updatedAt": "2026-06-19T08:28:38.848Z",
+      "deleted": true
     },
     {
       "id": "6fac82a3-edd5-4188-a817-ea2c17cf7daf",
