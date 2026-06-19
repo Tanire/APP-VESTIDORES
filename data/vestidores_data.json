@@ -1,9 +1,6477 @@
 {
-  "calendar_events": [],
-  "expenses": [],
-  "shopping_list": [],
-  "recurring_bills": [],
-  "household_tasks": [],
+  "calendar_events": [
+    {
+      "id": "1766584592446",
+      "title": "Noche Buena!!",
+      "date": "2025-12-24",
+      "time": "",
+      "color": "#4f46e5",
+      "note": ""
+    },
+    {
+      "id": "1766584690302",
+      "title": "NAVIDAD!!!!",
+      "date": "2025-12-25",
+      "time": "",
+      "color": "#4f46e5",
+      "note": ""
+    },
+    {
+      "id": "1766584703234",
+      "title": "FESTIVO",
+      "date": "2025-12-25",
+      "time": "",
+      "color": "#b01111",
+      "note": ""
+    },
+    {
+      "id": "1766585370408",
+      "title": "Fffg",
+      "date": "2025-12-24",
+      "time": "",
+      "color": "#4f46e5",
+      "note": ""
+    },
+    {
+      "id": "1766646034420",
+      "title": "Médico Neday",
+      "date": "2025-12-25",
+      "time": "",
+      "color": "#4f46e5",
+      "note": "",
+      "_deleted": true
+    },
+    {
+      "id": "1767008757195",
+      "title": "Pfkdosls",
+      "date": "2025-12-27",
+      "time": "",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Javi",
+      "_deleted": true
+    },
+    {
+      "id": "1767016765138",
+      "title": "Renovación DNI Mar",
+      "date": "2026-01-23",
+      "time": "12:20",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Javi",
+      "_deleted": false
+    },
+    {
+      "id": "1767384508814",
+      "title": "Analítica Mar",
+      "date": "2026-01-13",
+      "time": "08:00",
+      "color": "#00ffff",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1767384533145",
+      "title": "Médico Mar",
+      "date": "2026-01-21",
+      "time": "08:00",
+      "color": "#00ffff",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1767384572984",
+      "title": "Pediatra Neday",
+      "date": "2026-01-27",
+      "time": "10:00",
+      "color": "#0000ff",
+      "note": "Centro de salud tormo",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1767539148939",
+      "title": "Papa Mar Reyes",
+      "date": "2026-01-04",
+      "time": "10:00",
+      "color": "#ff0000",
+      "note": "Recoger reyes",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": true
+    },
+    {
+      "id": "1767539197382",
+      "title": "Papá Mar",
+      "date": "2026-01-20",
+      "time": "11:00",
+      "color": "#ff0000",
+      "note": "RECOGER REYES",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1767539257548",
+      "title": "Mamá Javi",
+      "date": "2026-01-06",
+      "time": "11:00",
+      "color": "#ff0000",
+      "note": "REYES",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1767539295421",
+      "title": "Casa hermano Mar",
+      "date": "2026-01-06",
+      "time": "18:00",
+      "color": "#ff0000",
+      "note": "Casa de Javi para roscón Reyes",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1768324721977",
+      "title": "Charla vestidores",
+      "date": "2026-01-22",
+      "time": "06:30",
+      "color": "#ffff00",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": true
+    },
+    {
+      "id": "1768333749127",
+      "title": "Reunión vestidores",
+      "date": "2026-01-26",
+      "time": "18:00",
+      "color": "#ff00ff",
+      "note": "Reunión para ultimar",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1768823061157",
+      "title": "Sepe",
+      "date": "2026-01-27",
+      "time": "12:00",
+      "color": "#00ff00",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1768892963855",
+      "title": "Charla vestidores",
+      "date": "2026-02-17",
+      "time": "18:30",
+      "color": "#00ff00",
+      "note": "Falla Trinidad Alboraya",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769019737187",
+      "title": "Cumpleaños abuela",
+      "date": "2026-01-31",
+      "time": "",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769153594733",
+      "title": "Planificación familiar",
+      "date": "2026-02-12",
+      "time": "09:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769153610957",
+      "title": "Planificación familiar",
+      "date": "2026-02-12",
+      "time": "12:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769610779418",
+      "title": "JyP",
+      "date": "2026-02-03",
+      "time": "10:00",
+      "color": "#00ff00",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769610827719",
+      "title": "DNI Neday",
+      "date": "2026-02-02",
+      "time": "10:20",
+      "color": "#4f46e5",
+      "note": "Foto\nCertificado nacimiento \nEmpadronamiento \n12€",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769781382463",
+      "title": "Dentista Mar",
+      "date": "2026-02-02",
+      "time": "18:30",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769781424669",
+      "title": "Firma despido Mar",
+      "date": "2026-02-06",
+      "time": "",
+      "color": "#00ff00",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769781532192",
+      "title": "Médico Mar",
+      "date": "2026-02-05",
+      "time": "11:20",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769781563904",
+      "title": "Pediatra Neday",
+      "date": "2026-02-26",
+      "time": "12:00",
+      "color": "#00ffff",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769788677495",
+      "title": "Casa pilar y Javi",
+      "date": "2026-02-07",
+      "time": "17:30",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1769791415572",
+      "title": "Pili comida",
+      "date": "2026-02-05",
+      "time": "12:30",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1770042005514",
+      "title": "Viaje a Madrid Sicur",
+      "date": "2026-02-25",
+      "time": "06:00",
+      "color": "#93e3fd",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Javier",
+      "_deleted": false
+    },
+    {
+      "id": "1770057197161",
+      "title": "Dentista",
+      "date": "2026-02-16",
+      "time": "18:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1770065958744",
+      "title": "Exhibición Ainara judo",
+      "date": "2026-02-14",
+      "time": "11:00",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1770271132891",
+      "title": "Labora",
+      "date": "2026-02-11",
+      "time": "11:30",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1770271159201",
+      "title": "Sepe",
+      "date": "2026-02-09",
+      "time": "11:00",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1770618615411",
+      "title": "SEPE",
+      "date": "2026-02-11",
+      "time": "13:00",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1770618646807",
+      "title": "Cumple Adri Judith",
+      "date": "2026-02-10",
+      "time": "17:30",
+      "color": "#ffff00",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1770837890120",
+      "title": "Dentista",
+      "date": "2026-02-12",
+      "time": "18:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1771264894107",
+      "title": "DIU",
+      "date": "2026-02-16",
+      "time": "09:15",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": true
+    },
+    {
+      "id": "1771264965759",
+      "title": "DIU",
+      "date": "2026-02-18",
+      "time": "09:15",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1771416863792",
+      "title": "Cumpleaños Diego",
+      "date": "2026-02-28",
+      "time": "12:00",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1771567592061",
+      "title": "Viaje a Madrid Sicur",
+      "date": "2026-02-26",
+      "time": "",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Javier",
+      "_deleted": false
+    },
+    {
+      "id": "1771531053973",
+      "title": "Junta central fallera",
+      "date": "2026-02-26",
+      "time": "18:00",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1771614740621",
+      "title": "Chama",
+      "date": "2026-02-25",
+      "time": "17:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1771614767188",
+      "title": "Exhibición Ainara",
+      "date": "2026-02-28",
+      "time": "11:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1771693409094",
+      "title": "Estela",
+      "date": "2026-02-23",
+      "time": "11:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false
+    },
+    {
+      "id": "1771921967693",
+      "title": "Alfonso",
+      "date": "2026-03-04",
+      "time": "13:00",
+      "color": "#ff00ff",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-03-02T10:24:17.761Z"
+    },
+    {
+      "id": "1772004099757",
+      "title": "Diego",
+      "date": "2026-03-03",
+      "time": "10:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-02-25T07:21:39.757Z"
+    },
+    {
+      "id": "1772004130751",
+      "title": "Cena vestidores",
+      "date": "2026-03-05",
+      "time": "08:30",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-02-25T07:22:10.751Z"
+    },
+    {
+      "id": "1772004146820",
+      "title": "Corte dibujo",
+      "date": "2026-03-08",
+      "time": "08:00",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-02-25T07:22:26.820Z"
+    },
+    {
+      "id": "1772004167230",
+      "title": "Cuerdas",
+      "date": "2026-03-15",
+      "time": "15:00",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-03-08T11:33:20.339Z"
+    },
+    {
+      "id": "1772004183659",
+      "title": "OFRENDA",
+      "date": "2026-03-17",
+      "time": "12:30",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-02-25T07:23:03.659Z"
+    },
+    {
+      "id": "1772004204603",
+      "title": "OFRENDA",
+      "date": "2026-03-18",
+      "time": "13:00",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-02-25T07:23:24.603Z"
+    },
+    {
+      "id": "1772266882990",
+      "title": "Asistente social",
+      "date": "2026-02-28",
+      "time": "08:30",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-02-28T08:21:22.990Z"
+    },
+    {
+      "id": "1772266914576",
+      "title": "Asistente social",
+      "date": "2026-03-02",
+      "time": "08:30",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-02-28T08:21:54.576Z"
+    },
+    {
+      "id": "1772651973584",
+      "title": "Alfredo?",
+      "date": "2026-03-28",
+      "time": "11:30",
+      "color": "#4f46e5",
+      "note": "Pendiente de confirmar",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-03-04T20:04:17.283Z"
+    },
+    {
+      "id": "1772969530398",
+      "title": "Cena vestidores",
+      "date": "2026-03-12",
+      "time": "20:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-03-08T11:32:10.398Z"
+    },
+    {
+      "id": "1773524482706",
+      "title": "Alfredo",
+      "date": "2026-04-04",
+      "time": "",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-03-14T21:41:22.706Z"
+    },
+    {
+      "id": "1774810647030",
+      "title": "Raquel",
+      "date": "2026-03-31",
+      "time": "17:30",
+      "color": "#ff00ff",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-03-29T18:57:36.535Z"
+    },
+    {
+      "id": "1774810788975",
+      "title": "Jf geldo",
+      "date": "2026-04-01",
+      "time": "17:30",
+      "color": "#ff00ff",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-03-29T18:59:48.976Z"
+    },
+    {
+      "id": "1774810828843",
+      "title": "Sandra - Nayade",
+      "date": "2026-03-31",
+      "time": "18:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-03-29T19:00:28.843Z"
+    },
+    {
+      "id": "1775716321579",
+      "title": "Ana cumpleaños",
+      "date": "2026-04-11",
+      "time": "12:00",
+      "color": "#4f46e5",
+      "note": "Lleve colonia de Amparo",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-09T06:32:01.579Z"
+    },
+    {
+      "id": "1775716338734",
+      "title": "Casa papá",
+      "date": "2026-04-12",
+      "time": "12:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-09T06:32:18.734Z"
+    },
+    {
+      "id": "1775716354323",
+      "title": "Cumple aura",
+      "date": "2026-04-12",
+      "time": "17:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-09T06:32:34.323Z"
+    },
+    {
+      "id": "1775719077362",
+      "title": "Seguimiento",
+      "date": "2026-04-10",
+      "time": "11:00",
+      "color": "#4f46e5",
+      "note": "Raquel \nJF \nNares\nAmparo vecina \nLola\nFran pu\nGente que le he escrito",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-09T07:17:57.363Z"
+    },
+    {
+      "id": "1775737820659",
+      "title": "Judith",
+      "date": "2026-04-13",
+      "time": "11:00",
+      "color": "#4f46e5",
+      "note": "Llevarle la CC cream",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-09T12:30:20.661Z"
+    },
+    {
+      "id": "1775745254816",
+      "title": "Naresna",
+      "date": "2026-04-15",
+      "time": "10:00",
+      "color": "#4f46e5",
+      "note": "Explicarle cómo iniciar en el negocio",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-09T14:34:14.816Z"
+    },
+    {
+      "id": "1775745329814",
+      "title": "Tamy",
+      "date": "2026-04-14",
+      "time": "10:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-09T14:35:29.815Z"
+    },
+    {
+      "id": "1775745423436",
+      "title": "Nely y Lorena",
+      "date": "2026-04-18",
+      "time": "",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-09T14:37:03.436Z"
+    },
+    {
+      "id": "1776071174336",
+      "title": "Ana y Amparo",
+      "date": "2026-04-14",
+      "time": "10:00",
+      "color": "#4f46e5",
+      "note": "Llevar colonia Amparo",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-13T09:06:14.336Z"
+    },
+    {
+      "id": "1776274948072",
+      "title": "Orto y curetage",
+      "date": "2026-05-29",
+      "time": "12:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-07T06:25:25.573Z"
+    },
+    {
+      "id": "1776661574744",
+      "title": "Curas",
+      "date": "2026-04-22",
+      "time": "11:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-20T05:06:14.744Z"
+    },
+    {
+      "id": "1776661603797",
+      "title": "Diu",
+      "date": "2026-04-23",
+      "time": "10:15",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-20T05:06:43.797Z"
+    },
+    {
+      "id": "1776661777232",
+      "title": "Boda Judith y Patri",
+      "date": "2026-04-25",
+      "time": "01:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-20T05:09:37.232Z"
+    },
+    {
+      "id": "1777368405218",
+      "title": "Trauma",
+      "date": "2026-05-04",
+      "time": "16:45",
+      "color": "#ff0000",
+      "note": "C/ Alboraya",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-28T09:26:53.390Z"
+    },
+    {
+      "id": "1777368446482",
+      "title": "Taller skin en Massamagrell",
+      "date": "2026-05-01",
+      "time": "11:30",
+      "color": "#ff00ff",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-04-28T09:27:26.482Z"
+    },
+    {
+      "id": "1777456010175",
+      "title": "Cuenta junta vestidores",
+      "date": "2026-04-30",
+      "time": "20:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-29T09:46:50.175Z"
+    },
+    {
+      "id": "1777463749921",
+      "title": "Sheila Ibáñez",
+      "date": "2026-05-06",
+      "time": "16:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-29T11:55:49.921Z"
+    },
+    {
+      "id": "1777539789113",
+      "title": "Cumpleaños Alejandro",
+      "date": "2026-05-09",
+      "time": "17:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-04-30T09:03:09.113Z"
+    },
+    {
+      "id": "1777663133772",
+      "title": "Cena Javi y Adri",
+      "date": "2026-05-02",
+      "time": "21:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Javier",
+      "_deleted": false,
+      "updatedAt": "2026-05-01T19:18:53.772Z"
+    },
+    {
+      "id": "1777974243623",
+      "title": "Enlace náutico Ana y Mauricio",
+      "date": "2026-08-29",
+      "time": "",
+      "color": "#00ffff",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-05T09:44:03.623Z"
+    },
+    {
+      "id": "1778135143445",
+      "title": "Beauty cuñada",
+      "date": "2026-05-15",
+      "time": "17:00",
+      "color": "#4f46e5",
+      "note": "La población de farnals",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-11T18:58:50.575Z"
+    },
+    {
+      "id": "1778135157984",
+      "title": "Beauty mireya",
+      "date": "2026-05-16",
+      "time": "18:00",
+      "color": "#4f46e5",
+      "note": "Paulaner",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-11T18:59:22.057Z"
+    },
+    {
+      "id": "1778224033399",
+      "title": "Charla",
+      "date": "2026-05-08",
+      "time": "22:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-08T07:07:13.399Z"
+    },
+    {
+      "id": "1778228337891",
+      "title": "Neleta",
+      "date": "2026-05-12",
+      "time": "12:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-08T08:18:57.891Z"
+    },
+    {
+      "id": "1778510342957",
+      "title": "Papa y Karen pinedo",
+      "date": "2026-05-11",
+      "time": "10:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-11T14:39:10.879Z"
+    },
+    {
+      "id": "1778510362671",
+      "title": "Sandra benimamet",
+      "date": "2026-05-13",
+      "time": "10:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-11T14:39:22.671Z"
+    },
+    {
+      "id": "1778510381640",
+      "title": "Mar taronja",
+      "date": "2026-05-12",
+      "time": "10:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-05-11T14:39:41.640Z"
+    },
+    {
+      "id": "1778510426045",
+      "title": "Reunión Estela - enfoque de equipo",
+      "date": "2026-05-14",
+      "time": "10:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-11T14:40:26.045Z"
+    },
+    {
+      "id": "1778751757163",
+      "title": "Milonga",
+      "date": "2026-05-23",
+      "time": "09:30",
+      "color": "#ff0000",
+      "note": "12'5€",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-14T09:42:43.613Z"
+    },
+    {
+      "id": "1779529420006",
+      "title": "Junta",
+      "date": "2026-05-27",
+      "time": "17:30",
+      "color": "#ff0000",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-23T09:43:40.006Z"
+    },
+    {
+      "id": "1780070338189",
+      "title": "Laura",
+      "date": "2026-06-01",
+      "time": "14:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-29T15:58:58.189Z"
+    },
+    {
+      "id": "1780083731173",
+      "title": "Lola",
+      "date": "2026-05-31",
+      "time": "14:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-29T19:42:11.173Z"
+    },
+    {
+      "id": "1780083745589",
+      "title": "Vedtidores",
+      "date": "2026-05-31",
+      "time": "17:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-05-29T19:42:25.589Z"
+    },
+    {
+      "id": "1780598747660",
+      "title": "Jose jurado",
+      "date": "2026-06-09",
+      "time": "09:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-08T09:11:32.144Z"
+    },
+    {
+      "id": "1780598763609",
+      "title": "Cumple Pilar mamá",
+      "date": "2026-06-05",
+      "time": "12:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-04T18:46:03.609Z"
+    },
+    {
+      "id": "1780598778882",
+      "title": "Comida casa Pilar",
+      "date": "2026-06-06",
+      "time": "11:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-04T18:46:18.882Z"
+    },
+    {
+      "id": "1780598790756",
+      "title": "Comida casa Marisa",
+      "date": "2026-06-07",
+      "time": "11:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-04T18:46:30.756Z"
+    },
+    {
+      "id": "1780598807145",
+      "title": "Cumple Alba Mar",
+      "date": "2026-06-25",
+      "time": "12:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-04T18:46:47.145Z"
+    },
+    {
+      "id": "1780909914532",
+      "title": "Escuela Neday",
+      "date": "2026-06-09",
+      "time": "15:45",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-08T09:11:54.532Z"
+    },
+    {
+      "id": "1780909955235",
+      "title": "Pediatra",
+      "date": "2026-06-10",
+      "time": "10:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-08T09:12:35.236Z"
+    },
+    {
+      "id": "1780909970430",
+      "title": "Jose cliente",
+      "date": "2026-06-08",
+      "time": "15:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-08T09:12:50.430Z"
+    },
+    {
+      "id": "1780937312506",
+      "title": "Colegio Neday",
+      "date": "2026-06-11",
+      "time": "15:45",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-08T16:48:32.506Z"
+    },
+    {
+      "id": "1780984174079",
+      "title": "Jose jurado",
+      "date": "2026-06-11",
+      "time": "09:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-09T05:49:34.080Z"
+    },
+    {
+      "id": "1781179287264",
+      "title": "Merche",
+      "date": "2026-06-12",
+      "time": "10:30",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-11T12:01:27.264Z"
+    },
+    {
+      "id": "1781179301738",
+      "title": "Alejandra",
+      "date": "2026-06-16",
+      "time": "16:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-11T12:01:41.738Z"
+    },
+    {
+      "id": "1781690897618",
+      "title": "Llamar a mariaageles",
+      "date": "2026-06-22",
+      "time": "",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-17T10:08:17.618Z"
+    },
+    {
+      "id": "1781710122485",
+      "title": "Rebajas Alba",
+      "date": "2026-06-26",
+      "time": "",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-17T15:28:42.485Z"
+    },
+    {
+      "id": "1781710133849",
+      "title": "Cumple Sofía madrid",
+      "date": "2026-06-27",
+      "time": "",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-17T15:28:53.849Z"
+    },
+    {
+      "id": "1781710145374",
+      "title": "Tía Raquel",
+      "date": "2026-06-18",
+      "time": "",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-17T15:29:05.374Z"
+    },
+    {
+      "id": "1781854983089",
+      "title": "Comida Judith",
+      "date": "2026-06-24",
+      "time": "",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-19T07:43:03.089Z"
+    },
+    {
+      "id": "1781870019690",
+      "title": "Dentista",
+      "date": "2026-06-22",
+      "time": "19:00",
+      "color": "#4f46e5",
+      "note": "",
+      "recurrence": "none",
+      "createdBy": "Mar",
+      "_deleted": false,
+      "updatedAt": "2026-06-19T11:53:39.690Z"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "1766585208558",
+      "title": "Luz",
+      "amount": 23,
+      "category": "home",
+      "date": "2025-12-24T14:06:48.558Z",
+      "_deleted": true,
+      "_deletedAt": "2025-12-24T14:50:51.993Z"
+    },
+    {
+      "id": "1766585096614",
+      "title": "Luz",
+      "amount": 15,
+      "category": "home",
+      "date": "2025-12-24T14:04:56.614Z",
+      "_deleted": true,
+      "_deletedAt": "2025-12-24T14:50:56.038Z"
+    },
+    {
+      "id": "1766749638472",
+      "title": "Ingreso Javi",
+      "amount": 550,
+      "category": "other",
+      "type": "income",
+      "date": "2025-12-26T11:47:18.472Z",
+      "createdBy": "Javi"
+    },
+    {
+      "id": "1767041735490",
+      "title": "Compra",
+      "amount": 36.39,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2025-12-29T20:55:35.490Z",
+      "createdBy": "Mar"
+    },
+    {
+      "id": "1767074373132",
+      "title": "Luz",
+      "amount": 71.67,
+      "category": "home",
+      "type": "expense",
+      "date": "2025-12-30T05:59:33.133Z",
+      "createdBy": "Mar"
+    },
+    {
+      "id": "1767120096655",
+      "title": "Compra consum",
+      "amount": 26.15,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2025-12-30T18:41:36.655Z",
+      "createdBy": "Javier"
+    },
+    {
+      "id": "1767383856903",
+      "title": "Digi",
+      "amount": 20.22,
+      "category": "other",
+      "date": "2026-01-02T19:57:36.903Z",
+      "createdBy": "Mar"
+    },
+    {
+      "id": "1767384245448",
+      "title": "Compras",
+      "amount": 487.68,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-02T20:04:05.449Z",
+      "createdBy": "Mar",
+      "_deleted": true
+    },
+    {
+      "id": "1767384309572",
+      "title": "Compras",
+      "amount": 487.68,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-02T20:05:09.572Z",
+      "createdBy": "Mar",
+      "_deleted": true
+    },
+    {
+      "id": "1767642714901",
+      "title": "Casa Javi",
+      "amount": 550,
+      "category": "other",
+      "type": "income",
+      "date": "2026-01-05T19:51:54.901Z",
+      "createdBy": "Javier",
+      "items": []
+    },
+    {
+      "id": "1768029078462",
+      "title": "Tabaco Mar",
+      "amount": 37.4,
+      "category": "other",
+      "type": "expense",
+      "date": "2026-01-10T07:11:18.462Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1768029160960",
+      "title": "Amazon chupetes",
+      "amount": 10.3,
+      "category": "other",
+      "type": "expense",
+      "date": "2026-01-10T07:12:40.960Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1768890828947",
+      "title": "Ayuda",
+      "amount": 100,
+      "category": "other",
+      "type": "income",
+      "date": "2026-01-20T06:33:48.947Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1768890841948",
+      "title": "Agua",
+      "amount": 61.02,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-01-20T06:34:01.948Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1768890861159",
+      "title": "Gas",
+      "amount": 45.46,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-01-20T06:34:21.159Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1768986050677",
+      "title": "Consum",
+      "amount": 22.1,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-21T09:00:50.677Z",
+      "createdBy": "Mar",
+      "items": [
+        {
+          "name": "C1134 04000099",
+          "price": 20.01
+        },
+        {
+          "name": "IC AI DULCE 4506",
+          "price": 1.59
+        },
+        {
+          "name": "iE acumula al cheque",
+          "price": 0.16
+        },
+        {
+          "name": " SOLOMILLO DE CERDO",
+          "price": 4.58
+        },
+        {
+          "name": "4 3 1 CALZONE JAMY QUESD",
+          "price": 1.45
+        },
+        {
+          "name": "ys a  MORTA CACELTUNAS",
+          "price": 1.5
+        },
+        {
+          "name": "r Le fF 1 QAZUL DOP 100G F0",
+          "price": 1.51
+        },
+        {
+          "name": "ry F PIZZA 4 QUESOS CONS",
+          "price": 2.9
+        },
+        {
+          "name": " 3   P1ZCARBONARA CONSU",
+          "price": 2.9
+        },
+        {
+          "name": "a  2 BEBSOJA VIVESOY AL 189",
+          "price": 3.78
+        },
+        {
+          "name": "ae pcunula al cheque",
+          "price": 0.6
+        },
+        {
+          "name": "Ee 4  BOLSA COMPRA RECICL",
+          "price": 0.15
+        },
+        {
+          "name": " Tarj Credito",
+          "price": 22.1
+        },
+        {
+          "name": "TO  caf PEST Ber ERT 2",
+          "price": 9.03
+        }
+      ]
+    },
+    {
+      "id": "1768986147274",
+      "title": "Family",
+      "amount": 32.5,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-21T09:02:27.274Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1768986211303",
+      "title": "Consum",
+      "amount": 58.23,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-21T09:03:31.303Z",
+      "createdBy": "Mar",
+      "items": [
+        {
+          "name": "BEER 1134 03000003",
+          "price": 15.01
+        },
+        {
+          "name": "TR Casa  KIWI VERDE BANDEJA",
+          "price": 2.69
+        },
+        {
+          "name": "x AE  CALABACIN VERDE",
+          "price": 1.85
+        },
+        {
+          "name": "ty  CEBOLLA SECA MALLA",
+          "price": 2.95
+        },
+        {
+          "name": " oh I CHAMPINON PIE CORTA",
+          "price": 1.85
+        },
+        {
+          "name": "A ih  FCABEZA LOMO CERDO",
+          "price": 4.31
+        },
+        {
+          "name": " aN  PECHUGA POLLO EMP",
+          "price": 3.61
+        },
+        {
+          "name": " 1 HAMBPOLLOESPINACA",
+          "price": 3.49
+        },
+        {
+          "name": "  1 HUEVO M DOCENA",
+          "price": 3.1
+        },
+        {
+          "name": " 1 ACOLVIRG3L CONSU",
+          "price": 12.85
+        },
+        {
+          "name": " I TOM FRITO CONSUM",
+          "price": 2
+        },
+        {
+          "name": " 1 MACARRON RAYAD CONS",
+          "price": 0.85
+        },
+        {
+          "name": "2 FABADA ASTLITOR420 255",
+          "price": 5.1
+        },
+        {
+          "name": "1 COPOS AVENA CONSUM",
+          "price": 0.89
+        },
+        {
+          "name": " 1 CAFE MEZCONSUM250",
+          "price": 2.85
+        },
+        {
+          "name": "1 FRROJOS CONSUM IL",
+          "price": 1.49
+        },
+        {
+          "name": " cumula al cheque",
+          "price": 0.2
+        },
+        {
+          "name": "i AGUA AQUAREL 15L",
+          "price": 0.62
+        }
+      ]
+    },
+    {
+      "id": "1768986237286",
+      "title": "Consum",
+      "amount": 6.44,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-21T09:03:57.286Z",
+      "createdBy": "Mar",
+      "items": [
+        {
+          "name": "8 C4066 02000043",
+          "price": 13.01
+        },
+        {
+          "name": "1 HIGADO DE CERDO",
+          "price": 2.12
+        },
+        {
+          "name": "f ALITAS BROCOLI 400G",
+          "price": 3.65
+        },
+        {
+          "name": " 1 BOLSA COMPRA RECICL",
+          "price": 0.07
+        },
+        {
+          "name": "058",
+          "price": 6.37
+        }
+      ]
+    },
+    {
+      "id": "1768986285847",
+      "title": "Consum",
+      "amount": 45.13,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-21T09:04:45.847Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1768986298701",
+      "title": "Family",
+      "amount": 66.1,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-21T09:04:58.701Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1768986309602",
+      "title": "Consum",
+      "amount": 29.25,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-21T09:05:09.603Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1768986321350",
+      "title": "Frutería",
+      "amount": 5.45,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-21T09:05:21.350Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1769609891274",
+      "title": "Consum",
+      "amount": 11.71,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-28T14:18:11.274Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1769609899301",
+      "title": "Consum",
+      "amount": 56.54,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-01-28T14:18:19.301Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1769609933540",
+      "title": "Netflix",
+      "amount": 30,
+      "category": "other",
+      "type": "expense",
+      "date": "2026-01-28T14:18:53.540Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1769669969487",
+      "title": "Vacuna",
+      "amount": 54.64,
+      "category": "health",
+      "type": "expense",
+      "date": "2026-01-29T06:59:29.487Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1769669984667",
+      "title": "Digi",
+      "amount": 21.1,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-01-29T06:59:44.667Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1769933232159",
+      "title": "Luz",
+      "amount": 78.88,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-02-01T08:07:12.159Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1769933244773",
+      "title": "Consum",
+      "amount": 7.68,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-01T08:07:24.773Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1769933257688",
+      "title": "Consum",
+      "amount": 39.79,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-01T08:07:37.688Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1769933282017",
+      "title": "Netflix",
+      "amount": 31,
+      "category": "other",
+      "type": "expense",
+      "date": "2026-02-01T08:08:02.017Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1770449947737",
+      "title": "Cuenta",
+      "amount": 550,
+      "category": "other",
+      "type": "income",
+      "date": "2026-02-07T07:39:07.737Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1770449978504",
+      "title": "Consum",
+      "amount": 9.39,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-07T07:39:38.505Z",
+      "createdBy": "Mar",
+      "items": [
+        {
+          "name": "FMMENTAL RALLCONS",
+          "price": 1.13
+        },
+        {
+          "name": "MOZZARRALL CONSUM",
+          "price": 1.09
+        },
+        {
+          "name": "UEVO M DOCENA",
+          "price": 3.1
+        },
+        {
+          "name": "MFR TRADI CONSUM",
+          "price": 1.5
+        },
+        {
+          "name": "MGATO BUEYPOLLO",
+          "price": 1.26
+        },
+        {
+          "name": "B0LSA COMPRA RECICL",
+          "price": 0.15
+        },
+        {
+          "name": "2511000025",
+          "price": 2.76
+        },
+        {
+          "name": "132 2100 0 1S",
+          "price": 0.15
+        },
+        {
+          "name": "623 400 025",
+          "price": 0.48
+        }
+      ]
+    },
+    {
+      "id": "1770450011909",
+      "title": "Consum",
+      "amount": 50.55,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-07T07:40:11.909Z",
+      "createdBy": "Mar",
+      "items": [
+        {
+          "name": "1 UALOA TKG",
+          "price": 1.04
+        },
+        {
+          "name": " AFE MEZCONSUM250",
+          "price": 2.85
+        },
+        {
+          "name": "FBS0JA VIVESOY 1L 189",
+          "price": 3.78
+        },
+        {
+          "name": " umula al cheque",
+          "price": 0.6
+        },
+        {
+          "name": "MOLDE CEREALES CO",
+          "price": 1.6
+        },
+        {
+          "name": " BCONGMZ CONSUM15",
+          "price": 1.4
+        },
+        {
+          "name": " ULTIMA ESTERIZ15",
+          "price": 8.65
+        },
+        {
+          "name": "uta factura",
+          "price": 50.55
+        },
+        {
+          "name": "larj Crédito",
+          "price": 50.55
+        },
+        {
+          "name": "Acumulas a tu cheque mensua",
+          "price": 0.8
+        }
+      ]
+    },
+    {
+      "id": "1770450031871",
+      "title": "Consum",
+      "amount": 10.15,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-07T07:40:31.871Z",
+      "createdBy": "Mar",
+      "items": [
+        {
+          "name": "C1134 04000080",
+          "price": 6.02
+        },
+        {
+          "name": "Acumula al cheque",
+          "price": 0.24
+        },
+        {
+          "name": " 1 DIKOS CARAMELD",
+          "price": 1.99
+        },
+        {
+          "name": " 2 UDON FRESCO TIKHAN 145",
+          "price": 2.98
+        },
+        {
+          "name": " t SALSA CS0JA HEINZ",
+          "price": 2.49
+        },
+        {
+          "name": " GDIGESTIVE CHOCO",
+          "price": 1.4
+        },
+        {
+          "name": "  BOLSA COMPRA RECICL",
+          "price": 0.07
+        },
+        {
+          "name": "Acumulas a tu cheque mensual",
+          "price": 0.24
+        },
+        {
+          "name": "INPORTE",
+          "price": 10.15
+        },
+        {
+          "name": "biZ23 1000 ",
+          "price": 0.64
+        }
+      ]
+    },
+    {
+      "id": "1770450097382",
+      "title": "Fruta",
+      "amount": 6.9,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-07T07:41:37.382Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1770450159500",
+      "title": "Dentista",
+      "amount": 55,
+      "category": "health",
+      "type": "expense",
+      "date": "2026-02-07T07:42:39.500Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1770450185976",
+      "title": "Luz",
+      "amount": 78.88,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-02-07T07:43:05.976Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1770963296429",
+      "title": "Consum",
+      "amount": 7.97,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-13T06:14:56.429Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1770963314659",
+      "title": "Consum",
+      "amount": 42.89,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-13T06:15:14.659Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1770963334536",
+      "title": "Family",
+      "amount": 72.27,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-13T06:15:34.536Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1770963347412",
+      "title": "Dentista",
+      "amount": 55,
+      "category": "health",
+      "type": "expense",
+      "date": "2026-02-13T06:15:47.412Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1770963364489",
+      "title": "Despido Mar",
+      "amount": 800,
+      "category": "other",
+      "type": "income",
+      "date": "2026-02-13T06:16:04.489Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1770963389469",
+      "title": "Casa febrero",
+      "amount": 500,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-02-13T06:16:29.469Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1771069583372",
+      "title": "Consum",
+      "amount": 4.75,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-14T11:46:23.372Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1771069614032",
+      "title": "Consum",
+      "amount": 6.7,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-14T11:46:54.032Z",
+      "createdBy": "Mar",
+      "items": [],
+      "_deleted": true
+    },
+    {
+      "id": "1771069641970",
+      "title": "Consum",
+      "amount": 6.7,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-14T11:47:21.970Z",
+      "createdBy": "Mar",
+      "items": [],
+      "_deleted": true
+    },
+    {
+      "id": "1772366156440",
+      "title": "Gasoil y lavado",
+      "amount": 47.95,
+      "category": "transport",
+      "type": "expense",
+      "date": "2026-03-01T11:55:56.000Z",
+      "createdBy": "Javier",
+      "items": []
+    },
+    {
+      "id": "1773052446515",
+      "title": "Consum",
+      "amount": 88.79,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-09T10:34:06.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1773169012201",
+      "title": "Consum",
+      "amount": 2.5,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T18:56:52.000Z",
+      "createdBy": "Mar",
+      "items": [
+        {
+          "name": "1194 017000041",
+          "price": 26.02
+        },
+        {
+          "name": " P ARROZ SGLUT NES",
+          "price": 2.5
+        }
+      ]
+    },
+    {
+      "id": "1773169023926",
+      "title": "Consum",
+      "amount": 15.7,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T18:57:03.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1773169036267",
+      "title": "Consum",
+      "amount": 1.39,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T18:57:16.000Z",
+      "createdBy": "Mar",
+      "items": [],
+      "_deleted": true
+    },
+    {
+      "id": "1773169056012",
+      "title": "Consum",
+      "amount": 33.45,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T18:57:36.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1773169076627",
+      "title": "Family",
+      "amount": 108.79,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T18:57:56.000Z",
+      "createdBy": "Mar",
+      "items": [],
+      "_deleted": true
+    },
+    {
+      "id": "1773169091528",
+      "title": "Consum",
+      "amount": 32.09,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T18:58:11.000Z",
+      "createdBy": "Mar",
+      "items": [],
+      "_deleted": true
+    },
+    {
+      "id": "1773169150871",
+      "title": "Mercadona",
+      "amount": 29.65,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T18:59:10.000Z",
+      "createdBy": "Mar",
+      "items": [],
+      "_deleted": true
+    },
+    {
+      "id": "1773169172716",
+      "title": "Consum",
+      "amount": 32.09,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T18:59:32.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1773169196798",
+      "title": "Mercadona",
+      "amount": 15.57,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T18:59:56.000Z",
+      "createdBy": "Mar",
+      "items": [],
+      "_deleted": true
+    },
+    {
+      "id": "1773169229542",
+      "title": "Family",
+      "amount": 108.79,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T19:00:29.000Z",
+      "createdBy": "Mar",
+      "items": [],
+      "_deleted": true
+    },
+    {
+      "id": "1773169254983",
+      "title": "Family",
+      "amount": 108.79,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-10T19:00:54.000Z",
+      "createdBy": "Mar",
+      "items": [],
+      "_deleted": true
+    },
+    {
+      "id": "1773169324162",
+      "title": "Luz",
+      "amount": 60,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-03-10T19:02:04.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050131639",
+      "title": "Family",
+      "amount": 108.79,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-28T14:28:51.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050161149",
+      "title": "Family",
+      "amount": 39.52,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-14T14:29:21.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050222591",
+      "title": "Consum",
+      "amount": 12.31,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-17T14:30:22.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050334283",
+      "title": "Consum",
+      "amount": 2.5,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-26T14:32:14.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050358815",
+      "title": "Consum",
+      "amount": 5.36,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-19T14:32:38.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050404719",
+      "title": "Consum",
+      "amount": 1.39,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-18T14:33:24.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050439860",
+      "title": "Consum",
+      "amount": 43.77,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-17T14:33:59.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050500471",
+      "title": "Pepco",
+      "amount": 10,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-02-20T14:35:00.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050563667",
+      "title": "Consum",
+      "amount": 75.43,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-21T14:36:03.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050602496",
+      "title": "Consum",
+      "amount": 75.47,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-14T14:36:42.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050629828",
+      "title": "Consum",
+      "amount": 34.8,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-17T14:37:09.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050653074",
+      "title": "Consum",
+      "amount": 37.84,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-24T14:37:33.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050681518",
+      "title": "Consum",
+      "amount": 35.64,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-26T14:38:01.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050708751",
+      "title": "Consum",
+      "amount": 13.69,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-27T14:38:28.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775050726801",
+      "title": "Family",
+      "amount": 30.8,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-03-28T14:38:46.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775101442716",
+      "title": "Consum",
+      "amount": 47.7,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-01T03:44:02.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775101487265",
+      "title": "Javi",
+      "amount": 500,
+      "category": "other",
+      "type": "income",
+      "date": "2026-04-01T03:44:47.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775101649952",
+      "title": "Gas",
+      "amount": 9.57,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-03-24T04:47:29.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775101668675",
+      "title": "Luz",
+      "amount": 16.73,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-03-24T04:47:48.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775101770271",
+      "title": "Agua",
+      "amount": 59.76,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-03-10T04:49:30.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775101819515",
+      "title": "Luz",
+      "amount": 60.73,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-03-10T04:50:19.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775101875199",
+      "title": "Gas",
+      "amount": 44.36,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-03-05T04:51:15.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775101902168",
+      "title": "Alquiler",
+      "amount": 500,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-03-02T04:51:42.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775101949458",
+      "title": "Netflix",
+      "amount": 31.97,
+      "category": "leisure",
+      "type": "expense",
+      "date": "2026-03-02T04:52:29.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1775101998902",
+      "title": "Javi",
+      "amount": 50,
+      "category": "home",
+      "type": "income",
+      "date": "2026-04-01T03:53:18.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883284252",
+      "title": "Consum",
+      "amount": 8.6,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-19T18:41:24.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883318321",
+      "title": "Consum",
+      "amount": 5.49,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-17T18:41:58.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883336784",
+      "title": "Consum",
+      "amount": 9.12,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-20T18:42:16.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883366774",
+      "title": "Consum",
+      "amount": 30.52,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-21T18:42:46.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883535034",
+      "title": "Family",
+      "amount": 57.09,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-18T18:45:35.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883622053",
+      "title": "Consum",
+      "amount": 7.81,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-16T18:47:02.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883639223",
+      "title": "Consum",
+      "amount": 43.95,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-14T18:47:19.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883653589",
+      "title": "Consum",
+      "amount": 7.46,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-11T18:47:33.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883669364",
+      "title": "Family",
+      "amount": 38.65,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-11T18:47:49.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883686209",
+      "title": "Consum",
+      "amount": 12.76,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-08T18:48:06.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1776883717697",
+      "title": "Casa",
+      "amount": 500,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-04-06T18:48:37.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778653178897",
+      "title": "Agua",
+      "amount": 60,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-05-13T06:19:38.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778653190633",
+      "title": "Mes",
+      "amount": 500,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-05-13T06:19:50.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778653199059",
+      "title": "Luz",
+      "amount": 51,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-05-13T06:19:59.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778653218295",
+      "title": "Netflix",
+      "amount": 31.9,
+      "category": "home",
+      "type": "expense",
+      "date": "2026-05-13T06:20:18.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778912911724",
+      "title": "Consum",
+      "amount": 72.08,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-12T06:28:31.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778912932980",
+      "title": "Consum",
+      "amount": 50.53,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-09T06:28:52.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778912957078",
+      "title": "Consum",
+      "amount": 24.41,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-07T06:29:17.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778912974504",
+      "title": "Carne",
+      "amount": 26.81,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-04T06:29:34.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778913001413",
+      "title": "Consum",
+      "amount": 12.95,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-02T06:30:01.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778913014083",
+      "title": "Family",
+      "amount": 58.51,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-02T06:30:14.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778913036119",
+      "title": "Consum",
+      "amount": 39.47,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-24T06:30:36.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778913062972",
+      "title": "Consum",
+      "amount": 19.93,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-29T06:31:02.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778913083881",
+      "title": "Consum",
+      "amount": 58.85,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-28T06:31:23.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778913102159",
+      "title": "Consum",
+      "amount": 3.34,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-24T06:31:42.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778913119022",
+      "title": "Consum",
+      "amount": 54.19,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-04-23T06:31:59.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778913160238",
+      "title": "Consum",
+      "amount": 22.09,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-14T06:32:40.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1778913208232",
+      "title": "Javi",
+      "amount": 500,
+      "category": "supermarket",
+      "type": "income",
+      "date": "2026-05-01T06:33:28.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1779388561006",
+      "title": "Consum",
+      "amount": 5.74,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-19T18:36:01.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1779388588909",
+      "title": "Consum",
+      "amount": 9.22,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-19T18:36:28.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1779388607853",
+      "title": "Family",
+      "amount": 56.26,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-16T18:36:47.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1779390909771",
+      "title": "Consum",
+      "amount": 15.98,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-16T19:15:09.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1779390960549",
+      "title": "Consum",
+      "amount": 22.09,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-14T19:16:00.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1780083570865",
+      "title": "Consum",
+      "amount": 9.63,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-25T19:39:30.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1780083589627",
+      "title": "Consum",
+      "amount": 13.33,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-27T19:39:49.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1780083609634",
+      "title": "Consum",
+      "amount": 2.59,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-22T19:40:09.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1780083628413",
+      "title": "Consum",
+      "amount": 11.5,
+      "category": "supermarket",
+      "type": "expense",
+      "date": "2026-05-20T19:40:28.000Z",
+      "createdBy": "Mar",
+      "items": []
+    },
+    {
+      "id": "1780083662407",
+      "title": "IMV",
+      "amount": 1800,
+      "category": "supermarket",
+      "type": "income",
+      "date": "2026-05-25T19:41:02.000Z",
+      "createdBy": "Mar",
+      "items": []
+    }
+  ],
+  "shopping_list": [
+    {
+      "name": "Huevos",
+      "completed": false,
+      "id": "1766584608838",
+      "_deleted": true
+    },
+    {
+      "name": "Jamon",
+      "completed": false,
+      "id": "1766584612804",
+      "_deleted": true
+    },
+    {
+      "name": "Papel culo",
+      "completed": false,
+      "id": "1766739169357",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": false,
+      "id": "1766741426535",
+      "_deleted": true
+    },
+    {
+      "name": "Galletas",
+      "completed": false,
+      "id": "1766741433520",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": false,
+      "id": "1766742561534",
+      "createdBy": "Javi",
+      "_deleted": true
+    },
+    {
+      "name": "Pan",
+      "completed": false,
+      "id": "1766742567472",
+      "createdBy": "Javi",
+      "_deleted": true
+    },
+    {
+      "name": "Fiambre",
+      "completed": false,
+      "id": "1766742571934",
+      "createdBy": "Javi",
+      "_deleted": true
+    },
+    {
+      "name": "Comida gatos",
+      "completed": false,
+      "id": "1766773523071",
+      "createdBy": "Javi",
+      "_deleted": true
+    },
+    {
+      "name": "Papel del culo",
+      "completed": false,
+      "id": "1766773569841",
+      "createdBy": "Javi",
+      "_deleted": true
+    },
+    {
+      "name": "Botella agua",
+      "completed": true,
+      "id": "1766773600505",
+      "createdBy": "Javi",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Galletas",
+      "completed": false,
+      "id": "1766773641415",
+      "createdBy": "Javi",
+      "_deleted": true
+    },
+    {
+      "name": "Patatas",
+      "completed": false,
+      "id": "1766773668015",
+      "createdBy": "Javi",
+      "_deleted": true
+    },
+    {
+      "name": "Arena Gatos",
+      "completed": false,
+      "id": "1766909276032",
+      "createdBy": "Javi",
+      "_deleted": true
+    },
+    {
+      "name": "Cafe",
+      "completed": false,
+      "id": "1767017536760",
+      "createdBy": "Javier",
+      "_deleted": true
+    },
+    {
+      "name": "Bastones de oido",
+      "completed": false,
+      "id": "1767074610248",
+      "createdBy": "Mar",
+      "_deleted": true
+    },
+    {
+      "name": "Cebollas",
+      "completed": false,
+      "id": "1767074618673",
+      "createdBy": "Mar",
+      "_deleted": true
+    },
+    {
+      "name": "Pasta de dientes",
+      "completed": true,
+      "id": "1767293149725",
+      "createdBy": "Javi",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1767371790887",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Beacon",
+      "completed": true,
+      "id": "1767377049863",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Nata",
+      "completed": true,
+      "id": "1767377054562",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Café",
+      "completed": true,
+      "id": "1767506411382",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Nata",
+      "completed": true,
+      "id": "1767506418255",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Lejía",
+      "completed": true,
+      "id": "1767506425813",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Piedras gatos",
+      "completed": true,
+      "id": "1767506437651",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1767629922426",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Bacon",
+      "completed": true,
+      "id": "1767806306440",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Pimienta negra molida",
+      "completed": false,
+      "id": "1767806317855",
+      "createdBy": "Mar",
+      "_deleted": true
+    },
+    {
+      "name": "Repollo",
+      "completed": true,
+      "id": "1767806339255",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Zanahorias",
+      "completed": true,
+      "id": "1767806351010",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Cebollas",
+      "completed": true,
+      "id": "1767806410688",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Tómates",
+      "completed": true,
+      "id": "1767806520147",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.400Z"
+    },
+    {
+      "name": "Salsa de soja",
+      "completed": true,
+      "id": "1767806525068",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Jamón trocitos",
+      "completed": true,
+      "id": "1767806541283",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Lavavajillas",
+      "completed": true,
+      "id": "1767858803887",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Fiambre",
+      "completed": true,
+      "id": "1767858864445",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Desayuno Nayade",
+      "completed": true,
+      "id": "1767858870213",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua destilada",
+      "completed": true,
+      "id": "1767858888394",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Fideos",
+      "completed": true,
+      "id": "1767937267258",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1767985488394",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Pan de molde",
+      "completed": true,
+      "id": "1767985494911",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Fruta",
+      "completed": true,
+      "id": "1767985506149",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Comida Gatos",
+      "completed": true,
+      "id": "1768046310292",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Macarrones",
+      "completed": true,
+      "id": "1768140858894",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Aceite",
+      "completed": true,
+      "id": "1768162149626",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Carne picada",
+      "completed": true,
+      "id": "1768500548388",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1768500556563",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Calabacín",
+      "completed": true,
+      "id": "1768500573797",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Fabada 2",
+      "completed": true,
+      "id": "1768500629445",
+      "createdBy": "Mar",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Cebollas",
+      "completed": true,
+      "id": "1768501051041",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1768501062706",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Carne",
+      "completed": true,
+      "id": "1768501072352",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Chocolate",
+      "completed": true,
+      "id": "1768501080752",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Fruta",
+      "completed": true,
+      "id": "1768501094645",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Avena",
+      "completed": true,
+      "id": "1768501101975",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Salsa de yogur",
+      "completed": true,
+      "id": "1768501151516",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Cafe",
+      "completed": true,
+      "id": "1768501161009",
+      "createdBy": "Javier",
+      "_deleted": true,
+      "updatedAt": "2026-06-13T11:02:26.401Z"
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1768924689285",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fiambre",
+      "completed": true,
+      "id": "1768924702359",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Sacarina",
+      "completed": true,
+      "id": "1768985472710",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Papel cocina grande",
+      "completed": true,
+      "id": "1768985478888",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arena gatos",
+      "completed": true,
+      "id": "1768985482964",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Comida gatos",
+      "completed": true,
+      "id": "1768985488430",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Papel higiénico",
+      "completed": true,
+      "id": "1769018766545",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fideos",
+      "completed": true,
+      "id": "1769018777767",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Desengrasante",
+      "completed": true,
+      "id": "1769069389749",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Detergente",
+      "completed": true,
+      "id": "1769069393661",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Harina",
+      "completed": true,
+      "id": "1769071847086",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fideos",
+      "completed": true,
+      "id": "1769094229919",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Carne picada (500kg)",
+      "completed": true,
+      "id": "1769609806566",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1769609809578",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Vinagre de limpieza",
+      "completed": true,
+      "id": "1769609820030",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Congelados",
+      "completed": true,
+      "id": "1769609829846",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Chorizo dulce",
+      "completed": true,
+      "id": "1769771229444",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Gelatina sin sabor",
+      "completed": true,
+      "id": "1769771234668",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Mantequilla",
+      "completed": true,
+      "id": "1769802761497",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Bolsas herméticas",
+      "completed": true,
+      "id": "1769802785552",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Patatas",
+      "completed": true,
+      "id": "1769890558195",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cafe",
+      "completed": true,
+      "id": "1769890669514",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1769890686790",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Galletas",
+      "completed": true,
+      "id": "1769890710276",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Comida gatos",
+      "completed": true,
+      "id": "1770038172292",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Ajos",
+      "completed": true,
+      "id": "1770038186854",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arroz",
+      "completed": true,
+      "id": "1770038247971",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Macarrones",
+      "completed": true,
+      "id": "1770038251337",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fiambre",
+      "completed": true,
+      "id": "1770038261926",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pan Bimbo",
+      "completed": true,
+      "id": "1770038269001",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Azúcar glas",
+      "completed": true,
+      "id": "1770038281848",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pimientos",
+      "completed": true,
+      "id": "1770038333584",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Ambientador oficina",
+      "completed": true,
+      "id": "1770124131000",
+      "createdBy": "Javi",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Papel Albal",
+      "completed": true,
+      "id": "1770188290495",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arena gatos",
+      "completed": true,
+      "id": "1770275440580",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Atun",
+      "completed": true,
+      "id": "1770275466104",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pescado",
+      "completed": true,
+      "id": "1770275480453",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Carne",
+      "completed": true,
+      "id": "1770275485586",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Canela",
+      "completed": true,
+      "id": "1770309054382",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Avena",
+      "completed": true,
+      "id": "1770309060546",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1770449155710",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pack pollo",
+      "completed": true,
+      "id": "1770449161460",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cafe",
+      "completed": true,
+      "id": "1770449172261",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cebollas",
+      "completed": true,
+      "id": "1770449180862",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Salsas",
+      "completed": true,
+      "id": "1770665662023",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pollo",
+      "completed": true,
+      "id": "1770665670533",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cena",
+      "completed": true,
+      "id": "1770834338084",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Comida",
+      "completed": true,
+      "id": "1770834341998",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Carne picada",
+      "completed": true,
+      "id": "1770875212009",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1770875216380",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1770875251917",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Queso rayado",
+      "completed": true,
+      "id": "1771082373631",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Verdura",
+      "completed": false,
+      "id": "1771082391683",
+      "createdBy": "Javier",
+      "updatedAt": "2026-02-17T15:52:47.048Z",
+      "_deleted": true
+    },
+    {
+      "name": "Suavizante",
+      "completed": true,
+      "id": "1771143336210",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Lejia",
+      "completed": true,
+      "id": "1771143340875",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Lava biberones",
+      "completed": true,
+      "id": "1771143401518",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Limpiabiberones",
+      "completed": false,
+      "id": "1771183778463",
+      "createdBy": "Mar",
+      "updatedAt": "2026-02-15T19:29:45.656Z",
+      "_deleted": true
+    },
+    {
+      "name": "Mantequilla",
+      "completed": true,
+      "id": "1771333267488",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Queso",
+      "completed": true,
+      "id": "1771333271736",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pan Bimbo",
+      "completed": true,
+      "id": "1771333277551",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua",
+      "completed": true,
+      "id": "1771393223017",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arena gatos",
+      "completed": true,
+      "id": "1771434365805",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fruta",
+      "completed": true,
+      "id": "1771434373469",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Paracetamol",
+      "completed": true,
+      "id": "1771434407918",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Galletas",
+      "completed": true,
+      "id": "1771567487932",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1771567498054",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Patatas",
+      "completed": true,
+      "id": "1771693326526",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Calabacín",
+      "completed": true,
+      "id": "1771693348928",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pimiento verde",
+      "completed": true,
+      "id": "1771693379248",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pepinos",
+      "completed": true,
+      "id": "1771693465073",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Antical baño",
+      "completed": true,
+      "id": "1771742675145",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1771859551237",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pan",
+      "completed": true,
+      "id": "1771932775012",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Sacarina",
+      "completed": true,
+      "id": "1772125036131",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua destilada",
+      "completed": true,
+      "id": "1772125044539",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Comida gatos",
+      "completed": true,
+      "id": "1772135834276",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arena gatos",
+      "completed": true,
+      "id": "1772135838551",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cebollas",
+      "completed": true,
+      "id": "1772135843681",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Bacon",
+      "completed": true,
+      "id": "1772135849667",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Tortitas",
+      "completed": true,
+      "id": "1772135860658",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pañuelos",
+      "completed": true,
+      "id": "1772282872339",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua",
+      "completed": true,
+      "id": "1772291855459",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1772829282752",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pescado",
+      "completed": true,
+      "id": "1772829288244",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fruta",
+      "completed": true,
+      "id": "1772829300953",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Garbanzos",
+      "completed": true,
+      "id": "1772829311628",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arroz",
+      "completed": true,
+      "id": "1772829325125",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Espagueti",
+      "completed": true,
+      "id": "1772829345384",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Azúcar moreno",
+      "completed": true,
+      "id": "1772829356684",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Compresas",
+      "completed": true,
+      "id": "1772884852282",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Repollo",
+      "completed": true,
+      "id": "1772885766661",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cebollas",
+      "completed": true,
+      "id": "1773261266871",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arena gatos",
+      "completed": true,
+      "id": "1773404042535",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cómoda gatos",
+      "completed": true,
+      "id": "1773404046187",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cebollas",
+      "completed": true,
+      "id": "1773404050278",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Tomate frito de verdad",
+      "completed": true,
+      "id": "1773404058303",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fruta",
+      "completed": true,
+      "id": "1773404073472",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fiambre",
+      "completed": true,
+      "id": "1773404078272",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Atun",
+      "completed": true,
+      "id": "1773404084928",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Espinacas",
+      "completed": true,
+      "id": "1773404107175",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Bacon",
+      "completed": true,
+      "id": "1773404112519",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Champiñones",
+      "completed": true,
+      "id": "1773404118070",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Zanahorias",
+      "completed": true,
+      "id": "1773404122617",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pan molde",
+      "completed": true,
+      "id": "1773746199716",
+      "createdBy": "Javi",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1773746204206",
+      "createdBy": "Javi",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Galletas",
+      "completed": true,
+      "id": "1773746216368",
+      "createdBy": "Javi",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Chocolate",
+      "completed": true,
+      "id": "1773746223222",
+      "createdBy": "Javi",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cena",
+      "completed": true,
+      "id": "1773746245126",
+      "createdBy": "Javi",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Comida",
+      "completed": true,
+      "id": "1773746250046",
+      "createdBy": "Javi",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fideos",
+      "completed": true,
+      "id": "1773746254528",
+      "createdBy": "Javi",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Papel de cocina",
+      "completed": true,
+      "id": "1774006484604",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua Neday",
+      "completed": true,
+      "id": "1774006521993",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Queso lonchas",
+      "completed": true,
+      "id": "1774006554992",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cereales sin gluten",
+      "completed": true,
+      "id": "1774006570366",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Garbanzos",
+      "completed": true,
+      "id": "1774006576170",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cebollas",
+      "completed": true,
+      "id": "1774006591324",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche Neday",
+      "completed": true,
+      "id": "1774032644107",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Carne picada grande",
+      "completed": true,
+      "id": "1774032662030",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Chorizo dulce",
+      "completed": true,
+      "id": "1774032683589",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pimientos piquillo",
+      "completed": true,
+      "id": "1774096752137",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Higaditos",
+      "completed": true,
+      "id": "1774096795532",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Verduras",
+      "completed": true,
+      "id": "1774096806539",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pan pita",
+      "completed": true,
+      "id": "1774096829934",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Aceite",
+      "completed": false,
+      "id": "1774298581957",
+      "createdBy": "Javier",
+      "updatedAt": "2026-03-27T20:46:21.671Z",
+      "_deleted": true
+    },
+    {
+      "name": "Zanahorias",
+      "completed": true,
+      "id": "1774298587649",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Bolsas basura",
+      "completed": true,
+      "id": "1774299044599",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Chocolate",
+      "completed": true,
+      "id": "1774301727914",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1774301745336",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pepino",
+      "completed": true,
+      "id": "1774301764475",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Calabacín",
+      "completed": true,
+      "id": "1774301770980",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pollo",
+      "completed": true,
+      "id": "1774301780968",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Galletas",
+      "completed": true,
+      "id": "1774301786297",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1774644372827",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1774698937754",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Longanizas",
+      "completed": true,
+      "id": "1774698974780",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Hamburguesa",
+      "completed": true,
+      "id": "1774698982390",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Carne picada",
+      "completed": true,
+      "id": "1774698989151",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pimientos",
+      "completed": true,
+      "id": "1774699025741",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cebollas",
+      "completed": true,
+      "id": "1774699031813",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.401Z",
+      "_deleted": true
+    },
+    {
+      "name": "Spaghetti",
+      "completed": true,
+      "id": "1774957446125",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Nata",
+      "completed": true,
+      "id": "1774957708011",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pan",
+      "completed": true,
+      "id": "1774968992463",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Crema de cacahuete",
+      "completed": true,
+      "id": "1774968998031",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Queso rallado",
+      "completed": true,
+      "id": "1774969913736",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fiambre",
+      "completed": true,
+      "id": "1775061879248",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Queso crema",
+      "completed": true,
+      "id": "1775061894645",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Carne",
+      "completed": true,
+      "id": "1775062389519",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pastillas carne y pollo",
+      "completed": true,
+      "id": "1775245717241",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua Neday",
+      "completed": true,
+      "id": "1775841272341",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Patatas",
+      "completed": true,
+      "id": "1775841284821",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Zanahorias",
+      "completed": true,
+      "id": "1775841303090",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pollo",
+      "completed": true,
+      "id": "1775841309180",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Detergente",
+      "completed": true,
+      "id": "1775901032774",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arena gatos",
+      "completed": true,
+      "id": "1775925450939",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Nesquik",
+      "completed": true,
+      "id": "1776069152766",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua Neday",
+      "completed": true,
+      "id": "1776069157012",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche y cereal Neday",
+      "completed": true,
+      "id": "1776069169886",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Tomates",
+      "completed": true,
+      "id": "1776069187405",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Champú Mar",
+      "completed": true,
+      "id": "1776069212427",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Azúcar moreno",
+      "completed": true,
+      "id": "1776069331589",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Avena",
+      "completed": true,
+      "id": "1776148391623",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Puerro",
+      "completed": true,
+      "id": "1776151084070",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Manzana",
+      "completed": true,
+      "id": "1776151087303",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Platano",
+      "completed": true,
+      "id": "1776151090205",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pera",
+      "completed": true,
+      "id": "1776151092515",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Ternera",
+      "completed": true,
+      "id": "1776151095694",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Judias",
+      "completed": true,
+      "id": "1776151119648",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1776181717921",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Zanahorias",
+      "completed": true,
+      "id": "1776336933656",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Calabaza",
+      "completed": true,
+      "id": "1776336937450",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Calabacín",
+      "completed": true,
+      "id": "1776336941778",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Puerros",
+      "completed": true,
+      "id": "1776336945136",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arroz",
+      "completed": true,
+      "id": "1776336961073",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Macarrones",
+      "completed": true,
+      "id": "1776336965962",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1776459242228",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Comida gatos",
+      "completed": true,
+      "id": "1776625495187",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1776625501384",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Ternera",
+      "completed": true,
+      "id": "1776625512279",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pan",
+      "completed": true,
+      "id": "1776715652785",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fiambre",
+      "completed": true,
+      "id": "1776715657029",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Ajos",
+      "completed": true,
+      "id": "1776889628294",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Carne picada",
+      "completed": true,
+      "id": "1776954492662",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Calabaza",
+      "completed": true,
+      "id": "1776954497005",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Calabacín",
+      "completed": true,
+      "id": "1776954501277",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Patatas",
+      "completed": true,
+      "id": "1776954507841",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Tomates",
+      "completed": true,
+      "id": "1776954516241",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Atún",
+      "completed": true,
+      "id": "1776954583203",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Mayonesa",
+      "completed": true,
+      "id": "1776954595534",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Plátano",
+      "completed": false,
+      "id": "1776956527391",
+      "createdBy": "Mar",
+      "updatedAt": "2026-04-23T15:02:19.682Z",
+      "_deleted": true
+    },
+    {
+      "name": "Manzana",
+      "completed": false,
+      "id": "1776956530845",
+      "createdBy": "Mar",
+      "updatedAt": "2026-04-23T15:02:21.433Z",
+      "_deleted": true
+    },
+    {
+      "name": "Peras",
+      "completed": true,
+      "id": "1776956533423",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Plátanos",
+      "completed": true,
+      "id": "1776956545522",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Manzanas",
+      "completed": true,
+      "id": "1776956550209",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Vera bigote",
+      "completed": true,
+      "id": "1776967716815",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Suavizante",
+      "completed": true,
+      "id": "1777318743268",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Desengrasantw",
+      "completed": true,
+      "id": "1777318759143",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Webos",
+      "completed": true,
+      "id": "1777318764396",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pollo barato",
+      "completed": false,
+      "id": "1777318782673",
+      "createdBy": "Javier",
+      "updatedAt": "2026-04-27T19:39:51.932Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1777318786611",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pollo entero",
+      "completed": true,
+      "id": "1777318798416",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cafe",
+      "completed": true,
+      "id": "1777318820052",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Papel higiénico",
+      "completed": true,
+      "id": "1777318830399",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Yogurt",
+      "completed": true,
+      "id": "1777393552452",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Manzana",
+      "completed": true,
+      "id": "1777393570290",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Plátano",
+      "completed": true,
+      "id": "1777393575832",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pan bimbo",
+      "completed": true,
+      "id": "1777393582345",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cebollas",
+      "completed": true,
+      "id": "1777393595617",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Nata",
+      "completed": true,
+      "id": "1777638301605",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Tomate frito",
+      "completed": true,
+      "id": "1777638308723",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Atun",
+      "completed": true,
+      "id": "1777638316072",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua Neday",
+      "completed": true,
+      "id": "1777699084710",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arroz al horno",
+      "completed": true,
+      "id": "1777699090594",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Judias",
+      "completed": true,
+      "id": "1777699100309",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pescado",
+      "completed": true,
+      "id": "1777699104934",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Manzanas",
+      "completed": true,
+      "id": "1777699150984",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Plátanos",
+      "completed": true,
+      "id": "1777699155236",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Kiwis",
+      "completed": true,
+      "id": "1777699158805",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Guisantes",
+      "completed": true,
+      "id": "1777803942031",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Repollo",
+      "completed": true,
+      "id": "1777839246424",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Chocolate",
+      "completed": true,
+      "id": "1777839256966",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua",
+      "completed": true,
+      "id": "1777839265304",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Sémola",
+      "completed": true,
+      "id": "1778157201642",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Patatas",
+      "completed": true,
+      "id": "1778157205201",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Jabón biberón",
+      "completed": true,
+      "id": "1778308593223",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1778312287743",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Spaguetis",
+      "completed": true,
+      "id": "1778312320832",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pan de molde",
+      "completed": true,
+      "id": "1778312338108",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cenas x2",
+      "completed": true,
+      "id": "1778312448195",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cafe",
+      "completed": true,
+      "id": "1778313638538",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1778313642370",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Papel cocina",
+      "completed": true,
+      "id": "1778595471914",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arroz",
+      "completed": true,
+      "id": "1778595476632",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Manzanas",
+      "completed": true,
+      "id": "1778595498416",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Tomate frito, cristal",
+      "completed": true,
+      "id": "1778595508985",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Chorizo",
+      "completed": true,
+      "id": "1778595545622",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pollo",
+      "completed": true,
+      "id": "1778595582207",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Tomates",
+      "completed": true,
+      "id": "1778595585117",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua Neday",
+      "completed": true,
+      "id": "1778596031122",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche Neday",
+      "completed": true,
+      "id": "1778596036693",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Puerros",
+      "completed": true,
+      "id": "1778596045551",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1778787245657",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Limpia baño",
+      "completed": true,
+      "id": "1778833468392",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Mantequilla",
+      "completed": true,
+      "id": "1778875504375",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pimienta negra grano",
+      "completed": true,
+      "id": "1778875511185",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1778907330013",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cereales Neday",
+      "completed": true,
+      "id": "1778907335799",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Azúcar moreno",
+      "completed": true,
+      "id": "1778907343235",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Judias",
+      "completed": true,
+      "id": "1778925548052",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Brócoli",
+      "completed": true,
+      "id": "1778925551877",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Merluza",
+      "completed": true,
+      "id": "1778925558806",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Ternera con hueso",
+      "completed": false,
+      "id": "1778925567666",
+      "createdBy": "Mar",
+      "updatedAt": "2026-05-16T09:59:27.666Z"
+    },
+    {
+      "name": "Manzanas",
+      "completed": true,
+      "id": "1778925575504",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Platanos",
+      "completed": true,
+      "id": "1778925578301",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Calabaza",
+      "completed": true,
+      "id": "1778925612562",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Bacon",
+      "completed": true,
+      "id": "1778925614869",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Nata",
+      "completed": true,
+      "id": "1778925625379",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Piedras gatos",
+      "completed": true,
+      "id": "1778925710349",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fideos",
+      "completed": true,
+      "id": "1779118818906",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Piedras gatos",
+      "completed": true,
+      "id": "1779345925273",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Bolsas basura",
+      "completed": true,
+      "id": "1779345930463",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Labajillas",
+      "completed": false,
+      "id": "1779558381962",
+      "createdBy": "Javier",
+      "updatedAt": "2026-05-26T11:27:05.399Z",
+      "_deleted": true
+    },
+    {
+      "name": "Patatas",
+      "completed": true,
+      "id": "1779655641098",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Zanahorias",
+      "completed": true,
+      "id": "1779655645375",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Tomates",
+      "completed": true,
+      "id": "1779655665235",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1779655729428",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche Neday",
+      "completed": true,
+      "id": "1779655733812",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Plátanos",
+      "completed": true,
+      "id": "1779655739585",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Lejía",
+      "completed": true,
+      "id": "1779794838607",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Fruta",
+      "completed": true,
+      "id": "1779794851175",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua Neday",
+      "completed": true,
+      "id": "1779794860217",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Comida gatos",
+      "completed": true,
+      "id": "1779823615246",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Arena gatos",
+      "completed": true,
+      "id": "1779977990047",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Suavizante",
+      "completed": true,
+      "id": "1779978007529",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua destilada",
+      "completed": true,
+      "id": "1779978019779",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Melocotónes",
+      "completed": true,
+      "id": "1779978893668",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Mango",
+      "completed": true,
+      "id": "1779978935534",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Mantequilla",
+      "completed": true,
+      "id": "1780083821001",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cepillo dientes",
+      "completed": true,
+      "id": "1780030743605",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Atun",
+      "completed": true,
+      "id": "1780030748608",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Maiz",
+      "completed": true,
+      "id": "1780030753151",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Papel higiénico",
+      "completed": true,
+      "id": "1780031061575",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1780249658043",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Ajos",
+      "completed": true,
+      "id": "1780426392190",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Café",
+      "completed": true,
+      "id": "1780426403277",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Kiwi",
+      "completed": true,
+      "id": "1780426417990",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Quinoa",
+      "completed": true,
+      "id": "1780426431764",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Aceite",
+      "completed": true,
+      "id": "1780426466199",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Salmón",
+      "completed": true,
+      "id": "1780426478632",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Tomate frito",
+      "completed": true,
+      "id": "1780478274771",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Aceite",
+      "completed": true,
+      "id": "1780253062969",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Leche",
+      "completed": true,
+      "id": "1781066255882",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Cebolla",
+      "completed": true,
+      "id": "1781066269741",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Huevos",
+      "completed": true,
+      "id": "1781182606546",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Agua Neday",
+      "completed": true,
+      "id": "1781204666612",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Atun",
+      "completed": true,
+      "id": "1781204673581",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Mostaza",
+      "completed": true,
+      "id": "1781204685923",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Tomates",
+      "completed": true,
+      "id": "1781204690682",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Crema cacahuete",
+      "completed": true,
+      "id": "1781204704670",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Papel de cocina",
+      "completed": true,
+      "id": "1781278528523",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Pañales Neday",
+      "completed": true,
+      "id": "1781279655221",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Papel film",
+      "completed": true,
+      "id": "1781283243784",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-13T11:02:26.402Z",
+      "_deleted": true
+    },
+    {
+      "name": "Sacarina",
+      "completed": true,
+      "id": "1781427815150",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T17:03:42.367Z"
+    },
+    {
+      "name": "Yogurt",
+      "completed": true,
+      "id": "1781427819959",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T17:00:40.792Z"
+    },
+    {
+      "name": "Limpia suelos",
+      "completed": true,
+      "id": "1781603453604",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T17:04:53.038Z"
+    },
+    {
+      "name": "Arroz",
+      "completed": true,
+      "id": "1781605856758",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T17:06:12.534Z"
+    },
+    {
+      "name": "Pollo",
+      "completed": true,
+      "id": "1781708882883",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T17:03:45.034Z"
+    },
+    {
+      "name": "Plátanos",
+      "completed": true,
+      "id": "1781708886683",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T16:56:14.769Z"
+    },
+    {
+      "name": "Melocotón",
+      "completed": true,
+      "id": "1781708890577",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T16:51:07.153Z"
+    },
+    {
+      "name": "Pera",
+      "completed": true,
+      "id": "1781708896463",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T16:54:06.915Z"
+    },
+    {
+      "name": "Kiwi",
+      "completed": true,
+      "id": "1781708899871",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T16:54:07.740Z"
+    },
+    {
+      "name": "Calabacín",
+      "completed": true,
+      "id": "1781708921658",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T16:58:10.048Z"
+    },
+    {
+      "name": "Zanahorias",
+      "completed": true,
+      "id": "1781708930143",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T16:56:15.967Z"
+    },
+    {
+      "name": "Fresas",
+      "completed": true,
+      "id": "1781711851608",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-17T16:56:41.943Z"
+    },
+    {
+      "name": "Amoníaco",
+      "completed": true,
+      "id": "1781431115312",
+      "createdBy": "Javier",
+      "updatedAt": "2026-06-17T17:04:50.901Z"
+    },
+    {
+      "name": "Cafe",
+      "completed": false,
+      "id": "1781808566414",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-18T18:49:26.414Z"
+    },
+    {
+      "name": "Mantequilla",
+      "completed": false,
+      "id": "1781808569937",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-18T18:49:29.938Z"
+    },
+    {
+      "name": "Huevos",
+      "completed": false,
+      "id": "1781808577135",
+      "createdBy": "Mar",
+      "updatedAt": "2026-06-18T18:49:37.135Z"
+    }
+  ],
+  "recurring_bills": [
+    {
+      "id": "1766605445954",
+      "title": "Luz",
+      "amount": 23,
+      "category": "other",
+      "day": 5,
+      "_deleted": true
+    },
+    {
+      "id": "1766739906065",
+      "title": "Digo Telefonia",
+      "amount": 20.22,
+      "category": "other",
+      "day": 30,
+      "_deleted": true
+    },
+    {
+      "id": "1766741385729",
+      "title": "Digi",
+      "amount": 20.22,
+      "category": "other",
+      "day": 30,
+      "_deleted": true
+    },
+    {
+      "id": "1767074069760",
+      "title": "Luz",
+      "amount": 71,
+      "category": "other",
+      "day": 31,
+      "_deleted": true
+    },
+    {
+      "id": "1768029218724",
+      "title": "Mes enero",
+      "amount": 500,
+      "category": "home",
+      "day": 5
+    },
+    {
+      "id": "1768890972889",
+      "title": "Casa",
+      "amount": 500,
+      "category": "home",
+      "day": 5,
+      "_deleted": true
+    }
+  ],
+  "household_tasks": [
+    {
+      "id": "1768588491584",
+      "title": "Areneros",
+      "assignedTo": "",
+      "frequency": "interval",
+      "intervalDays": 3,
+      "created": "2026-01-16T18:34:51.588Z",
+      "lastCompleted": null,
+      "nextDue": "2026-01-16T18:34:51.605Z",
+      "history": [],
+      "updatedAt": "2026-01-16T19:04:39.719Z",
+      "_deleted": true
+    },
+    {
+      "id": "1768588557205",
+      "title": "Fogones",
+      "assignedTo": "",
+      "frequency": "weekly",
+      "intervalDays": null,
+      "created": "2026-01-16T18:35:57.205Z",
+      "lastCompleted": "2026-05-02T06:29:13.061Z",
+      "nextDue": "2026-05-09T06:29:13.061Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:13.061Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:49:05.131Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-04T20:04:38.725Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-24T11:32:16.622Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-07T09:02:51.328Z",
+          "user": "Javier"
+        },
+        {
+          "date": "2026-01-30T14:00:20.707Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-26T10:48:21.628Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-17T08:47:59.657Z",
+          "user": "Javier"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:13.061Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768588571010",
+      "title": "Sábanas",
+      "assignedTo": "",
+      "frequency": "weekly",
+      "intervalDays": null,
+      "created": "2026-01-16T18:36:11.010Z",
+      "lastCompleted": "2026-05-02T06:29:12.532Z",
+      "nextDue": "2026-05-09T06:29:12.532Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:12.532Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:49:03.523Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-04T20:04:37.456Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-24T11:32:13.763Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-05T06:00:02.683Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-26T10:48:20.144Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-17T08:29:28.377Z",
+          "user": "Javier"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:12.532Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768588615023",
+      "title": "Bajar basuras (incluye pañales)",
+      "assignedTo": "",
+      "frequency": "interval",
+      "intervalDays": 3,
+      "created": "2026-01-16T18:36:55.023Z",
+      "lastCompleted": "2026-05-02T06:29:10.479Z",
+      "nextDue": "2026-05-05T06:29:10.479Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:10.479Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:48:49.251Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-26T16:56:12.937Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-24T11:32:15.556Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:11.891Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-09T06:31:23.628Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-05T05:59:52.835Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-23T07:34:07.791Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-17T08:29:31.938Z",
+          "user": "Javier"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:10.479Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768588657500",
+      "title": "Calientabiberones",
+      "assignedTo": "",
+      "frequency": "monthly",
+      "intervalDays": null,
+      "created": "2026-01-16T18:37:37.500Z",
+      "lastCompleted": "2026-05-02T06:29:13.574Z",
+      "nextDue": "2026-06-02T06:29:13.574Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:13.574Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:49:06.518Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-24T11:32:22.354Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-17T08:29:32.705Z",
+          "user": "Javier"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:13.574Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768588669191",
+      "title": "Polvo",
+      "assignedTo": "",
+      "frequency": "weekly",
+      "intervalDays": null,
+      "created": "2026-01-16T18:37:49.191Z",
+      "lastCompleted": "2026-05-02T06:29:11.513Z",
+      "nextDue": "2026-05-09T06:29:11.513Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:11.513Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:49:00.618Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-28T17:22:45.821Z",
+          "user": "Javier"
+        },
+        {
+          "date": "2026-02-05T05:59:59.875Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-26T10:47:58.618Z",
+          "user": "Mar"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:11.513Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768588681807",
+      "title": "Suelo",
+      "assignedTo": "",
+      "frequency": "interval",
+      "intervalDays": 3,
+      "created": "2026-01-16T18:38:01.807Z",
+      "lastCompleted": "2026-05-02T06:29:10.982Z",
+      "nextDue": "2026-05-05T06:29:10.982Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:10.982Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:49:01.601Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-04T20:04:30.488Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-26T16:56:02.351Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-21T16:56:20.189Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:20.804Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-07T09:02:57.139Z",
+          "user": "Javier"
+        },
+        {
+          "date": "2026-02-05T06:00:03.586Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-30T14:00:35.702Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-30T14:00:33.793Z",
+          "user": "Mar"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:10.982Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768588696831",
+      "title": "Recoger ropa",
+      "assignedTo": "",
+      "frequency": "daily",
+      "intervalDays": null,
+      "created": "2026-01-16T18:38:16.831Z",
+      "lastCompleted": "2026-05-02T06:29:07.870Z",
+      "nextDue": "2026-05-03T06:29:07.870Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:07.870Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:48:53.921Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-04T20:04:27.693Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-26T16:56:06.305Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-24T11:32:28.696Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-21T16:56:26.809Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-13T06:16:52.553Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:28.949Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:04.195Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-09T06:31:28.535Z",
+          "user": "Mar"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:07.870Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768588708685",
+      "title": "Recoger casa",
+      "assignedTo": "",
+      "frequency": "daily",
+      "intervalDays": null,
+      "created": "2026-01-16T18:38:28.685Z",
+      "lastCompleted": "2026-05-02T06:29:09.535Z",
+      "nextDue": "2026-05-03T06:29:09.535Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:09.535Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:48:56.788Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-04T20:04:35.226Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-28T17:22:53.271Z",
+          "user": "Javier"
+        },
+        {
+          "date": "2026-02-26T16:56:04.482Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-24T11:32:27.561Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-21T16:56:24.649Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-13T06:16:53.510Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:29.770Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:05.088Z",
+          "user": "Mar"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:09.536Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768588721764",
+      "title": "Muebles cocina",
+      "assignedTo": "",
+      "frequency": "monthly",
+      "intervalDays": null,
+      "created": "2026-01-16T18:38:41.764Z",
+      "lastCompleted": "2026-05-02T06:29:06.748Z",
+      "nextDue": "2026-06-02T06:29:06.748Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:06.748Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-17T09:11:14.808Z",
+          "user": "Mar"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:06.748Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768588743957",
+      "title": "Baño",
+      "assignedTo": "",
+      "frequency": "weekly",
+      "intervalDays": null,
+      "created": "2026-01-16T18:39:03.957Z",
+      "lastCompleted": "2026-05-02T06:29:12.071Z",
+      "nextDue": "2026-05-09T06:29:12.071Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:12.071Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:49:02.217Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-04T20:04:36.650Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-24T11:32:12.876Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-05T06:00:01.446Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-26T10:48:00.139Z",
+          "user": "Mar"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:12.071Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768551605088",
+      "title": "Arenero Gatos",
+      "assignedTo": "",
+      "frequency": "interval",
+      "intervalDays": 3,
+      "created": "2026-01-16T08:20:05.088Z",
+      "lastCompleted": "2026-01-17T08:45:48.621Z",
+      "nextDue": "2026-01-20T08:45:48.621Z",
+      "history": [
+        {
+          "date": "2026-01-17T08:45:48.621Z",
+          "user": "Javier"
+        },
+        {
+          "date": "2026-01-17T08:45:35.461Z",
+          "user": "Javier"
+        },
+        {
+          "date": "2026-01-17T08:45:08.869Z",
+          "user": "Javier"
+        },
+        {
+          "date": "2026-01-16T08:37:25.440Z",
+          "user": "Javier"
+        },
+        {
+          "date": "2026-01-16T08:37:15.994Z",
+          "user": "Javier"
+        },
+        {
+          "date": "2026-01-16T08:20:14.624Z",
+          "user": "Javier"
+        }
+      ],
+      "completedBy": "Javier",
+      "updatedAt": "2026-01-17T08:45:59.592Z",
+      "_deleted": true
+    },
+    {
+      "id": "1768554297547",
+      "title": "Limpiar cristales",
+      "assignedTo": "",
+      "frequency": "monthly",
+      "intervalDays": null,
+      "created": "2026-01-16T09:04:57.547Z",
+      "lastCompleted": "2026-05-02T06:29:07.346Z",
+      "nextDue": "2026-06-02T06:29:07.346Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:07.346Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-07T09:02:41.153Z",
+          "user": "Javier"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:07.346Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768568099473",
+      "title": "Barrer",
+      "assignedTo": "",
+      "frequency": "daily",
+      "intervalDays": null,
+      "created": "2026-01-16T12:54:59.473Z",
+      "lastCompleted": "2026-05-02T06:29:09.107Z",
+      "nextDue": "2026-05-03T06:29:09.107Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:09.107Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:48:55.745Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-04T20:04:29.582Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-26T16:56:08.409Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-24T11:32:30.376Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-21T16:56:28.704Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:28.146Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:03.509Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-09T06:31:26.892Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-07T09:02:49.778Z",
+          "user": "Javier"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:09.107Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768639598107",
+      "title": "Arenero Gatos",
+      "assignedTo": "",
+      "frequency": "interval",
+      "intervalDays": 3,
+      "created": "2026-01-17T08:46:38.108Z",
+      "lastCompleted": "2026-05-02T06:29:10.003Z",
+      "nextDue": "2026-05-05T06:29:10.003Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:10.003Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:48:47.978Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-26T16:56:10.771Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-24T11:32:14.762Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:09.821Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-09T06:31:22.180Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-26T10:48:02.238Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-19T11:43:13.649Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-17T09:13:43.839Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-01-17T09:13:43.481Z",
+          "user": "Mar"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:10.003Z",
+      "completedBy": "Mar"
+    },
+    {
+      "id": "1768985749889",
+      "title": "Fregar",
+      "assignedTo": "",
+      "frequency": "daily",
+      "intervalDays": null,
+      "created": "2026-01-21T08:55:49.889Z",
+      "lastCompleted": "2026-05-02T06:29:08.656Z",
+      "nextDue": "2026-05-03T06:29:08.656Z",
+      "history": [
+        {
+          "date": "2026-05-02T06:29:08.656Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-31T11:48:55.089Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-03-04T20:04:28.709Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-26T16:56:07.376Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-24T11:32:29.522Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-21T16:56:27.824Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-13T06:16:49.528Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:25.826Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-11T08:53:02.193Z",
+          "user": "Mar"
+        },
+        {
+          "date": "2026-02-09T06:31:25.736Z",
+          "user": "Mar"
+        }
+      ],
+      "updatedAt": "2026-05-02T06:29:08.656Z",
+      "completedBy": "Mar"
+    }
+  ],
   "vestidores_people": [
     {
       "id": "c3f6b7fc-8d26-4f34-a790-b6bdbe6c993b",
