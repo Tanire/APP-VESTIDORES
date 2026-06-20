@@ -7896,5 +7896,22 @@
       "updatedAt": "2026-06-20T07:46:34.311Z"
     }
   ],
-  "ofrenda_folders": []
+  "ofrenda_folders": [
+    {
+      "id": "a5068e61-b0ee-4d16-ae97-53133b728965",
+      "name": "OFRENDA 2013",
+      "photos": [],
+      "createdAt": "2026-06-20T08:33:30.334Z",
+      "updatedAt": "2026-06-20T08:33:30.334Z",
+      "deleted": false
+    },
+    {
+      "id": "03970e3c-e98f-4a1c-b4a1-ade51869a21b",
+      "name": "OFRENDA 2026",
+      "photos": [],
+      "createdAt": "2026-06-20T08:34:45.219Z",
+      "updatedAt": "2026-06-20T08:34:45.219Z",
+      "deleted": false
+    }
+  ]
 }
