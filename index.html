@@ -26,7 +26,7 @@
           <img src="assets/vestidores.jpeg" alt="Logo" class="family-photo" />
         </div>
         <h1 class="app-title" style="font-size: 2rem">VESTIDORES</h1>
-        <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; opacity: 0.7;">Versión 0.4.3</p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; opacity: 0.7;">Versión 0.4.4</p>
       </header>
 
       <!-- Main Navigation Menu -->
@@ -103,6 +103,11 @@
             <div class="menu-title">2026</div>
           </div>
           <!-- Add more years here as needed -->
+        </div>
+
+        <!-- Carpetas de Fotos Area (v0.4.4) -->
+        <div id="ofrenda-folders-area" style="margin-top: 2.5rem; border-top: 1px solid #e5e7eb; padding-top: 2rem;">
+          <!-- Contenido cargado dinámicamente -->
         </div>
       </div>
 
@@ -406,9 +411,33 @@
             opacity: 0.7;
           "
         >
-          Versión 0.4.3
+          Versión 0.4.4
         </p>
       </footer>
+    </div>
+
+    <!-- Hidden Input for Photo Upload (v0.4.4) -->
+    <input type="file" id="upload-photo-input" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)" />
+
+    <!-- ADD FOLDER MODAL (v0.4.4) -->
+    <div id="add-folder-modal" class="modal modal-overlay" style="display: none">
+      <div class="modal-content" style="max-width: 400px;">
+        <h3 style="margin-bottom: 1.5rem;">Nueva Carpeta</h3>
+        <div class="form-group">
+          <label class="form-label">Nombre de la carpeta *</label>
+          <input type="text" id="of-folder-name" class="form-input" placeholder="Ej. Flores 2025" required />
+        </div>
+        <div class="modal-buttons">
+          <button class="btn btn-secondary" onclick="closeFolderModal()">Cancelar</button>
+          <button class="btn btn-primary" onclick="createNewFolder()">Crear</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHTBOX OVERLAY (v0.4.4) -->
+    <div id="photo-lightbox" class="modal" style="display: none; background: rgba(0,0,0,0.9); z-index: 10000;" onclick="closeLightbox()">
+      <span style="position: absolute; top: 1.5rem; right: 2rem; color: white; font-size: 2.5rem; font-weight: bold; cursor: pointer; user-select: none;">&times;</span>
+      <img id="lightbox-img" src="" alt="Zoomed Photo" style="max-width: 95%; max-height: 90vh; border-radius: 4px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); object-fit: contain;" />
     </div>
 
     <!-- SheetJS for Excel importing -->
@@ -417,6 +446,8 @@
     <script src="js/notifications.js"></script>
     <script src="js/sync-service.js"></script>
     <script src="js/vestidores.js"></script>
+    <!-- Ofrendas Controller (v0.4.4) -->
+    <script src="js/ofrendas.js"></script>
     <!-- New Controller -->
     <script src="js/main.js"></script>
     <!-- Simple Service Worker Registration for PWA -->

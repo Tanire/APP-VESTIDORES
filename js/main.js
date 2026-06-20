@@ -80,6 +80,11 @@ function showSection(sectionId) {
   const section = document.getElementById(sectionId);
   if (section) {
     section.style.display = "block";
+    
+    // Auto-render photo folders on section open (v0.4.4)
+    if (sectionId === 'ofrenda-section' && typeof renderOfrendaFolders !== 'undefined') {
+      renderOfrendaFolders();
+    }
   }
 }
 

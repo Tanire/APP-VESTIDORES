@@ -107,7 +107,8 @@ const SyncService = {
             shopping_list: StorageService.get('shopping_list', []),
             recurring_bills: StorageService.getRecurringBills(),
             household_tasks: StorageService.getTasks(),
-            vestidores_people: StorageService.getVestidores()
+            vestidores_people: StorageService.getVestidores(),
+            ofrenda_folders: StorageService.get('ofrenda_folders', [])
         };
     },
 
@@ -119,6 +120,7 @@ const SyncService = {
         if (data.recurring_bills) StorageService.saveRecurringBills(data.recurring_bills, true);
         if (data.household_tasks) StorageService.saveTasks(data.household_tasks, true);
         if (data.vestidores_people) StorageService.saveVestidores(data.vestidores_people, true);
+        if (data.ofrenda_folders) StorageService.set('ofrenda_folders', data.ofrenda_folders, true);
     },
 
     // Smart Merge
@@ -167,7 +169,8 @@ const SyncService = {
                     shopping_list: this.mergeArrays(localData.shopping_list, cloudData.shopping_list),
                     recurring_bills: this.mergeArrays(localData.recurring_bills, cloudData.recurring_bills),
                     household_tasks: this.mergeArrays(localData.household_tasks, cloudData.household_tasks),
-                    vestidores_people: this.mergeArrays(localData.vestidores_people, cloudData.vestidores_people)
+                    vestidores_people: this.mergeArrays(localData.vestidores_people, cloudData.vestidores_people),
+                    ofrenda_folders: this.mergeArrays(localData.ofrenda_folders, cloudData.ofrenda_folders)
                 };
             } else {
                 mergedData = localData;
