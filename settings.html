@@ -29,12 +29,29 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div>
                     <div style="font-weight: 600;">Versión Instalada</div>
-                    <div style="color: var(--text-muted); font-size: 0.9rem;">v0.4.5</div>
+                    <div style="color: var(--text-muted); font-size: 0.9rem;">v0.4.6</div>
                 </div>
                 <button onclick="window.location.reload()" class="btn btn-sm btn-secondary">
                     ⟳ Recargar
                 </button>
             </div>
+        </div>
+
+        <!-- 4. Seguridad -->
+        <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--accent);">
+            <h3 style="margin-bottom: 0.5rem;">🔒 Seguridad</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                Introduce el código de verificación para poder visualizar los datos completos de los vestidores.
+            </p>
+            
+            <div class="form-group" style="margin-bottom: 1rem;">
+                <input type="password" id="verification-code-input" class="form-input" placeholder="Introduce el código de 6 dígitos" style="text-align: center; font-size: 1.1rem; letter-spacing: 0.1em;" />
+            </div>
+            
+            <button id="verify-code-btn" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                🔑 Verificar Código
+            </button>
+            <div id="code-feedback" style="text-align: center; margin-top: 0.75rem; font-size: 0.95rem; min-height: 1.5em; font-weight: 600;"></div>
         </div>
 
         <!-- 2. Data State -->
@@ -56,7 +73,7 @@
         </div>
 
         <!-- 3. Local Backup Actions -->
-        <div class="card" style="margin-bottom: 2rem;">
+        <div class="card">
             <h3 style="margin-bottom: 0.75rem;">💾 Copia de Seguridad</h3>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
                 Exporta o restaura una copia de seguridad local en formato JSON con todos tus datos.
@@ -71,23 +88,6 @@
                 </button>
                 <input type="file" id="import-json-file" accept=".json" style="display: none;" />
             </div>
-        </div>
-
-        <!-- 4. Seguridad -->
-        <div class="card" style="border-left: 4px solid var(--accent);">
-            <h3 style="margin-bottom: 0.5rem;">🔒 Seguridad</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-                Introduce el código de verificación para poder visualizar los datos completos de los vestidores.
-            </p>
-            
-            <div class="form-group" style="margin-bottom: 1rem;">
-                <input type="password" id="verification-code-input" class="form-input" placeholder="Introduce el código de 6 dígitos" style="text-align: center; font-size: 1.1rem; letter-spacing: 0.1em;" />
-            </div>
-            
-            <button id="verify-code-btn" class="btn btn-primary" style="width: 100%; padding: 1rem;">
-                🔑 Verificar Código
-            </button>
-            <div id="code-feedback" style="text-align: center; margin-top: 0.75rem; font-size: 0.95rem; min-height: 1.5em; font-weight: 600;"></div>
         </div>
     </div>
 

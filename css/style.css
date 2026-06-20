@@ -714,6 +714,22 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
+.folder-card-thumbnail {
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius-md);
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(229, 231, 235, 0.7);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.folder-card:hover .folder-card-thumbnail {
+  transform: scale(1.05);
+}
+
 .folder-card-title {
   font-size: 0.95rem;
   font-weight: 600;

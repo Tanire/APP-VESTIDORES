@@ -432,6 +432,7 @@ async function handleExcelImport(event) {
             }
 
             let importedCount = 0;
+            let updatedCount = 0;
             let duplicateCount = 0;
             const list = StorageService.getVestidores();
 
@@ -506,18 +507,64 @@ async function handleExcelImport(event) {
                     }
                 }
 
-                // Duplicate Check (ignore deleted records)
-                const isDup = list.some(p => {
+                // Find matching record for Smart Merge (ignore deleted records)
+                const existingIndex = list.findIndex(p => {
                     if (p.deleted) return false;
+                    
+                    // Match by DNI if both have it
+                    if (dni && p.dni && normalizeText(dni) === normalizeText(p.dni)) {
+                        return true;
+                    }
+                    
+                    // Match by Name + Surname1 + Surname2
                     const nameMatch = normalizeText(p.name) === normalizeText(name) && 
                                       normalizeText(p.surname1) === normalizeText(surname1) &&
                                       normalizeText(p.surname2) === normalizeText(surname2);
-                    const dniMatch = (dni && p.dni) ? (normalizeText(p.dni) === normalizeText(dni)) : true;
-                    return nameMatch && dniMatch;
+                    return nameMatch;
                 });
 
-                if (isDup) {
-                    duplicateCount++;
+                if (existingIndex !== -1) {
+                    const p = list[existingIndex];
+                    let hasChanges = false;
+                    
+                    // Fields list to compare and update
+                    const updates = {
+                        name: name,
+                        surname1: surname1,
+                        surname2: surname2,
+                        dni: dni,
+                        phone: phone,
+                        email: email,
+                        birthPlace: birthPlace,
+                        birthDate: birthDate,
+                        addressStreet: addressStreet,
+                        addressNum: addressNum,
+                        zipCode: zipCode,
+                        locality: locality,
+                        admissionYear: admissionYear,
+                        category: category
+                    };
+
+                    Object.keys(updates).forEach(field => {
+                        const newVal = updates[field];
+                        // Update only if the incoming Excel value is not empty/null
+                        if (newVal !== undefined && newVal !== null && newVal.toString().trim() !== '') {
+                            const oldStr = p[field] ? p[field].toString().trim() : '';
+                            const newStr = newVal.toString().trim();
+                            
+                            if (oldStr !== newStr) {
+                                p[field] = newVal;
+                                hasChanges = true;
+                            }
+                        }
+                    });
+
+                    if (hasChanges) {
+                        p.updatedAt = new Date().toISOString();
+                        updatedCount++;
+                    } else {
+                        duplicateCount++;
+                    }
                 } else {
                     const newPerson = {
                         id: generateUUID(),
@@ -546,15 +593,16 @@ async function handleExcelImport(event) {
             StorageService.saveVestidores(list);
             renderVestidoresList();
             
-            if (importedCount > 0) {
-                Toast.success(`¡Importados con éxito! ${importedCount} personas agregadas.`);
+            // Comprehensive import feedback
+            if (importedCount > 0 || updatedCount > 0) {
+                Toast.success(`Importación completada: ${importedCount} añadidos, ${updatedCount} actualizados.`);
                 checkAutoSync();
             }
             if (duplicateCount > 0) {
-                Toast.warning(`${duplicateCount} registros duplicados fueron omitidos.`);
+                Toast.info(`${duplicateCount} registros ya existían sin cambios y se omitieron.`);
             }
-            if (importedCount === 0 && duplicateCount === 0) {
-                Toast.info("No se encontraron registros nuevos válidos.");
+            if (importedCount === 0 && updatedCount === 0 && duplicateCount === 0) {
+                Toast.info("No se encontraron registros válidos en el archivo.");
             }
         } catch (error) {
             console.error("Error al importar Excel:", error);
@@ -573,52 +621,43 @@ async function handleExcelImport(event) {
 }
 
 // --- Export Logic ---
-function exportVestidoresToCSV() {
+function exportVestidoresToExcel() {
     const list = StorageService.getVestidores().filter(p => !p.deleted);
     if (list.length === 0) {
         Toast.warning("No hay datos para exportar.");
         return;
     }
 
-    // Headers
-    let csvContent = "\uFEFF"; // Add UTF-8 BOM so Excel opens with Spanish accents correctly
-    csvContent += "Nombre,Apellido 1,Apellido 2,DNI,Nacido En,Fecha Nacimiento,Dirección,Nº Dirección,Código Postal,Localidad,Teléfono,Correo Electrónico,Año Ingreso,Categoría,Fecha Registro\n";
-
-    // Rows
-    list.forEach(item => {
-        const row = [
-            item.name,
-            item.surname1,
-            item.surname2,
-            item.dni,
-            item.birthPlace,
-            item.birthDate,
-            item.addressStreet,
-            item.addressNum,
-            item.zipCode,
-            item.locality,
-            item.phone,
-            item.email,
-            item.admissionYear,
-            item.category,
-            new Date(item.createdAt).toLocaleDateString()
-        ].map(e => `"${e ? e.toString().replace(/"/g, '""') : ''}"`).join(",");
-        csvContent += row + "\n";
-    });
+    // Format data matching column names in Spanish
+    const formattedData = list.map(item => ({
+        'Nombre': item.name || '',
+        'Primer Apellido': item.surname1 || '',
+        'Segundo Apellido': item.surname2 || '',
+        'DNI': item.dni || '',
+        'Nacido En': item.birthPlace || '',
+        'Fecha Nacimiento': item.birthDate ? item.birthDate.split('-').reverse().join('/') : '',
+        'Dirección (Calle)': item.addressStreet || '',
+        'Nº': item.addressNum || '',
+        'Código Postal': item.zipCode || '',
+        'Localidad': item.locality || '',
+        'Teléfono': item.phone || '',
+        'Correo Electrónico': item.email || '',
+        'Año Ingreso': item.admissionYear || '',
+        'Categoría': item.category || 'Vestidor',
+        'Fecha Creación': item.createdAt ? new Date(item.createdAt).toLocaleDateString('es-ES') : ''
+    }));
 
     try {
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.setAttribute("href", url);
-        link.setAttribute("download", `vestidores_listado_${new Date().toISOString().split('T')[0]}.csv`);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        Toast.success("Listado exportado a CSV.");
+        const ws = XLSX.utils.json_to_sheet(formattedData);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Vestidores");
+        
+        // Write file with .xlsx extension using SheetJS
+        XLSX.writeFile(wb, `vestidores_listado_${new Date().toISOString().split('T')[0]}.xlsx`);
+        Toast.success("Listado exportado a Excel (.xlsx).");
     } catch (e) {
         console.error(e);
-        Toast.error("Error al exportar los datos.");
+        Toast.error("Error al exportar a Excel.");
     }
 }
 

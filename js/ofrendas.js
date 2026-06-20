@@ -65,12 +65,19 @@ function renderOfrendaFolders() {
             const photoCount = folder.photos ? folder.photos.filter(p => !p.deleted).length : 0;
             const updateDate = folder.updatedAt ? new Date(folder.updatedAt).toLocaleDateString() : 'Sin fecha';
             
+            // Check for a preview photo (first active photo)
+            const activePhotos = folder.photos ? folder.photos.filter(p => !p.deleted) : [];
+            let iconHtml = '<div class="folder-card-icon">📁</div>';
+            if (activePhotos.length > 0) {
+                iconHtml = `<div class="folder-card-thumbnail" style="background-image: url('${activePhotos[0].base64}');" onclick="event.stopPropagation(); openLightbox('${activePhotos[0].base64}')" title="Haga clic en la foto para ampliar"></div>`;
+            }
+            
             folderCardsHtml += `
                 <div class="folder-card" onclick="openFolder('${folder.id}')">
                     <button class="folder-delete-btn" title="Eliminar Carpeta" onclick="event.stopPropagation(); deleteFolder('${folder.id}')">
                         &times;
                     </button>
-                    <div class="folder-card-icon">📁</div>
+                    ${iconHtml}
                     <div class="folder-card-title">${folder.name}</div>
                     <div class="folder-card-count">${photoCount} fotos</div>
                     <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.25rem;">Act: ${updateDate}</div>
