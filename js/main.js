@@ -146,6 +146,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ---- Security Code Logic (v0.4.3) ----
+  const verifyCodeBtn = document.getElementById('verify-code-btn');
+  const verificationInput = document.getElementById('verification-code-input');
+  const codeFeedback = document.getElementById('code-feedback');
+
+  if (verifyCodeBtn && verificationInput && codeFeedback) {
+    const savedCode = localStorage.getItem('security_code') || '';
+    verificationInput.value = savedCode;
+    
+    if (savedCode === '250925') {
+      codeFeedback.textContent = '¡Código verificado! Datos completos desbloqueados.';
+      codeFeedback.style.color = '#10B981'; // Green
+    } else if (savedCode) {
+      codeFeedback.textContent = 'Código incorrecto. Los datos permanecen protegidos.';
+      codeFeedback.style.color = '#EF4444'; // Red
+    } else {
+      codeFeedback.textContent = 'Datos protegidos (Solo lectura de nombres).';
+      codeFeedback.style.color = '#F59E0B'; // Amber
+    }
+
+    verifyCodeBtn.addEventListener('click', () => {
+      const enteredCode = verificationInput.value.trim();
+      localStorage.setItem('security_code', enteredCode);
+      
+      if (enteredCode === '250925') {
+        codeFeedback.textContent = '¡Código verificado correctamente! Datos desbloqueados.';
+        codeFeedback.style.color = '#10B981';
+        if (typeof Toast !== 'undefined') Toast.success('Acceso desbloqueado');
+      } else if (enteredCode === '') {
+        codeFeedback.textContent = 'Datos protegidos (Solo lectura de nombres).';
+        codeFeedback.style.color = '#F59E0B';
+        if (typeof Toast !== 'undefined') Toast.info('Código eliminado. Datos bloqueados.');
+      } else {
+        codeFeedback.textContent = 'Código incorrecto. Los datos permanecen protegidos.';
+        codeFeedback.style.color = '#EF4444';
+        if (typeof Toast !== 'undefined') Toast.error('Código incorrecto');
+      }
+    });
+  }
+
   // Wait a bit to ensure SyncService is loaded
   setTimeout(checkAutoSync, 1000);
 

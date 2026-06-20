@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vestidores-v5';
+const CACHE_NAME = 'vestidores-v0.4.3';
 const ASSETS = [
     './',
     './index.html',
@@ -10,7 +10,7 @@ const ASSETS = [
     './js/sync-service.js',
     './js/notifications.js',
     './manifest.json',
-    './assets/logo.jpg',
+    './assets/logo.png',
     './assets/icon-192.png',
     './assets/icon-512.png'
 ];
