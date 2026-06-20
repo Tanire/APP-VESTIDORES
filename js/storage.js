@@ -1,6 +1,61 @@
 /**
  * StorageService - Manejo centralizado de localStorage con Auto-Sync (SMART MERGE)
  */
+
+// Normalizador universal de fechas a YYYY-MM-DD
+window.normalizeDateToYMD = function(val) {
+  if (!val) return '';
+  val = val.toString().trim();
+  if (!val) return '';
+
+  // 1. Número de serie de Excel (ej: 32827)
+  if (/^\d+(\.\d+)?$/.test(val)) {
+    const serial = parseFloat(val);
+    const utc_days  = Math.floor(serial - 25569);
+    const utc_value = utc_days * 86400;
+    const date_info = new Date(utc_value * 1000);
+    
+    const year = date_info.getFullYear();
+    let month = (date_info.getMonth() + 1).toString().padStart(2, '0');
+    let day = date_info.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  // 2. Formatos con separadores: / o - o .
+  const parts = val.split(/[\/\-\.]/);
+  if (parts.length === 3) {
+    const p0 = parts[0].trim();
+    const p1 = parts[1].trim();
+    const p2 = parts[2].trim();
+
+    if (p0.length === 4) {
+      // YYYY-MM-DD (ej: 1980/08/15 o 1980-08-15)
+      return `${p0}-${p1.padStart(2, '0')}-${p2.padStart(2, '0')}`;
+    } else if (p2.length === 4) {
+      // DD-MM-YYYY (ej: 15/08/1980 o 15-08-1980)
+      return `${p2}-${p1.padStart(2, '0')}-${p0.padStart(2, '0')}`;
+    } else if (p2.length === 2) {
+      // DD-MM-YY (ej: 15/08/80 o 15-08-80)
+      let year = parseInt(p2);
+      year = year > 30 ? 1900 + year : 2000 + year;
+      return `${year}-${p1.padStart(2, '0')}-${p0.padStart(2, '0')}`;
+    }
+  }
+
+  // 3. Fallback a parse nativo de Date
+  try {
+    const d = new Date(val);
+    if (!isNaN(d.getTime())) {
+      const year = d.getFullYear();
+      const month = (d.getMonth() + 1).toString().padStart(2, '0');
+      const day = d.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+  } catch (e) {}
+
+  return '';
+};
+
 const StorageService = {
   syncTimeout: null,
 
@@ -127,11 +182,11 @@ const StorageService = {
         modified = true;
       }
 
-      // Normalize birthDate if stored in DD/MM/YYYY format
-      if (p.birthDate && p.birthDate.includes('/')) {
-        const parts = p.birthDate.split('/');
-        if (parts.length === 3) {
-          p.birthDate = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+      // Normalize birthDate using universal normalizer
+      if (p.birthDate) {
+        const normalized = window.normalizeDateToYMD(p.birthDate);
+        if (p.birthDate !== normalized) {
+          p.birthDate = normalized;
           modified = true;
         }
       }

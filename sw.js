@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vestidores-v0.4.3b';
+const CACHE_NAME = 'vestidores-v0.4.5';
 const ASSETS = [
     './',
     './index.html',
@@ -7,6 +7,7 @@ const ASSETS = [
     './js/main.js',
     './js/vestidores.js',
     './js/storage.js',
+    './js/ofrendas.js',
     './js/sync-service.js',
     './js/notifications.js',
     './manifest.json',

@@ -142,7 +142,7 @@ function renderOfrendaFolders() {
 // --- Folder Management ---
 function openFolderModal() {
     document.getElementById('of-folder-name').value = '';
-    document.getElementById('add-folder-modal').style.display = 'flex';
+    document.getElementById('add-folder-modal').style.display = 'grid';
 }
 
 function closeFolderModal() {
@@ -327,7 +327,7 @@ function openLightbox(src) {
     const lightboxImg = document.getElementById('lightbox-img');
     if (lightbox && lightboxImg) {
         lightboxImg.src = src;
-        lightbox.style.display = 'flex';
+        lightbox.style.display = 'grid';
     }
 }
 
