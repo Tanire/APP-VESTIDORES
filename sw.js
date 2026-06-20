@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vestidores-v0.4.3';
+const CACHE_NAME = 'vestidores-v0.4.3b';
 const ASSETS = [
     './',
     './index.html',
@@ -10,9 +10,8 @@ const ASSETS = [
     './js/sync-service.js',
     './js/notifications.js',
     './manifest.json',
-    './assets/logo.png',
-    './assets/icon-192.png',
-    './assets/icon-512.png'
+    './assets/vestidores.jpeg',
+    './assets/virgen.jpeg'
 ];
 
 self.addEventListener('install', (e) => {
