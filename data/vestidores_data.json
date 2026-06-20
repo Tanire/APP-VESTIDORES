@@ -6535,7 +6535,15 @@
       "category": "Vestidor",
       "createdAt": "2026-06-19T08:16:15.785Z",
       "updatedAt": "2026-06-19T08:28:30.164Z",
-      "deleted": true
+      "deleted": true,
+      "surname1": "MOCHOLI",
+      "surname2": "IGLESIAS",
+      "birthDate": "1986-01-01",
+      "addressStreet": "DFASGFS",
+      "addressNum": "",
+      "zipCode": "",
+      "locality": "",
+      "email": ""
     },
     {
       "id": "03e35629-9043-4511-81ee-c4c9abbbd3b7",
@@ -6550,7 +6558,15 @@
       "category": "Vestidor",
       "createdAt": "2026-06-19T08:16:48.976Z",
       "updatedAt": "2026-06-19T08:28:38.848Z",
-      "deleted": true
+      "deleted": true,
+      "surname1": "MOLINER",
+      "surname2": "",
+      "birthDate": "1986-01-01",
+      "addressStreet": "SADFSDA",
+      "addressNum": "",
+      "zipCode": "",
+      "locality": "",
+      "email": ""
     },
     {
       "id": "6fac82a3-edd5-4188-a817-ea2c17cf7daf",
@@ -6565,7 +6581,15 @@
       "category": "Vestidor",
       "createdAt": "2026-06-19T08:17:08.296Z",
       "updatedAt": "2026-06-19T08:28:35.655Z",
-      "deleted": true
+      "deleted": true,
+      "surname1": "SEVILLEJA",
+      "surname2": "",
+      "birthDate": "",
+      "addressStreet": "",
+      "addressNum": "",
+      "zipCode": "",
+      "locality": "",
+      "email": ""
     },
     {
       "id": "5cea11e5-3598-4ec7-b5b7-0f9036128734",
@@ -6580,7 +6604,15 @@
       "category": "Vestidor",
       "createdAt": "2026-06-19T07:27:49.842Z",
       "updatedAt": "2026-06-19T08:39:54.496Z",
-      "deleted": true
+      "deleted": true,
+      "surname1": "PPerez",
+      "surname2": "Gomez",
+      "birthDate": "1988-01-01",
+      "addressStreet": "Calle Mayor 15, Valencia",
+      "addressNum": "",
+      "zipCode": "",
+      "locality": "",
+      "email": ""
     },
     {
       "id": "193e7a2c-0650-4114-8dee-4a23ba6f7cc1",
@@ -6595,7 +6627,15 @@
       "category": "Voluntario",
       "createdAt": "2026-06-19T08:34:15.480Z",
       "updatedAt": "2026-06-19T08:40:00.142Z",
-      "deleted": true
+      "deleted": true,
+      "surname1": "Perez",
+      "surname2": "Gomez2",
+      "birthDate": "1990-01-01",
+      "addressStreet": "Calle Falsa 123, Valencia",
+      "addressNum": "",
+      "zipCode": "",
+      "locality": "",
+      "email": ""
     },
     {
       "id": "f8f09d83-7a21-42f6-afea-f8ae9e203648",
@@ -6609,7 +6649,15 @@
       "birthPlace": "",
       "category": "Vestidor",
       "createdAt": "2026-06-19T17:22:35.951Z",
-      "updatedAt": "2026-06-19T17:22:35.951Z"
+      "updatedAt": "2026-06-19T17:22:35.951Z",
+      "surname1": "Mocholi",
+      "surname2": "",
+      "birthDate": "1986-01-01",
+      "addressStreet": "Conde de lumiares 8 pta3",
+      "addressNum": "",
+      "zipCode": "",
+      "locality": "",
+      "email": ""
     }
   ]
 }
