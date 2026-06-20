@@ -404,6 +404,69 @@ function setCategoryFilter(category) {
     renderVestidoresList();
 }
 
+function parseExcelDate(val) {
+    if (!val) return '';
+    val = val.toString().trim();
+    if (!val) return '';
+
+    // Case 1: Excel serial number (often imported as a number, e.g., 32827)
+    if (/^\d+(\.\d+)?$/.test(val)) {
+        const serial = parseFloat(val);
+        const utc_days  = Math.floor(serial - 25569);
+        const utc_value = utc_days * 86400;
+        const date_info = new Date(utc_value * 1000);
+        
+        const year = date_info.getFullYear();
+        let month = (date_info.getMonth() + 1).toString().padStart(2, '0');
+        let day = date_info.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    // Case 2: DD/MM/YYYY or DD-MM-YYYY
+    const dmyRegex = /^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/;
+    const dmyMatch = val.match(dmyRegex);
+    if (dmyMatch) {
+        const day = dmyMatch[1].padStart(2, '0');
+        const month = dmyMatch[2].padStart(2, '0');
+        const year = dmyMatch[3];
+        return `${year}-${month}-${day}`;
+    }
+
+    // Case 2b: DD/MM/YY or DD-MM-YY (2-digit year)
+    const dmy2Regex = /^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2})$/;
+    const dmy2Match = val.match(dmy2Regex);
+    if (dmy2Match) {
+        const day = dmy2Match[1].padStart(2, '0');
+        const month = dmy2Match[2].padStart(2, '0');
+        let year = parseInt(dmy2Match[3]);
+        year = year > 30 ? 1900 + year : 2000 + year;
+        return `${year}-${month}-${day}`;
+    }
+
+    // Case 3: YYYY/MM/DD or YYYY-MM-DD
+    const ymdRegex = /^(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})$/;
+    const ymdMatch = val.match(ymdRegex);
+    if (ymdMatch) {
+        const year = ymdMatch[1];
+        const month = ymdMatch[2].padStart(2, '0');
+        const day = ymdMatch[3].padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    // Case 4: JavaScript Date parseable string
+    try {
+        const d = new Date(val);
+        if (!isNaN(d.getTime())) {
+            const year = d.getFullYear();
+            const month = (d.getMonth() + 1).toString().padStart(2, '0');
+            const day = d.getDate().toString().padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+    } catch (e) {}
+
+    return '';
+}
+
 // --- Excel/CSV Import Logic ---
 async function handleExcelImport(event) {
     const file = event.target.files[0];
@@ -469,7 +532,7 @@ async function handleExcelImport(event) {
                     } else if (normKey === 'lugardenacimiento' || normKey === 'lugar nacimiento' || normKey === 'nacidoen' || normKey === 'nacido en' || normKey === 'birthplace' || normKey === 'lugar' || normKey === 'procedencia') {
                         birthPlace = val;
                     } else if (normKey === 'fechadenacimiento' || normKey === 'fecha nacimiento' || normKey === 'birthdate' || normKey === 'fechanacimiento') {
-                        birthDate = val;
+                        birthDate = parseExcelDate(val);
                     } else if (normKey === 'direccion' || normKey === 'dir' || normKey === 'calle' || normKey === 'street' || normKey === 'address') {
                         addressStreet = val;
                     } else if (normKey === 'numero' || normKey === 'num' || normKey === 'nºdireccion' || normKey === 'nº direccion' || normKey === 'nº' || normKey === 'numero direccion' || normKey === 'streetnumber') {

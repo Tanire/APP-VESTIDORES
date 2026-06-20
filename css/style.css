@@ -255,6 +255,8 @@ h3 {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   animation: slideUp 0.3s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 @keyframes slideUp {

@@ -127,6 +127,15 @@ const StorageService = {
         modified = true;
       }
 
+      // Normalize birthDate if stored in DD/MM/YYYY format
+      if (p.birthDate && p.birthDate.includes('/')) {
+        const parts = p.birthDate.split('/');
+        if (parts.length === 3) {
+          p.birthDate = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+          modified = true;
+        }
+      }
+
       // Migrate address -> addressStreet
       if (p.address !== undefined && p.addressStreet === undefined) {
         p.addressStreet = p.address;
