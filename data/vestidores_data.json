@@ -6649,7 +6649,7 @@
       "birthPlace": "",
       "category": "Vestidor",
       "createdAt": "2026-06-19T17:22:35.951Z",
-      "updatedAt": "2026-06-19T17:22:35.951Z",
+      "updatedAt": "2026-06-20T07:49:02.850Z",
       "surname1": "Mocholi",
       "surname2": "",
       "birthDate": "1986-01-01",
@@ -6657,7 +6657,8 @@
       "addressNum": "",
       "zipCode": "",
       "locality": "",
-      "email": ""
+      "email": "",
+      "deleted": true
     },
     {
       "id": "6d8d9823-9b2a-4d15-ac1d-eef7ec31cd11",
