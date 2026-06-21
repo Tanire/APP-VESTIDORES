@@ -7922,6 +7922,25 @@
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.311Z",
       "updatedAt": "2026-06-20T07:46:34.311Z"
+    },
+    {
+      "id": "eefefa8d-41fd-4f2d-a25c-cae0f0490d51",
+      "name": "Marta",
+      "surname1": "Devis",
+      "surname2": "Llop",
+      "dni": "",
+      "birthPlace": "Valencia",
+      "birthDate": "",
+      "addressStreet": "",
+      "addressNum": "",
+      "zipCode": "",
+      "locality": "",
+      "phone": "686122848",
+      "email": "",
+      "admissionYear": "",
+      "category": "Vestidor",
+      "createdAt": "2026-06-21T05:53:02.373Z",
+      "updatedAt": "2026-06-21T05:53:02.373Z"
     }
   ],
   "ofrenda_folders": [
