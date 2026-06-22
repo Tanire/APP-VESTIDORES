@@ -189,7 +189,99 @@ function updateDashboardStats(allVestidores) {
     if (elVestidores) elVestidores.textContent = vestidores;
     if (elVoluntarios) elVoluntarios.textContent = voluntarios;
     if (elExtras) elExtras.textContent = extras;
+}// --- Photo Upload Logic (v0.5.0) ---
+let photoUploadingPersonId = null;
+
+function compressPortraitImage(file, callback) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            const targetWidth = 240;
+            const targetHeight = 320;
+            canvas.width = targetWidth;
+            canvas.height = targetHeight;
+            const ctx = canvas.getContext('2d');
+            
+            const imgRatio = img.width / img.height;
+            const targetRatio = targetWidth / targetHeight;
+            
+            let sx = 0, sy = 0, sWidth = img.width, sHeight = img.height;
+            
+            if (imgRatio > targetRatio) {
+                sWidth = img.height * targetRatio;
+                sx = (img.width - sWidth) / 2;
+            } else {
+                sHeight = img.width / targetRatio;
+                sy = (img.height - sHeight) / 2;
+            }
+            
+            ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, targetWidth, targetHeight);
+            const base64 = canvas.toDataURL('image/jpeg', 0.85);
+            callback(base64);
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
 }
+
+function triggerVestidorPhotoUpload(personId) {
+    if (!isAuthorized()) return;
+    photoUploadingPersonId = personId;
+    const fileInput = document.getElementById('upload-vestidor-photo-input');
+    if (fileInput) {
+        fileInput.value = ''; // Clear value
+        fileInput.click();
+    }
+}
+
+function deleteVestidorPhoto(personId) {
+    if (!isAuthorized()) return;
+    if (confirm("¿Estás seguro de que deseas eliminar la foto de este vestidor?")) {
+        const list = StorageService.getVestidores();
+        const index = list.findIndex(p => p.id === personId);
+        if (index !== -1) {
+            list[index].photo = '';
+            list[index].updatedAt = new Date().toISOString();
+            StorageService.saveVestidores(list);
+            renderVestidoresList();
+            if (typeof Toast !== 'undefined') Toast.success("Foto eliminada correctamente.");
+            checkAutoSync();
+        }
+    }
+}
+
+// Register file upload change listener
+document.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.getElementById('upload-vestidor-photo-input');
+    if (fileInput) {
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file || !photoUploadingPersonId) return;
+            
+            if (typeof Toast !== 'undefined') Toast.info("Procesando y recortando foto...");
+            
+            compressPortraitImage(file, function(base64Data) {
+                const list = StorageService.getVestidores();
+                const index = list.findIndex(p => p.id === photoUploadingPersonId);
+                
+                if (index !== -1) {
+                    list[index].photo = base64Data;
+                    list[index].updatedAt = new Date().toISOString();
+                    StorageService.saveVestidores(list);
+                    renderVestidoresList();
+                    if (typeof Toast !== 'undefined') Toast.success("Foto de carnet guardada.");
+                    checkAutoSync();
+                } else {
+                    if (typeof Toast !== 'undefined') Toast.error("No se encontró el registro.");
+                }
+                photoUploadingPersonId = null;
+                fileInput.value = '';
+            });
+        });
+    }
+});
 
 // --- Render Logic ---
 function renderVestidoresList() {
@@ -268,6 +360,41 @@ function renderVestidoresList() {
     list.forEach(person => {
         const card = document.createElement('div');
         
+        // Build Photo Component (Tamaño carnet)
+        let photoHtml = '';
+        if (person.photo) {
+            if (auth) {
+                photoHtml = `
+                    <div class="vestidor-photo-container admin-editable" onclick="event.stopPropagation(); triggerVestidorPhotoUpload('${person.id}')" title="Haga clic para cambiar la foto">
+                        <button class="vestidor-photo-delete-badge" onclick="event.stopPropagation(); deleteVestidorPhoto('${person.id}')" title="Eliminar Foto">&times;</button>
+                        <img src="${person.photo}" alt="Foto" class="vestidor-photo" />
+                        <div class="vestidor-photo-overlay">📷</div>
+                    </div>
+                `;
+            } else {
+                photoHtml = `
+                    <div class="vestidor-photo-container" onclick="event.stopPropagation(); openLightbox('${person.photo}')" style="cursor: pointer;" title="Haga clic para ampliar la foto">
+                        <img src="${person.photo}" alt="Foto" class="vestidor-photo" />
+                    </div>
+                `;
+            }
+        } else {
+            if (auth) {
+                photoHtml = `
+                    <div class="vestidor-photo-container admin-editable" onclick="event.stopPropagation(); triggerVestidorPhotoUpload('${person.id}')" title="Haga clic para subir una foto">
+                        <span class="vestidor-photo-placeholder">👤</span>
+                        <div class="vestidor-photo-overlay">📷</div>
+                    </div>
+                `;
+            } else {
+                photoHtml = `
+                    <div class="vestidor-photo-container">
+                        <span class="vestidor-photo-placeholder">👤</span>
+                    </div>
+                `;
+            }
+        }
+        
         if (auth) {
             card.className = `card person-card category-${person.category}`;
             
@@ -337,16 +464,21 @@ function renderVestidoresList() {
             }
 
             card.innerHTML = `
-                <div class="person-header">
-                    <div>
-                        <div style="font-weight: 700; font-size: 1.15rem; color: var(--text-main);">
-                            ${person.name} ${person.surname1 || ''} ${person.surname2 || ''}
+                <div class="person-main-row">
+                    ${photoHtml}
+                    <div style="flex: 1; min-width: 0;">
+                        <div class="person-header" style="padding: 0;">
+                            <div>
+                                <div style="font-weight: 700; font-size: 1.15rem; color: var(--text-main);">
+                                    ${person.name} ${person.surname1 || ''} ${person.surname2 || ''}
+                                </div>
+                                <span style="display: inline-block; background: ${badgeColor}; color: white; padding: 0.2rem 0.65rem; border-radius: 99px; font-size: 0.7rem; font-weight: 600; margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                    ${person.category}
+                                </span>
+                            </div>
+                            <span class="card-chevron">▼</span>
                         </div>
-                        <span style="display: inline-block; background: ${badgeColor}; color: white; padding: 0.2rem 0.65rem; border-radius: 99px; font-size: 0.7rem; font-weight: 600; margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            ${person.category}
-                        </span>
                     </div>
-                    <span class="card-chevron">▼</span>
                 </div>
                 <div class="person-collapsible-wrapper">
                     <div class="person-details-grid">
@@ -364,7 +496,7 @@ function renderVestidoresList() {
             `;
             
             card.addEventListener('click', (e) => {
-                if (e.target.closest('.card-actions') || e.target.tagName === 'BUTTON') {
+                if (e.target.closest('.card-actions') || e.target.tagName === 'BUTTON' || e.target.closest('.vestidor-photo-container')) {
                     return;
                 }
                 const isExpanded = card.classList.contains('expanded');
@@ -376,13 +508,16 @@ function renderVestidoresList() {
                 }
             });
         } else {
-            // Not authorized: Only show name, no interaction
+            // Not authorized: Only show name, surnames, and photo, no interaction
             card.className = `card person-card`;
             card.style.cursor = 'default';
             card.innerHTML = `
-                <div class="person-header">
-                    <div style="font-weight: 700; font-size: 1.15rem; color: var(--text-main); padding: 0.25rem 0;">
-                        ${person.name} ${person.surname1 || ''} ${person.surname2 || ''}
+                <div class="person-main-row">
+                    ${photoHtml}
+                    <div style="flex: 1; min-width: 0;">
+                        <div style="font-weight: 700; font-size: 1.15rem; color: var(--text-main); padding: 0.25rem 0;">
+                            ${person.name} ${person.surname1 || ''} ${person.surname2 || ''}
+                        </div>
                     </div>
                 </div>
             `;

@@ -213,6 +213,7 @@ const StorageService = {
       if (p.locality === undefined) { p.locality = ''; modified = true; }
       if (p.phone === undefined) { p.phone = ''; modified = true; }
       if (p.email === undefined) { p.email = ''; modified = true; }
+      if (p.photo === undefined) { p.photo = ''; modified = true; }
     });
     if (modified) {
       this.saveVestidores(list, true);
