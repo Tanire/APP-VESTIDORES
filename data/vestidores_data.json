@@ -6571,7 +6571,8 @@
       "addressNum": "",
       "zipCode": "",
       "locality": "",
-      "email": ""
+      "email": "",
+      "photo": ""
     },
     {
       "id": "03e35629-9043-4511-81ee-c4c9abbbd3b7",
@@ -6594,7 +6595,8 @@
       "addressNum": "",
       "zipCode": "",
       "locality": "",
-      "email": ""
+      "email": "",
+      "photo": ""
     },
     {
       "id": "6fac82a3-edd5-4188-a817-ea2c17cf7daf",
@@ -6617,7 +6619,8 @@
       "addressNum": "",
       "zipCode": "",
       "locality": "",
-      "email": ""
+      "email": "",
+      "photo": ""
     },
     {
       "id": "5cea11e5-3598-4ec7-b5b7-0f9036128734",
@@ -6640,7 +6643,8 @@
       "addressNum": "",
       "zipCode": "",
       "locality": "",
-      "email": ""
+      "email": "",
+      "photo": ""
     },
     {
       "id": "193e7a2c-0650-4114-8dee-4a23ba6f7cc1",
@@ -6663,7 +6667,8 @@
       "addressNum": "",
       "zipCode": "",
       "locality": "",
-      "email": ""
+      "email": "",
+      "photo": ""
     },
     {
       "id": "f8f09d83-7a21-42f6-afea-f8ae9e203648",
@@ -6686,7 +6691,8 @@
       "zipCode": "",
       "locality": "",
       "email": "",
-      "deleted": true
+      "deleted": true,
+      "photo": ""
     },
     {
       "id": "6d8d9823-9b2a-4d15-ac1d-eef7ec31cd11",
@@ -6705,7 +6711,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.306Z",
-      "updatedAt": "2026-06-20T07:46:34.306Z"
+      "updatedAt": "2026-06-20T07:46:34.306Z",
+      "photo": ""
     },
     {
       "id": "fe832dc5-cba3-4471-8296-9451b455a9a7",
@@ -6724,7 +6731,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.306Z",
-      "updatedAt": "2026-06-20T07:46:34.306Z"
+      "updatedAt": "2026-06-20T07:46:34.306Z",
+      "photo": ""
     },
     {
       "id": "e921c6d6-c39d-4118-911a-3428b7fa0068",
@@ -6743,7 +6751,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.306Z",
-      "updatedAt": "2026-06-20T07:46:34.306Z"
+      "updatedAt": "2026-06-20T07:46:34.306Z",
+      "photo": ""
     },
     {
       "id": "88a520bf-c446-466d-ac78-21fb061f5ac5",
@@ -6782,7 +6791,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.306Z",
-      "updatedAt": "2026-06-20T07:46:34.306Z"
+      "updatedAt": "2026-06-20T07:46:34.306Z",
+      "photo": ""
     },
     {
       "id": "0f811673-203d-48aa-ac26-a61337654a28",
@@ -6801,7 +6811,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.306Z",
-      "updatedAt": "2026-06-20T07:46:34.306Z"
+      "updatedAt": "2026-06-20T07:46:34.306Z",
+      "photo": ""
     },
     {
       "id": "e5098d74-a00e-471a-86d8-ba1c644eea2d",
@@ -6820,7 +6831,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.306Z",
-      "updatedAt": "2026-06-20T07:46:34.306Z"
+      "updatedAt": "2026-06-20T07:46:34.306Z",
+      "photo": ""
     },
     {
       "id": "a4680406-b9a5-40bb-8b05-2da64fb8f8ad",
@@ -6839,7 +6851,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.306Z",
-      "updatedAt": "2026-06-20T07:46:34.306Z"
+      "updatedAt": "2026-06-20T07:46:34.306Z",
+      "photo": ""
     },
     {
       "id": "139ed04f-d21d-4067-bdcf-383f150de1a5",
@@ -6858,7 +6871,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.306Z",
-      "updatedAt": "2026-06-20T07:46:34.306Z"
+      "updatedAt": "2026-06-20T07:46:34.306Z",
+      "photo": ""
     },
     {
       "id": "e1cf975d-1d94-4c86-9a37-7ecbda5d3e4a",
@@ -6877,7 +6891,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.306Z",
-      "updatedAt": "2026-06-20T07:46:34.306Z"
+      "updatedAt": "2026-06-20T07:46:34.306Z",
+      "photo": ""
     },
     {
       "id": "12c5f677-d6c2-43fd-90e4-0534b3a7abd8",
@@ -6896,7 +6911,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.306Z",
-      "updatedAt": "2026-06-20T07:46:34.306Z"
+      "updatedAt": "2026-06-20T07:46:34.306Z",
+      "photo": ""
     },
     {
       "id": "c594f628-2ba5-4d6c-8f53-5d544cb87acc",
@@ -6915,7 +6931,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "3f7da817-1206-4719-9164-b3b9cb139cf8",
@@ -6934,7 +6951,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "1d466137-d375-4553-8b18-45631ba7d73a",
@@ -6953,7 +6971,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "3e979d8e-8864-4f30-9bbf-ea785dc3f487",
@@ -6972,7 +6991,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "bae3deaa-b590-4e37-8c56-569865a3ae6c",
@@ -6991,7 +7011,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "6aeee44d-2f11-461b-ad7f-8e982072527f",
@@ -7010,7 +7031,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "78b9a920-cdc7-4438-beb7-dc59fee1c876",
@@ -7029,7 +7051,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "426862f1-ecb5-49e1-b24d-0462e2fe78e1",
@@ -7048,7 +7071,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "0ac2274f-50bc-46d5-a0c4-10bcf6a5a566",
@@ -7067,7 +7091,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "64b9f290-a842-4f40-a6fe-c51ae721142a",
@@ -7086,7 +7111,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "b9d2b4bc-9306-456e-a050-687f55abfec6",
@@ -7105,7 +7131,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "5fc96f32-9922-49d0-b9ff-b15685850b05",
@@ -7124,7 +7151,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "0891e5e6-8500-4b0a-843b-780f2516e680",
@@ -7143,7 +7171,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z"
+      "updatedAt": "2026-06-20T07:46:34.307Z",
+      "photo": ""
     },
     {
       "id": "57927eaa-7d1e-46b9-a3f8-63b440e60211",
@@ -7162,7 +7191,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "89f2d3f5-ecbb-4ce3-a91b-8a5cc11091f6",
@@ -7181,7 +7211,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "86e7f89e-3f4b-45b0-baff-254301f4fb86",
@@ -7200,7 +7231,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "d7a0a71d-8421-4eff-bdcc-e7d324c9ef73",
@@ -7219,7 +7251,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "a625bd01-2e05-4ec5-8e8a-89f8fc29ea58",
@@ -7238,7 +7271,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "9d015ffe-53c0-4ace-8461-89bc5e600d69",
@@ -7257,7 +7291,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "891eecb2-f197-4001-b4ad-7e7ebefaccb0",
@@ -7276,7 +7311,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "f5ab4c39-bda8-4384-bd07-f20088c9f27c",
@@ -7295,7 +7331,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "2b3f4420-15fb-4a73-ae35-eca3fb9d947d",
@@ -7314,7 +7351,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "d5241a79-8026-492b-9216-59d177d5fce4",
@@ -7333,7 +7371,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "2a903765-4e2e-490f-a204-5e4b35795558",
@@ -7372,7 +7411,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "f6ef2c1e-723a-49c5-a98e-ff997419cce0",
@@ -7391,7 +7431,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "9e0a37e2-df33-45c5-89d1-305d0fb26ab1",
@@ -7410,7 +7451,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.308Z",
-      "updatedAt": "2026-06-20T07:46:34.308Z"
+      "updatedAt": "2026-06-20T07:46:34.308Z",
+      "photo": ""
     },
     {
       "id": "3f85b239-0ea3-4e0e-b94d-c1fac0764761",
@@ -7429,7 +7471,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "a36ab391-9001-4bd1-aa4e-b16b294b8abc",
@@ -7448,7 +7491,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "0dffd19d-ef1d-49a1-b785-e7120be63e4e",
@@ -7510,7 +7554,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "45117e8f-88de-484b-bc53-f0b664c44d29",
@@ -7529,7 +7574,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "b7247ded-ebca-4aaf-b396-0fe30ad9cdb2",
@@ -7548,7 +7594,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "3cb65a75-a0f4-4266-a3d9-99d1c3946ac0",
@@ -7567,7 +7614,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "1023aa00-b216-4682-a3e3-3456bb45e9ee",
@@ -7586,7 +7634,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "9317154d-30c5-4ca6-bec9-800cf6dfe58e",
@@ -7605,7 +7654,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "03ef6a75-d9e8-4450-bac7-4f258984bd7d",
@@ -7624,7 +7674,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "5de4b98c-4b17-45b6-96ec-845fb3fbe11c",
@@ -7643,7 +7694,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "a0889551-fb6e-4ebd-9506-74274cdbbdb6",
@@ -7662,7 +7714,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "af89ee24-7d11-43bd-bfaa-467452deece4",
@@ -7681,7 +7734,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.309Z",
-      "updatedAt": "2026-06-20T07:46:34.309Z"
+      "updatedAt": "2026-06-20T07:46:34.309Z",
+      "photo": ""
     },
     {
       "id": "5877dd29-7432-4d54-8fa6-32207eb61e81",
@@ -7700,7 +7754,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "2738cb70-b0bb-4057-856f-8eae566ff22d",
@@ -7719,7 +7774,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "5e24dd3f-0d40-4e3d-9316-27b889661e1d",
@@ -7738,7 +7794,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "3ef6ac96-caa4-4567-aef7-f2c48817cf1c",
@@ -7757,7 +7814,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "2779796c-f482-4811-824c-b9b9a503fc24",
@@ -7776,7 +7834,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "13de5343-919b-4fb2-863c-500cc025adcb",
@@ -7795,7 +7854,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "d5342cc9-c221-4745-bc9e-aad32a7945c2",
@@ -7814,7 +7874,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "486580f2-1b8a-4227-8865-35e63a4df896",
@@ -7833,7 +7894,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "2f408247-656a-40ae-8cd4-de980420cde0",
@@ -7852,7 +7914,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "d92bcf8e-c7f1-4d40-96b4-9989a33bdad0",
@@ -7871,7 +7934,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "557fb83c-9d54-4935-96b8-789799698f55",
@@ -7890,7 +7954,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-20T07:46:34.310Z"
+      "updatedAt": "2026-06-20T07:46:34.310Z",
+      "photo": ""
     },
     {
       "id": "1d0d6c7c-24ed-40c0-a38a-d21eb9dc2914",
@@ -7909,7 +7974,8 @@
       "admissionYear": "2024",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.310Z",
-      "updatedAt": "2026-06-22T08:19:38.740Z"
+      "updatedAt": "2026-06-22T08:19:38.740Z",
+      "photo": ""
     },
     {
       "id": "c13a2eab-c2e1-4bb6-ab94-ac3b19f3516d",
@@ -7948,7 +8014,8 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-21T05:53:02.373Z",
-      "updatedAt": "2026-06-21T05:53:02.373Z"
+      "updatedAt": "2026-06-21T05:53:02.373Z",
+      "photo": ""
     },
     {
       "id": "c3440ab6-3e6f-4a9e-9e42-c3daa013716c",
