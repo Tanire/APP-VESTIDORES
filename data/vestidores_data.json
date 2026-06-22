@@ -7944,6 +7944,25 @@
       "category": "Vestidor",
       "createdAt": "2026-06-21T05:53:02.373Z",
       "updatedAt": "2026-06-21T05:53:02.373Z"
+    },
+    {
+      "id": "c3440ab6-3e6f-4a9e-9e42-c3daa013716c",
+      "name": "LUCAS",
+      "surname1": "BALLESTER",
+      "surname2": "",
+      "dni": "",
+      "birthPlace": "Valencia",
+      "birthDate": "",
+      "addressStreet": "",
+      "addressNum": "",
+      "zipCode": "",
+      "locality": "",
+      "phone": "630108574",
+      "email": "",
+      "admissionYear": "",
+      "category": "Extra",
+      "createdAt": "2026-06-22T09:18:48.593Z",
+      "updatedAt": "2026-06-22T09:18:48.593Z"
     }
   ],
   "ofrenda_folders": []
