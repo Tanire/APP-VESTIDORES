@@ -7965,5 +7965,14 @@
       "updatedAt": "2026-06-22T09:18:48.593Z"
     }
   ],
-  "ofrenda_folders": []
+  "ofrenda_folders": [
+    {
+      "id": "431f1645-fb2d-4d93-b4a6-3304d3b6b7e1",
+      "name": "PRUEBA",
+      "photos": [],
+      "createdAt": "2026-06-22T09:20:18.387Z",
+      "updatedAt": "2026-06-22T09:20:18.387Z",
+      "deleted": false
+    }
+  ]
 }
