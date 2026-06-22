@@ -8036,6 +8036,26 @@
       "createdAt": "2026-06-22T09:18:48.593Z",
       "updatedAt": "2026-06-22T09:18:48.593Z",
       "photo": ""
+    },
+    {
+      "id": "9c530615-9538-4f07-adc7-17ea2df17a58",
+      "name": "Jimmy",
+      "surname1": "Azevedo",
+      "surname2": "Ponce",
+      "dni": "24368823 R",
+      "birthPlace": "París",
+      "birthDate": "1973-07-26",
+      "addressStreet": "Burriana 98",
+      "addressNum": "Urb San Miguel",
+      "zipCode": "46119",
+      "locality": "Valencia",
+      "phone": "",
+      "email": "Gerencia@reciclajesnaldo.es",
+      "admissionYear": "2026",
+      "category": "Vestidor",
+      "createdAt": "2026-06-22T13:23:00.457Z",
+      "updatedAt": "2026-06-22T13:23:00.457Z",
+      "photo": ""
     }
   ],
   "ofrenda_folders": [
