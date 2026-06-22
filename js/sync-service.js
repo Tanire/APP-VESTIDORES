@@ -1,5 +1,5 @@
 /**
- * SyncService - Auto-Sync with GitHub Repository Contents API (Version 0.4.1)
+ * SyncService - Auto-Sync with GitHub Repository Contents API (Version 0.5.0)
  */
 
 const GIT_CONFIG = {
@@ -8,6 +8,17 @@ const GIT_CONFIG = {
     path: "data/vestidores_data.json",
     token: "ghp_" + "tYulJtHQK94SrR81acCU2Mw4LU0Kxb0pnJIH"
 };
+
+function canonicalStringify(obj) {
+    if (obj === null || typeof obj !== 'object') {
+        return JSON.stringify(obj);
+    }
+    if (Array.isArray(obj)) {
+        return '[' + obj.map(canonicalStringify).join(',') + ']';
+    }
+    const keys = Object.keys(obj).sort();
+    return '{' + keys.map(k => JSON.stringify(k) + ':' + canonicalStringify(obj[k])).join(',') + '}';
+}
 
 const SyncService = {
     gitSha: null,
@@ -179,7 +190,12 @@ const SyncService = {
             // 4. Update Local
             this.restoreData(mergedData);
 
-            // 5. Update Cloud
+            // 5. Update Cloud (only if there are actual changes)
+            if (cloudData && canonicalStringify(cloudData) === canonicalStringify(mergedData)) {
+                console.log("SyncService: No changes detected between local and cloud. Skipping commit.");
+                return { success: true };
+            }
+
             const saveResult = await this.saveFile(mergedData);
             return saveResult;
 
