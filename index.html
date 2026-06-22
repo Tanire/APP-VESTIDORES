@@ -142,10 +142,10 @@
                 ⬅ Volver
             </button>
             <div id="import-export-actions" style="display: flex; gap: 0.5rem;">
-              <button class="btn btn-sm btn-secondary" onclick="document.getElementById('import-excel-file').click()">
+              <button id="import-btn" class="btn btn-sm btn-secondary" onclick="document.getElementById('import-excel-file').click()">
                   📥 Importar
               </button>
-              <button class="btn btn-sm btn-secondary" onclick="exportVestidoresToExcel()">
+              <button id="export-btn" class="btn btn-sm btn-secondary" onclick="handleExportClick()">
                   📤 Exportar
               </button>
             </div>
@@ -385,6 +385,46 @@
         </div>
       </div>
 
+      <!-- EXPORT MODAL -->
+      <div id="export-modal" class="modal modal-overlay" style="display: none">
+        <div class="modal-content" style="max-width: 400px; border-left: 4px solid var(--primary);">
+          <h3 style="margin-bottom: 1.5rem; text-align: center;">Exportar Listado</h3>
+          
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label class="form-label" style="font-weight: 600; color: var(--text-main);">Formato de archivo</label>
+            <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+              <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem; border: 2px solid var(--primary); background-color: rgba(27, 54, 93, 0.05); border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s; font-weight: 600;" id="label-format-excel">
+                <input type="radio" name="export-format" value="excel" checked style="display: none;" onchange="updateExportOptionsUI()" />
+                <span>📊 Excel</span>
+              </label>
+              <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem; border: 2px solid #e5e7eb; background-color: transparent; border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s; font-weight: normal;" id="label-format-pdf">
+                <input type="radio" name="export-format" value="pdf" style="display: none;" onchange="updateExportOptionsUI()" />
+                <span>📄 PDF</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label class="form-label" style="font-weight: 600; color: var(--text-main);">Información a incluir</label>
+            <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+              <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem; border: 2px solid var(--primary); background-color: rgba(27, 54, 93, 0.05); border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s; font-weight: 600;" id="label-scope-all">
+                <input type="radio" name="export-scope" value="all" checked style="display: none;" onchange="updateExportOptionsUI()" />
+                <span>📋 Toda la info</span>
+              </label>
+              <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem; border: 2px solid #e5e7eb; background-color: transparent; border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s; font-weight: normal;" id="label-scope-names">
+                <input type="radio" name="export-scope" value="names" style="display: none;" onchange="updateExportOptionsUI()" />
+                <span>👤 Solo nombres</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-buttons" style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: flex-end;">
+            <button class="btn btn-secondary" onclick="closeExportModal()">Cancelar</button>
+            <button class="btn btn-primary" onclick="confirmExport()">Exportar</button>
+          </div>
+        </div>
+      </div>
+
       <footer
         style="
           margin-top: auto;
@@ -410,7 +450,7 @@
             opacity: 0.7;
           "
         >
-          Versión 0.4.6
+          Versión 0.4.7
         </p>
       </footer>
     </div>
@@ -441,6 +481,9 @@
 
     <!-- SheetJS for Excel importing -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <!-- jsPDF and AutoTable for PDF exporting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/notifications.js"></script>
     <script src="js/sync-service.js"></script>

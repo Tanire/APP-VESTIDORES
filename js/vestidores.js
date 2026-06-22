@@ -198,7 +198,13 @@ function renderVestidoresList() {
     
     // UI elements adjustments based on authorization
     const imEx = document.getElementById('import-export-actions');
-    if (imEx) imEx.style.display = auth ? 'flex' : 'none';
+    if (imEx) imEx.style.display = 'flex';
+
+    const importBtn = document.getElementById('import-btn');
+    if (importBtn) importBtn.style.display = auth ? 'inline-flex' : 'none';
+
+    const exportBtn = document.getElementById('export-btn');
+    if (exportBtn) exportBtn.style.display = 'inline-flex';
 
     const fab = document.getElementById('add-person-fab');
     if (fab) fab.style.display = auth ? 'flex' : 'none';
@@ -620,44 +626,247 @@ async function handleExcelImport(event) {
     reader.readAsArrayBuffer(file);
 }
 
+// --- Export Modal & Verification Logic ---
+function handleExportClick() {
+    if (isAuthorized()) {
+        openExportModal();
+    } else {
+        const code = prompt("Introduce el código de seguridad para exportar el listado:");
+        if (code === '250925') {
+            localStorage.setItem('security_code', code);
+            if (typeof Toast !== 'undefined') Toast.success("Acceso verificado. Listado desbloqueado.");
+            renderVestidoresList(); // Refresh list to show stats, full details, etc.
+            openExportModal();
+        } else if (code !== null) {
+            if (typeof Toast !== 'undefined') Toast.error("Código de seguridad incorrecto.");
+        }
+    }
+}
+
+function openExportModal() {
+    const modal = document.getElementById('export-modal');
+    if (modal) {
+        modal.style.display = 'grid';
+        updateExportOptionsUI();
+    }
+}
+
+function closeExportModal() {
+    const modal = document.getElementById('export-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function updateExportOptionsUI() {
+    const formats = document.getElementsByName('export-format');
+    formats.forEach(f => {
+        const label = document.getElementById(`label-format-${f.value}`);
+        if (label) {
+            if (f.checked) {
+                label.style.borderColor = f.value === 'excel' ? 'var(--primary)' : 'var(--secondary)';
+                label.style.backgroundColor = f.value === 'excel' ? 'rgba(27, 54, 93, 0.05)' : 'rgba(197, 160, 89, 0.05)';
+                label.style.fontWeight = '600';
+            } else {
+                label.style.borderColor = '#e5e7eb';
+                label.style.backgroundColor = 'transparent';
+                label.style.fontWeight = 'normal';
+            }
+        }
+    });
+
+    const scopes = document.getElementsByName('export-scope');
+    scopes.forEach(s => {
+        const label = document.getElementById(`label-scope-${s.value}`);
+        if (label) {
+            if (s.checked) {
+                label.style.borderColor = 'var(--primary)';
+                label.style.backgroundColor = 'rgba(27, 54, 93, 0.05)';
+                label.style.fontWeight = '600';
+            } else {
+                label.style.borderColor = '#e5e7eb';
+                label.style.backgroundColor = 'transparent';
+                label.style.fontWeight = 'normal';
+            }
+        }
+    });
+}
+
+function confirmExport() {
+    const formats = document.getElementsByName('export-format');
+    let format = 'excel';
+    for (const f of formats) {
+        if (f.checked) {
+            format = f.value;
+            break;
+        }
+    }
+
+    const scopes = document.getElementsByName('export-scope');
+    let scope = 'all';
+    for (const s of scopes) {
+        if (s.checked) {
+            scope = s.value;
+            break;
+        }
+    }
+
+    closeExportModal();
+
+    if (format === 'excel') {
+        exportVestidoresToExcel(scope);
+    } else {
+        exportVestidoresToPDF(scope);
+    }
+}
+
 // --- Export Logic ---
-function exportVestidoresToExcel() {
+function exportVestidoresToExcel(scope = 'all') {
     const list = StorageService.getVestidores().filter(p => !p.deleted);
     if (list.length === 0) {
-        Toast.warning("No hay datos para exportar.");
+        if (typeof Toast !== 'undefined') Toast.warning("No hay datos para exportar.");
         return;
     }
 
-    // Format data matching column names in Spanish
-    const formattedData = list.map(item => ({
-        'Nombre': item.name || '',
-        'Primer Apellido': item.surname1 || '',
-        'Segundo Apellido': item.surname2 || '',
-        'DNI': item.dni || '',
-        'Nacido En': item.birthPlace || '',
-        'Fecha Nacimiento': item.birthDate ? item.birthDate.split('-').reverse().join('/') : '',
-        'Dirección (Calle)': item.addressStreet || '',
-        'Nº': item.addressNum || '',
-        'Código Postal': item.zipCode || '',
-        'Localidad': item.locality || '',
-        'Teléfono': item.phone || '',
-        'Correo Electrónico': item.email || '',
-        'Año Ingreso': item.admissionYear || '',
-        'Categoría': item.category || 'Vestidor',
-        'Fecha Creación': item.createdAt ? new Date(item.createdAt).toLocaleDateString('es-ES') : ''
-    }));
+    // Sort by Category then Name
+    list.sort((a, b) => {
+        if (a.category !== b.category) return a.category.localeCompare(b.category);
+        const nameA = `${a.name} ${a.surname1} ${a.surname2}`;
+        const nameB = `${b.name} ${b.surname1} ${b.surname2}`;
+        return nameA.localeCompare(nameB);
+    });
+
+    let formattedData;
+    if (scope === 'names') {
+        formattedData = list.map(item => ({
+            'Nombre': item.name || '',
+            'Primer Apellido': item.surname1 || '',
+            'Segundo Apellido': item.surname2 || '',
+            'Categoría': item.category || 'Vestidor'
+        }));
+    } else {
+        formattedData = list.map(item => ({
+            'Nombre': item.name || '',
+            'Primer Apellido': item.surname1 || '',
+            'Segundo Apellido': item.surname2 || '',
+            'DNI': item.dni || '',
+            'Nacido En': item.birthPlace || '',
+            'Fecha Nacimiento': item.birthDate ? item.birthDate.split('-').reverse().join('/') : '',
+            'Dirección (Calle)': item.addressStreet || '',
+            'Nº': item.addressNum || '',
+            'Código Postal': item.zipCode || '',
+            'Localidad': item.locality || '',
+            'Teléfono': item.phone || '',
+            'Correo Electrónico': item.email || '',
+            'Año Ingreso': item.admissionYear || '',
+            'Categoría': item.category || 'Vestidor',
+            'Fecha Creación': item.createdAt ? new Date(item.createdAt).toLocaleDateString('es-ES') : ''
+        }));
+    }
 
     try {
         const ws = XLSX.utils.json_to_sheet(formattedData);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Vestidores");
         
-        // Write file with .xlsx extension using SheetJS
-        XLSX.writeFile(wb, `vestidores_listado_${new Date().toISOString().split('T')[0]}.xlsx`);
-        Toast.success("Listado exportado a Excel (.xlsx).");
+        const scopeStr = scope === 'names' ? 'nombres' : 'toda_info';
+        XLSX.writeFile(wb, `vestidores_listado_${scopeStr}_${new Date().toISOString().split('T')[0]}.xlsx`);
+        if (typeof Toast !== 'undefined') Toast.success("Listado exportado a Excel (.xlsx).");
     } catch (e) {
         console.error(e);
-        Toast.error("Error al exportar a Excel.");
+        if (typeof Toast !== 'undefined') Toast.error("Error al exportar a Excel.");
     }
+}
+
+function exportVestidoresToPDF(scope = 'all') {
+    if (typeof window.jspdf === 'undefined') {
+        if (typeof Toast !== 'undefined') Toast.error("La librería PDF no está disponible. Comprueba tu conexión.");
+        return;
+    }
+
+    const list = StorageService.getVestidores().filter(p => !p.deleted);
+    if (list.length === 0) {
+        if (typeof Toast !== 'undefined') Toast.warning("No hay datos para exportar.");
+        return;
+    }
+
+    // Sort by Category then Name
+    list.sort((a, b) => {
+        if (a.category !== b.category) return a.category.localeCompare(b.category);
+        const nameA = `${a.name} ${a.surname1} ${a.surname2}`;
+        const nameB = `${b.name} ${b.surname1} ${b.surname2}`;
+        return nameA.localeCompare(nameB);
+    });
+
+    const { jsPDF } = window.jspdf;
+    const isNamesOnly = scope === 'names';
+    const doc = new jsPDF(isNamesOnly ? 'p' : 'l', 'mm', 'a4');
+
+    // Header title
+    doc.setFontSize(16);
+    doc.setTextColor(27, 54, 93); // Navy (#1B365D)
+    doc.text('LISTADO DE PERSONAL - VESTIDORES', 14, 15);
+
+    doc.setFontSize(9);
+    doc.setTextColor(107, 114, 128); // Muted gray (#6B7280)
+    const currentDate = new Date().toLocaleDateString('es-ES');
+    const scopeLabel = isNamesOnly ? 'Solo nombres y categoría' : 'Información completa';
+    doc.text(`Fecha de generación: ${currentDate} | Alcance: ${scopeLabel} | Total: ${list.length} personas`, 14, 21);
+
+    // Draw gold line below header
+    doc.setDrawColor(197, 160, 89); // Gold (#C5A059)
+    doc.setLineWidth(0.5);
+    doc.line(14, 24, doc.internal.pageSize.width - 14, 24);
+
+    // Generate table data
+    let headers, rows;
+    if (isNamesOnly) {
+        headers = ['Nombre', 'Primer Apellido', 'Segundo Apellido', 'Categoría'];
+        rows = list.map(item => [
+            item.name || '',
+            item.surname1 || '',
+            item.surname2 || '',
+            item.category || 'Vestidor'
+        ]);
+    } else {
+        headers = ['Nombre', 'Primer Apellido', 'Segundo Apellido', 'DNI', 'Categoría', 'Teléfono', 'Dirección', 'Localidad', 'Nacimiento', 'Ingreso'];
+        rows = list.map(item => [
+            item.name || '',
+            item.surname1 || '',
+            item.surname2 || '',
+            item.dni || '',
+            item.category || 'Vestidor',
+            item.phone || '',
+            (item.addressStreet || '') + (item.addressNum ? ' ' + item.addressNum : ''),
+            (item.locality || ''),
+            (item.birthDate ? item.birthDate.split('-').reverse().join('/') : '') + (item.birthPlace ? ' (' + item.birthPlace + ')' : ''),
+            item.admissionYear || ''
+        ]);
+    }
+
+    doc.autoTable({
+        head: [headers],
+        body: rows,
+        startY: 28,
+        theme: 'striped',
+        headStyles: { 
+            fillColor: [27, 54, 93], // Navy
+            textColor: [255, 255, 255],
+            fontStyle: 'bold'
+        },
+        alternateRowStyles: {
+            fillColor: [249, 250, 251]
+        },
+        styles: { 
+            font: 'helvetica', 
+            fontSize: isNamesOnly ? 10 : 8,
+            cellPadding: 3
+        },
+        margin: { left: 14, right: 14 }
+    });
+
+    const scopeStr = isNamesOnly ? 'nombres' : 'toda_info';
+    doc.save(`vestidores_listado_${scopeStr}_${new Date().toISOString().split('T')[0]}.pdf`);
+    if (typeof Toast !== 'undefined') Toast.success("Listado exportado a PDF (.pdf).");
 }
 
