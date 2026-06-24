@@ -999,8 +999,8 @@ h3 {
   user-select: none;
 }
 
-.manto-pin:hover {
-  transform: translate(-50%, -50%) scale(1.15);
+.manto-pin:hover, .manto-pin.active {
+  transform: translate(-50%, -50%) scale(1.18);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
   z-index: 105;
 }

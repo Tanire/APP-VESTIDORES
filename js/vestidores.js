@@ -198,8 +198,8 @@ function compressPortraitImage(file, callback) {
         const img = new Image();
         img.onload = function() {
             const canvas = document.createElement('canvas');
-            const targetWidth = 240;
-            const targetHeight = 320;
+            const targetWidth = 480;
+            const targetHeight = 640;
             canvas.width = targetWidth;
             canvas.height = targetHeight;
             const ctx = canvas.getContext('2d');

@@ -75,6 +75,8 @@ function showSection(sectionId) {
   document.getElementById("ofrenda-section").style.display = "none";
   document.getElementById("vestidores-section").style.display = "none";
   document.getElementById("vestidores-list-view").style.display = "none";
+  const posView = document.getElementById("vestidores-posiciones-view");
+  if (posView) posView.style.display = "none";
 
   // Show requested section
   const section = document.getElementById(sectionId);
@@ -93,6 +95,8 @@ function showMainMenu() {
   document.getElementById("ofrenda-section").style.display = "none";
   document.getElementById("vestidores-section").style.display = "none";
   document.getElementById("vestidores-list-view").style.display = "none";
+  const posView = document.getElementById("vestidores-posiciones-view");
+  if (posView) posView.style.display = "none";
 
   // Show main menu
   document.getElementById("main-menu").style.display = "grid"; // Restore grid display
