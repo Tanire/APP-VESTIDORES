@@ -1,4 +1,4 @@
-const APP_VERSION = 'v0.5.3';
+const APP_VERSION = 'v0.5.5';
 const CHANGELOG = [
   "Mejora en la resolución de las fotos al guardarlas (480x640) para que se vean súper nítidas.",
   "Los pines del mando ahora muestran la foto en forma circular (o las iniciales si no hay foto).",
