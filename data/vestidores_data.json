@@ -7055,8 +7055,12 @@
       "admissionYear": "",
       "category": "Vestidor",
       "createdAt": "2026-06-20T07:46:34.307Z",
-      "updatedAt": "2026-06-20T07:46:34.307Z",
-      "photo": ""
+      "updatedAt": "2026-06-24T11:39:13.856Z",
+      "photo": "",
+      "position": {
+        "x": 78.95,
+        "y": 60.79
+      }
     },
     {
       "id": "78b9a920-cdc7-4438-beb7-dc59fee1c876",
