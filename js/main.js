@@ -200,5 +200,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (document.getElementById('vestidores-list-view').style.display !== 'none') {
           renderVestidoresList();
       }
+      const posView = document.getElementById('vestidores-posiciones-view');
+      if (posView && posView.style.display !== 'none') {
+          renderPosiciones();
+      }
   });
 });

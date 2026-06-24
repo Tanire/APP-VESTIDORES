@@ -25,24 +25,6 @@ function renderOfrendaFolders() {
     if (!container) return;
 
     const authorized = isOfrendaAuthorized();
-
-    if (!authorized) {
-        // Locked card placeholder
-        container.innerHTML = `
-            <div class="card" style="text-align: center; padding: 2rem 1.5rem; border-left: 4px solid var(--accent); background: var(--bg-card);">
-                <div style="font-size: 3rem; margin-bottom: 0.75rem;">🔒</div>
-                <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">Carpetas de Fotos Protegidas</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; max-width: 320px; margin-left: auto; margin-right: auto;">
-                    Introduce el código de verificación en Ajustes para poder visualizar y gestionar las carpetas de fotos.
-                </p>
-                <button class="btn btn-primary btn-sm" onclick="navigateTo('settings.html')">
-                    Ir a Ajustes
-                </button>
-            </div>
-        `;
-        return;
-    }
-
     const folders = StorageService.get('ofrenda_folders', []);
 
     // Filter out deleted folders
@@ -52,14 +34,16 @@ function renderOfrendaFolders() {
         // --- 1. Folders List View ---
         let folderCardsHtml = '';
         
-        // Add new folder card button
-        folderCardsHtml += `
-            <div class="folder-card" style="border: 2px dashed #d1d5db; background: transparent; display: flex; justify-content: center;" onclick="openFolderModal()">
-                <div class="folder-card-icon" style="color: var(--text-muted);">➕</div>
-                <div class="folder-card-title" style="color: var(--text-muted);">Añadir Carpeta</div>
-                <div class="folder-card-count">Crear nueva</div>
-            </div>
-        `;
+        // Add new folder card button only if authorized (admin)
+        if (authorized) {
+            folderCardsHtml += `
+                <div class="folder-card" style="border: 2px dashed #d1d5db; background: transparent; display: flex; justify-content: center;" onclick="openFolderModal()">
+                    <div class="folder-card-icon" style="color: var(--text-muted);">➕</div>
+                    <div class="folder-card-title" style="color: var(--text-muted);">Añadir Carpeta</div>
+                    <div class="folder-card-count">Crear nueva</div>
+                </div>
+            `;
+        }
 
         activeFolders.forEach(folder => {
             const photoCount = folder.photos ? folder.photos.filter(p => !p.deleted).length : 0;
@@ -72,11 +56,16 @@ function renderOfrendaFolders() {
                 iconHtml = `<div class="folder-card-thumbnail" style="background-image: url('${activePhotos[0].base64}');" onclick="event.stopPropagation(); openLightbox('${activePhotos[0].base64}')" title="Haga clic en la foto para ampliar"></div>`;
             }
             
+            // Only show delete button for authorized admins
+            const deleteBtnHtml = authorized ? `
+                <button class="folder-delete-btn" title="Eliminar Carpeta" onclick="event.stopPropagation(); deleteFolder('${folder.id}')">
+                    &times;
+                </button>
+            ` : '';
+            
             folderCardsHtml += `
                 <div class="folder-card" onclick="openFolder('${folder.id}')">
-                    <button class="folder-delete-btn" title="Eliminar Carpeta" onclick="event.stopPropagation(); deleteFolder('${folder.id}')">
-                        &times;
-                    </button>
+                    ${deleteBtnHtml}
                     ${iconHtml}
                     <div class="folder-card-title">${folder.name}</div>
                     <div class="folder-card-count">${photoCount} fotos</div>
@@ -106,23 +95,38 @@ function renderOfrendaFolders() {
 
         let photosHtml = '';
         activePhotos.forEach(photo => {
+            // Only show delete button for authorized admins
+            const deleteBtnHtml = authorized ? `
+                <button class="photo-delete-btn" title="Eliminar Foto" onclick="event.stopPropagation(); deletePhoto('${folder.id}', '${photo.id}')">
+                    &times;
+                </button>
+            ` : '';
+
             photosHtml += `
                 <div class="photo-card" onclick="openLightbox('${photo.base64}')">
-                    <button class="photo-delete-btn" title="Eliminar Foto" onclick="event.stopPropagation(); deletePhoto('${folder.id}', '${photo.id}')">
-                        &times;
-                    </button>
+                    ${deleteBtnHtml}
                     <img src="${photo.base64}" alt="Photo" loading="lazy" />
                 </div>
             `;
         });
 
         if (activePhotos.length === 0) {
+            const emptyMsg = authorized 
+                ? "No hay fotos en esta carpeta. ¡Sube tu primera foto!" 
+                : "No hay fotos en esta carpeta.";
             photosHtml = `
                 <div style="grid-column: span 12; text-align: center; padding: 3rem 1.5rem; color: var(--text-muted); font-style: italic;">
-                    No hay fotos en esta carpeta. ¡Sube tu primera foto!
+                    ${emptyMsg}
                 </div>
             `;
         }
+
+        // Only show upload button for authorized admins
+        const uploadBtnHtml = authorized ? `
+            <button class="btn btn-primary btn-sm" style="padding: 0.5rem 1rem;" onclick="triggerPhotoUpload()">
+                📤 Subir Foto
+            </button>
+        ` : '';
 
         container.innerHTML = `
             <div class="photo-gallery-header">
@@ -134,9 +138,7 @@ function renderOfrendaFolders() {
                         📁 ${folder.name}
                     </h3>
                 </div>
-                <button class="btn btn-primary btn-sm" style="padding: 0.5rem 1rem;" onclick="triggerPhotoUpload()">
-                    📤 Subir Foto
-                </button>
+                ${uploadBtnHtml}
             </div>
             
             <div class="photo-grid">
@@ -148,6 +150,10 @@ function renderOfrendaFolders() {
 
 // --- Folder Management ---
 function openFolderModal() {
+    if (!isOfrendaAuthorized()) {
+        if (typeof Toast !== 'undefined') Toast.error("No tienes permisos para realizar esta acción");
+        return;
+    }
     document.getElementById('of-folder-name').value = '';
     document.getElementById('add-folder-modal').style.display = 'grid';
 }
@@ -157,6 +163,10 @@ function closeFolderModal() {
 }
 
 function createNewFolder() {
+    if (!isOfrendaAuthorized()) {
+        if (typeof Toast !== 'undefined') Toast.error("No tienes permisos para realizar esta acción");
+        return;
+    }
     const nameInput = document.getElementById('of-folder-name');
     const name = nameInput.value.trim();
 
@@ -194,6 +204,10 @@ function createNewFolder() {
 }
 
 function deleteFolder(id) {
+    if (!isOfrendaAuthorized()) {
+        if (typeof Toast !== 'undefined') Toast.error("No tienes permisos para realizar esta acción");
+        return;
+    }
     if (confirm("¿Estás seguro de que quieres eliminar esta carpeta y todas sus fotos?")) {
         const folders = StorageService.get('ofrenda_folders', []);
         const index = folders.findIndex(f => f.id === id);
@@ -224,11 +238,19 @@ function goBackToFolders() {
 
 // --- Photo Upload & Compression ---
 function triggerPhotoUpload() {
+    if (!isOfrendaAuthorized()) {
+        if (typeof Toast !== 'undefined') Toast.error("No tienes permisos para realizar esta acción");
+        return;
+    }
     const fileInput = document.getElementById('upload-photo-input');
     if (fileInput) fileInput.click();
 }
 
 function handlePhotoUpload(event) {
+    if (!isOfrendaAuthorized()) {
+        if (typeof Toast !== 'undefined') Toast.error("No tienes permisos para realizar esta acción");
+        return;
+    }
     const file = event.target.files[0];
     if (!file) return;
 
@@ -306,6 +328,10 @@ function compressImage(file, callback) {
 }
 
 function deletePhoto(folderId, photoId) {
+    if (!isOfrendaAuthorized()) {
+        if (typeof Toast !== 'undefined') Toast.error("No tienes permisos para realizar esta acción");
+        return;
+    }
     if (confirm("¿Estás seguro de que quieres eliminar esta foto?")) {
         const folders = StorageService.get('ofrenda_folders', []);
         const index = folders.findIndex(f => f.id === folderId);

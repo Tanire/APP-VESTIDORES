@@ -1005,3 +1005,315 @@ function exportVestidoresToPDF(scope = 'all') {
     if (typeof Toast !== 'undefined') Toast.success("Listado exportado a PDF (.pdf).");
 }
 
+// --- Posiciones Feature Global State (v0.6.0) ---
+let currentZoom = 1;
+const ZOOM_STEP = 0.2;
+const MIN_ZOOM = 0.5;
+const MAX_ZOOM = 3.0;
+
+let isPanning = false;
+let panStart = { x: 0, y: 0 };
+let currentPan = { x: 0, y: 0 };
+
+function initPosicionesView() {
+    const authorized = isAuthorized();
+    
+    // Hide or show admin-only buttons (upload and reset manto image)
+    const uploadBtn = document.getElementById('upload-manto-btn');
+    const resetBtn = document.getElementById('reset-manto-btn');
+    const sidebar = document.getElementById('posiciones-sidebar');
+    
+    if (authorized) {
+        if (uploadBtn) uploadBtn.style.display = 'inline-block';
+        if (resetBtn) resetBtn.style.display = 'inline-block';
+        if (sidebar) sidebar.style.display = 'flex';
+    } else {
+        if (uploadBtn) uploadBtn.style.display = 'none';
+        if (resetBtn) resetBtn.style.display = 'none';
+        if (sidebar) sidebar.style.display = 'none';
+    }
+
+    // Load Manto Image
+    loadMantoImage();
+
+    // Reset zoom and pan
+    resetZoomManto();
+
+    // Render pins and list
+    renderPosiciones();
+
+    // Set up dragging/panning events on the manto viewport
+    setupMantoViewportEvents();
+}
+
+function loadMantoImage() {
+    const imgEl = document.getElementById('manto-image');
+    if (!imgEl) return;
+
+    const customManto = localStorage.getItem('manto_image_custom');
+    if (customManto) {
+        imgEl.src = customManto;
+    } else {
+        imgEl.src = 'assets/manto_placeholder.png';
+    }
+}
+
+function resetMantoImage() {
+    if (!isAuthorized()) return;
+    if (confirm('¿Estás seguro de que quieres restaurar la imagen por defecto del manto?')) {
+        localStorage.removeItem('manto_image_custom');
+        loadMantoImage();
+        if (typeof Toast !== 'undefined') Toast.success('Imagen del manto restaurada.');
+    }
+}
+
+function handleMantoUpload(event) {
+    if (!isAuthorized()) return;
+    const file = event.target.files[0];
+    if (!file) return;
+
+    if (typeof Toast !== 'undefined') Toast.info('Cargando y optimizando imagen del manto...');
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            let width = img.width;
+            let height = img.height;
+            const max_size = 1200; // Limit dimensions to 1200px maximum for mantle
+
+            if (width > height) {
+                if (width > max_size) {
+                    height = Math.round(height * max_size / width);
+                    width = max_size;
+                }
+            } else {
+                if (height > max_size) {
+                    width = Math.round(width * max_size / height);
+                    height = max_size;
+                }
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+
+            const base64 = canvas.toDataURL('image/jpeg', 0.8);
+            try {
+                localStorage.setItem('manto_image_custom', base64);
+                loadMantoImage();
+                if (typeof Toast !== 'undefined') Toast.success('Imagen del manto actualizada correctamente.');
+            } catch (err) {
+                if (typeof Toast !== 'undefined') Toast.error('La imagen es demasiado grande para guardar localmente.');
+                console.error(err);
+            }
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    event.target.value = ''; // Reset
+}
+
+function updateZoomTransform() {
+    const container = document.getElementById('manto-zoom-container');
+    if (!container) return;
+    container.style.transform = `scale(${currentZoom}) translate(${currentPan.x}px, ${currentPan.y}px)`;
+}
+
+function zoomInManto() {
+    currentZoom = Math.min(MAX_ZOOM, currentZoom + ZOOM_STEP);
+    updateZoomTransform();
+}
+
+function zoomOutManto() {
+    currentZoom = Math.max(MIN_ZOOM, currentZoom - ZOOM_STEP);
+    updateZoomTransform();
+}
+
+function resetZoomManto() {
+    currentZoom = 1;
+    currentPan = { x: 0, y: 0 };
+    updateZoomTransform();
+}
+
+function setupMantoViewportEvents() {
+    const viewport = document.getElementById('manto-viewport');
+    const container = document.getElementById('manto-zoom-container');
+    if (!viewport || !container) return;
+
+    viewport.onmousedown = function(e) {
+        if (e.target.closest('.manto-pin') || e.target.closest('button')) return;
+        
+        isPanning = true;
+        viewport.style.cursor = 'grabbing';
+        panStart.x = e.clientX - currentPan.x * currentZoom;
+        panStart.y = e.clientY - currentPan.y * currentZoom;
+    };
+
+    window.onmousemove = function(e) {
+        if (!isPanning) return;
+        currentPan.x = (e.clientX - panStart.x) / currentZoom;
+        currentPan.y = (e.clientY - panStart.y) / currentZoom;
+        updateZoomTransform();
+    };
+
+    window.onmouseup = function() {
+        if (isPanning) {
+            isPanning = false;
+            viewport.style.cursor = 'grab';
+        }
+    };
+
+    // Touch support for panning
+    viewport.ontouchstart = function(e) {
+        if (e.target.closest('.manto-pin') || e.target.closest('button')) return;
+        if (e.touches.length === 1) {
+            isPanning = true;
+            const touch = e.touches[0];
+            panStart.x = touch.clientX - currentPan.x * currentZoom;
+            panStart.y = touch.clientY - currentPan.y * currentZoom;
+        }
+    };
+
+    viewport.ontouchmove = function(e) {
+        if (!isPanning) return;
+        if (e.touches.length === 1) {
+            const touch = e.touches[0];
+            currentPan.x = (touch.clientX - panStart.x) / currentZoom;
+            currentPan.y = (touch.clientY - panStart.y) / currentZoom;
+            updateZoomTransform();
+        }
+    };
+
+    viewport.ontouchend = function() {
+        isPanning = false;
+    };
+
+    const pinsContainer = document.getElementById('pins-container');
+    if (pinsContainer) {
+        pinsContainer.ondragover = function(e) {
+            e.preventDefault();
+        };
+
+        pinsContainer.ondrop = function(e) {
+            e.preventDefault();
+            const authorized = isAuthorized();
+            if (!authorized) return;
+
+            const vestidorId = e.dataTransfer.getData('text/plain');
+            if (!vestidorId) return;
+
+            const rect = pinsContainer.getBoundingClientRect();
+            const xPx = (e.clientX - rect.left);
+            const yPx = (e.clientY - rect.top);
+            
+            const xPercent = parseFloat(((xPx / rect.width) * 100).toFixed(2));
+            const yPercent = parseFloat(((yPx / rect.height) * 100).toFixed(2));
+
+            placeVestidor(vestidorId, xPercent, yPercent);
+        };
+    }
+}
+
+function renderPosiciones() {
+    const authorized = isAuthorized();
+    const list = StorageService.getVestidores();
+    const activeVestidores = list.filter(p => !p.deleted);
+
+    // 1. Render Pins on the mantle
+    const pinsContainer = document.getElementById('pins-container');
+    if (pinsContainer) {
+        pinsContainer.innerHTML = '';
+        activeVestidores.forEach(person => {
+            if (person.position && person.position.x !== undefined && person.position.y !== undefined) {
+                const pin = document.createElement('div');
+                pin.className = 'manto-pin' + (authorized ? '' : ' read-only');
+                pin.style.left = person.position.x + '%';
+                pin.style.top = person.position.y + '%';
+                pin.innerHTML = `${person.name} ${person.surname1 || ''}`;
+
+                if (authorized) {
+                    pin.draggable = true;
+                    
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'pin-remove-btn';
+                    removeBtn.innerHTML = '&times;';
+                    removeBtn.title = 'Quitar posición';
+                    removeBtn.onclick = function(e) {
+                        e.stopPropagation();
+                        unplaceVestidor(person.id);
+                    };
+                    pin.appendChild(removeBtn);
+
+                    pin.ondragstart = function(e) {
+                        e.dataTransfer.setData('text/plain', person.id);
+                    };
+                }
+
+                pinsContainer.appendChild(pin);
+            }
+        });
+    }
+
+    // 2. Render Unpositioned List in sidebar (only if authorized/admin)
+    const unpositionedList = document.getElementById('unpositioned-list');
+    if (unpositionedList) {
+        unpositionedList.innerHTML = '';
+        
+        const unpositioned = activeVestidores.filter(person => !person.position || person.position.x === undefined);
+        
+        if (unpositioned.length === 0) {
+            unpositionedList.innerHTML = '<div style="text-align: center; color: var(--text-muted); font-style: italic; font-size: 0.8rem; padding: 1rem;">Todos posicionados</div>';
+        } else {
+            unpositioned.forEach(person => {
+                const item = document.createElement('div');
+                item.className = 'unpositioned-item';
+                item.innerHTML = `${person.name} ${person.surname1 || ''}`;
+                
+                if (authorized) {
+                    item.draggable = true;
+                    item.ondragstart = function(e) {
+                        e.dataTransfer.setData('text/plain', person.id);
+                    };
+                    
+                    item.onclick = function() {
+                        placeVestidor(person.id, 50, 50);
+                    };
+                }
+                unpositionedList.appendChild(item);
+            });
+        }
+    }
+}
+
+function placeVestidor(id, x, y) {
+    if (!isAuthorized()) return;
+    const list = StorageService.getVestidores();
+    const index = list.findIndex(p => p.id === id);
+    if (index !== -1) {
+        list[index].position = { x, y };
+        list[index].updatedAt = new Date().toISOString();
+        StorageService.saveVestidores(list);
+        renderPosiciones();
+        
+        if (typeof checkAutoSync !== 'undefined') checkAutoSync();
+    }
+}
+
+function unplaceVestidor(id) {
+    if (!isAuthorized()) return;
+    const list = StorageService.getVestidores();
+    const index = list.findIndex(p => p.id === id);
+    if (index !== -1) {
+        delete list[index].position;
+        list[index].updatedAt = new Date().toISOString();
+        StorageService.saveVestidores(list);
+        renderPosiciones();
+        
+        if (typeof checkAutoSync !== 'undefined') checkAutoSync();
+    }
+}
+
+

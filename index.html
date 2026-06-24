@@ -128,7 +128,7 @@
             <div class="menu-icon">📋</div>
             <div class="menu-title">LISTADO</div>
           </div>
-          <div class="menu-card" onclick="alert('Posiciones en desarrollo')">
+          <div class="menu-card" onclick="showSection('vestidores-posiciones-view'); initPosicionesView();">
             <div class="menu-icon">📍</div>
             <div class="menu-title">POSICIONES</div>
           </div>
@@ -211,6 +211,51 @@
         <button id="add-person-fab" class="fab-btn" onclick="openAddModal()">
           +
         </button>
+      </div>
+
+      <!-- VESTIDORES POSICIONES VIEW (Hidden by default) (v0.6.0) -->
+      <div id="vestidores-posiciones-view" style="display: none">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+          <button class="btn btn-secondary back-button" style="margin-bottom: 0;" onclick="showSection('vestidores-section')">
+              ⬅ Volver
+          </button>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <!-- Admin image upload controls -->
+            <button id="upload-manto-btn" class="btn btn-sm btn-secondary" onclick="document.getElementById('manto-file-input').click()" style="display: none;">
+              🖼️ Subir Manto
+            </button>
+            <button id="reset-manto-btn" class="btn btn-sm btn-secondary" onclick="resetMantoImage()" style="display: none;">
+              ⟳ Restaurar Manto
+            </button>
+            <input type="file" id="manto-file-input" accept="image/*" style="display: none;" onchange="handleMantoUpload(event)" />
+            
+            <button class="btn btn-sm btn-primary" onclick="zoomInManto()">🔍+</button>
+            <button class="btn btn-sm btn-primary" onclick="zoomOutManto()">🔍-</button>
+            <button class="btn btn-sm btn-secondary" onclick="resetZoomManto()">⟳ Ajustar</button>
+          </div>
+        </div>
+
+        <h2 style="margin-bottom: 1.5rem; text-align: center">Posiciones en el Manto</h2>
+        
+        <div class="posiciones-layout">
+          <!-- Left side: The viewport/canvas with the mantle image -->
+          <div class="manto-viewport" id="manto-viewport">
+            <div class="manto-zoom-container" id="manto-zoom-container">
+              <img id="manto-image" src="assets/manto_placeholder.png" alt="Manto de la Virgen" />
+              <div id="pins-container" class="pins-overlay"></div>
+            </div>
+          </div>
+          
+          <!-- Right side: Sidebar of unpositioned vestidores -->
+          <div class="posiciones-sidebar" id="posiciones-sidebar">
+            <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">
+              Vestidores sin Posición
+            </h3>
+            <div id="unpositioned-list" class="unpositioned-list-container">
+              <!-- Unpositioned vestidores will be injected here -->
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- ADD PERSON MODAL -->
@@ -450,7 +495,7 @@
             opacity: 0.7;
           "
         >
-          Versión 0.5.0
+          Versión 0.6.0
         </p>
       </footer>
     </div>

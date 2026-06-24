@@ -910,4 +910,181 @@ h3 {
   background: #dc2626;
 }
 
+/* --- Posiciones Manto Styles (v0.6.0) --- */
+.posiciones-layout {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  min-height: 600px;
+}
+
+@media (max-width: 768px) {
+  .posiciones-layout {
+    flex-direction: column-reverse;
+    min-height: auto;
+  }
+}
+
+.manto-viewport {
+  flex: 3;
+  position: relative;
+  background-color: #0c1524;
+  border-radius: var(--radius-lg);
+  border: 1px solid #1e293b;
+  overflow: hidden;
+  height: 600px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .manto-viewport {
+    height: 400px;
+  }
+}
+
+.manto-zoom-container {
+  position: relative;
+  transform-origin: center center;
+  transition: transform 0.15s ease-out;
+  cursor: grab;
+  user-select: none;
+  display: inline-block;
+}
+
+.manto-zoom-container:active {
+  cursor: grabbing;
+}
+
+#manto-image {
+  max-width: 100%;
+  max-height: 580px;
+  display: block;
+  pointer-events: none; /* Let drag events pass through to container */
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 768px) {
+  #manto-image {
+    max-height: 380px;
+  }
+}
+
+.pins-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.manto-pin {
+  position: absolute;
+  transform: translate(-50%, -50%); /* Center pin on coordinate */
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid #c5a059; /* Gold border */
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.5rem;
+  color: #f8fafc;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  z-index: 100;
+  transition: background-color 0.2s, transform 0.1s;
+  cursor: grab;
+}
+
+.manto-pin:active {
+  cursor: grabbing;
+}
+
+.manto-pin.read-only {
+  cursor: default;
+}
+
+.pin-remove-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.pin-remove-btn:hover {
+  color: #f87171;
+}
+
+.posiciones-sidebar {
+  flex: 1;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid #e5e7eb;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  max-height: 600px;
+}
+
+@media (max-width: 768px) {
+  .posiciones-sidebar {
+    max-height: 300px;
+  }
+}
+
+.unpositioned-list-container {
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding-right: 0.25rem;
+}
+
+.unpositioned-item {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-main);
+  cursor: grab;
+  transition: background-color 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.unpositioned-item:active {
+  cursor: grabbing;
+}
+
+.unpositioned-item:hover {
+  background: #f1f5f9;
+  border-color: var(--primary);
+}
+
+.unpositioned-item::before {
+  content: "☰";
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
 
