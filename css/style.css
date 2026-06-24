@@ -101,6 +101,16 @@ h3 {
   transform: scale(0.98);
 }
 
+.btn:disabled, .btn.btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: #f3f4f6 !important;
+  color: #9ca3af !important;
+  border-color: #e5e7eb !important;
+  box-shadow: none !important;
+}
+
 .btn-primary {
   background: linear-gradient(
     135deg,

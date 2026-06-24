@@ -213,6 +213,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (exportBtn && importBtn && importFile) {
         exportBtn.addEventListener('click', () => {
+            if (localStorage.getItem('security_code') !== '250925') {
+                if (typeof Toast !== 'undefined') Toast.error("Acción denegada: Solo el administrador puede exportar copias de seguridad.");
+                return;
+            }
             const data = SyncService.getAllLocalData();
             const str = JSON.stringify(data, null, 2);
             const blob = new Blob([str], { type: 'application/json' });
@@ -221,12 +225,22 @@ document.addEventListener('DOMContentLoaded', () => {
             a.href = url;
             a.download = `backup_vestidores_${new Date().toISOString().split('T')[0]}.json`;
             a.click();
-            Toast.success("Copia local exportada.");
+            if (typeof Toast !== 'undefined') Toast.success("Copia local exportada.");
         });
 
-        importBtn.addEventListener('click', () => importFile.click());
+        importBtn.addEventListener('click', () => {
+            if (localStorage.getItem('security_code') !== '250925') {
+                if (typeof Toast !== 'undefined') Toast.error("Acción denegada: Solo el administrador puede importar copias de seguridad.");
+                return;
+            }
+            importFile.click();
+        });
 
         importFile.addEventListener('change', (e) => {
+            if (localStorage.getItem('security_code') !== '250925') {
+                if (typeof Toast !== 'undefined') Toast.error("Acción denegada: Solo el administrador puede importar copias de seguridad.");
+                return;
+            }
             const file = e.target.files[0];
             if (!file) return;
             const reader = new FileReader();
@@ -235,9 +249,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const data = JSON.parse(ev.target.result);
                     SyncService.restoreData(data);
                     window.dispatchEvent(new Event("storage-updated"));
-                    Toast.success('Copia de seguridad restaurada correctamente.');
+                    if (typeof Toast !== 'undefined') Toast.success('Copia de seguridad restaurada correctamente.');
                 } catch (err) { 
-                    Toast.error('Archivo JSON inválido.'); 
+                    if (typeof Toast !== 'undefined') Toast.error('Archivo JSON inválido.'); 
                 }
             };
             reader.readAsText(file);

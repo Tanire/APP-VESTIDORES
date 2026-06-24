@@ -1,9 +1,28 @@
-const APP_VERSION = 'v0.5.5';
+// Clear admin security code at startup/initialization to ensure we start in read-only mode
+if (localStorage.getItem('security_code') === '250925') {
+  localStorage.removeItem('security_code');
+}
+
+// Clear admin mode when exiting/leaving the app (visibility hidden, pagehide)
+function clearAdminMode() {
+  if (localStorage.getItem('security_code') === '250925') {
+    localStorage.removeItem('security_code');
+    window.dispatchEvent(new Event("storage-updated"));
+  }
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    clearAdminMode();
+  }
+});
+
+window.addEventListener('pagehide', clearAdminMode);
+
+const APP_VERSION = 'v0.6.1';
 const CHANGELOG = [
-  "Mejora en la resolución de las fotos al guardarlas (480x640) para que se vean súper nítidas.",
-  "Los pines del mando ahora muestran la foto en forma circular (o las iniciales si no hay foto).",
-  "Al tocar o hacer clic en una foto del mando, aparecerá su nombre en un globo flotante.",
-  "Solucionado el fallo visual que dejaba el mapa debajo del menú principal al volver atrás."
+  "Medidas de seguridad incrementadas: El modo administrador no se conserva al cerrar, minimizar o salir de la aplicación.",
+  "Restricción de seguridad: Solo el administrador puede exportar e importar copias de seguridad locales de los datos."
 ];
 
 function checkAppUpdate() {
@@ -197,36 +216,64 @@ document.addEventListener('DOMContentLoaded', () => {
   const verificationInput = document.getElementById('verification-code-input');
   const codeFeedback = document.getElementById('code-feedback');
 
-  if (verifyCodeBtn && verificationInput && codeFeedback) {
+  function updateSecurityUI() {
     const savedCode = localStorage.getItem('security_code') || '';
-    verificationInput.value = savedCode;
-    
-    if (savedCode === '250925') {
-      codeFeedback.textContent = '¡Código verificado! Datos completos desbloqueados.';
-      codeFeedback.style.color = '#10B981'; // Green
-    } else if (savedCode) {
-      codeFeedback.textContent = 'Código incorrecto. Los datos permanecen protegidos.';
-      codeFeedback.style.color = '#EF4444'; // Red
-    } else {
-      codeFeedback.textContent = 'Datos protegidos (Solo lectura de nombres).';
-      codeFeedback.style.color = '#F59E0B'; // Amber
+    const isAdmin = savedCode === '250925';
+    const exportBtn = document.getElementById('export-json-btn');
+    const importBtn = document.getElementById('import-json-btn');
+
+    if (verificationInput) {
+      verificationInput.value = savedCode;
     }
 
+    if (codeFeedback) {
+      if (isAdmin) {
+        codeFeedback.textContent = '¡Código verificado! Datos completos desbloqueados.';
+        codeFeedback.style.color = '#10B981'; // Green
+      } else if (savedCode) {
+        codeFeedback.textContent = 'Código incorrecto. Los datos permanecen protegidos.';
+        codeFeedback.style.color = '#EF4444'; // Red
+      } else {
+        codeFeedback.textContent = 'Datos protegidos (Solo lectura de nombres).';
+        codeFeedback.style.color = '#F59E0B'; // Amber
+      }
+    }
+
+    if (exportBtn) {
+      exportBtn.disabled = !isAdmin;
+      exportBtn.title = isAdmin ? '' : 'Solo el usuario administrador puede exportar la copia de seguridad.';
+      if (!isAdmin) {
+        exportBtn.classList.add('btn-disabled');
+      } else {
+        exportBtn.classList.remove('btn-disabled');
+      }
+    }
+
+    if (importBtn) {
+      importBtn.disabled = !isAdmin;
+      importBtn.title = isAdmin ? '' : 'Solo el usuario administrador puede importar la copia de seguridad.';
+      if (!isAdmin) {
+        importBtn.classList.add('btn-disabled');
+      } else {
+        importBtn.classList.remove('btn-disabled');
+      }
+    }
+  }
+
+  // Initial Security UI Update
+  updateSecurityUI();
+
+  if (verifyCodeBtn && verificationInput && codeFeedback) {
     verifyCodeBtn.addEventListener('click', () => {
       const enteredCode = verificationInput.value.trim();
       localStorage.setItem('security_code', enteredCode);
+      window.dispatchEvent(new Event("storage-updated"));
       
       if (enteredCode === '250925') {
-        codeFeedback.textContent = '¡Código verificado correctamente! Datos desbloqueados.';
-        codeFeedback.style.color = '#10B981';
         if (typeof Toast !== 'undefined') Toast.success('Acceso desbloqueado');
       } else if (enteredCode === '') {
-        codeFeedback.textContent = 'Datos protegidos (Solo lectura de nombres).';
-        codeFeedback.style.color = '#F59E0B';
         if (typeof Toast !== 'undefined') Toast.info('Código eliminado. Datos bloqueados.');
       } else {
-        codeFeedback.textContent = 'Código incorrecto. Los datos permanecen protegidos.';
-        codeFeedback.style.color = '#EF4444';
         if (typeof Toast !== 'undefined') Toast.error('Código incorrecto');
       }
     });
@@ -238,7 +285,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Global Event Listeners ---
   window.addEventListener('storage-updated', () => {
       console.log('Storage updated, refreshing views...');
-      if (document.getElementById('vestidores-list-view').style.display !== 'none') {
+      updateSecurityUI();
+      const listView = document.getElementById('vestidores-list-view');
+      if (listView && listView.style.display !== 'none') {
           renderVestidoresList();
       }
       const posView = document.getElementById('vestidores-posiciones-view');
