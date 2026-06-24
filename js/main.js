@@ -1,3 +1,40 @@
+const APP_VERSION = 'v0.5.3';
+const CHANGELOG = [
+  "Mejora en la resolución de las fotos al guardarlas (480x640) para que se vean súper nítidas.",
+  "Los pines del mando ahora muestran la foto en forma circular (o las iniciales si no hay foto).",
+  "Al tocar o hacer clic en una foto del mando, aparecerá su nombre en un globo flotante.",
+  "Solucionado el fallo visual que dejaba el mapa debajo del menú principal al volver atrás."
+];
+
+function checkAppUpdate() {
+  const currentVer = localStorage.getItem('app_version');
+  if (currentVer !== APP_VERSION) {
+    const versionText = document.getElementById('changelog-version-text');
+    const detailsContainer = document.getElementById('changelog-details');
+    const modal = document.getElementById('changelog-modal');
+    if (versionText && detailsContainer && modal) {
+      versionText.textContent = APP_VERSION;
+      let html = '<ul style="padding-left: 1.2rem; margin: 0;">';
+      CHANGELOG.forEach(item => {
+        html += `<li style="margin-bottom: 0.5rem;">${item}</li>`;
+      });
+      html += '</ul>';
+      detailsContainer.innerHTML = html;
+      modal.style.display = 'grid';
+    }
+    localStorage.setItem('app_version', APP_VERSION);
+  }
+}
+
+function closeChangelogModal() {
+  const modal = document.getElementById('changelog-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+window.addEventListener('load', () => {
+  checkAppUpdate();
+});
+
 async function checkAutoSync() {
   const indicator = document.getElementById("sync-indicator");
 
