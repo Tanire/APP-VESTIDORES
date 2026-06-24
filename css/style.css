@@ -984,21 +984,25 @@ h3 {
 .manto-pin {
   position: absolute;
   transform: translate(-50%, -50%); /* Center pin on coordinate */
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid #c5a059; /* Gold border */
-  border-radius: var(--radius-sm);
-  padding: 0.25rem 0.5rem;
-  color: #f8fafc;
-  font-size: 0.7rem;
-  font-weight: 600;
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #c5a059; /* Gold border */
+  background: var(--bg-card);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: center;
   z-index: 100;
-  transition: background-color 0.2s, transform 0.1s;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
   cursor: grab;
+  user-select: none;
+}
+
+.manto-pin:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  z-index: 105;
 }
 
 .manto-pin:active {
@@ -1006,26 +1010,106 @@ h3 {
 }
 
 .manto-pin.read-only {
-  cursor: default;
+  cursor: pointer;
 }
 
-.pin-remove-btn {
-  background: transparent;
-  border: none;
-  color: #94a3b8;
-  font-size: 0.85rem;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
+/* Avatar image styles inside pin */
+.manto-pin-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.2s;
 }
 
-.pin-remove-btn:hover {
-  color: #f87171;
+.manto-pin-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Initials placeholder when no photo exists */
+.manto-pin-initials {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #818cf8);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* Tooltip style */
+.manto-pin-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: rgba(15, 23, 42, 0.95);
+  color: #f8fafc;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 110;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Arrow indicator for tooltip */
+.manto-pin-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(15, 23, 42, 0.95) transparent transparent transparent;
+}
+
+.manto-pin.active .manto-pin-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+}
+
+/* Remove button badge position adjusted for circular pin */
+.manto-pin .pin-remove-btn {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1.5px solid white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 102;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.manto-pin .pin-remove-btn:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+  color: white;
 }
 
 .posiciones-sidebar {

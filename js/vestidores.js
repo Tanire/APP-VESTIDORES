@@ -1217,6 +1217,12 @@ function setupMantoViewportEvents() {
     }
 }
 
+function getInitials(name, surname1) {
+    const firstChar = name ? name.trim().charAt(0) : '';
+    const secondChar = surname1 ? surname1.trim().charAt(0) : '';
+    return (firstChar + secondChar).toUpperCase() || '👤';
+}
+
 function renderPosiciones() {
     const authorized = isAuthorized();
     const list = StorageService.getVestidores();
@@ -1232,7 +1238,31 @@ function renderPosiciones() {
                 pin.className = 'manto-pin' + (authorized ? '' : ' read-only');
                 pin.style.left = person.position.x + '%';
                 pin.style.top = person.position.y + '%';
-                pin.innerHTML = `${person.name} ${person.surname1 || ''}`;
+                
+                // Construct avatar photo or initials
+                let avatarHtml = '';
+                if (person.photo) {
+                    avatarHtml = `<div class="manto-pin-avatar"><img src="${person.photo}" alt="${person.name}" /></div>`;
+                } else {
+                    const initials = getInitials(person.name, person.surname1);
+                    avatarHtml = `<div class="manto-pin-initials">${initials}</div>`;
+                }
+                
+                // Construct tooltip
+                const fullName = `${person.name} ${person.surname1 || ''} ${person.surname2 || ''}`.trim();
+                const tooltipHtml = `<div class="manto-pin-tooltip">${fullName}</div>`;
+                
+                pin.innerHTML = avatarHtml + tooltipHtml;
+
+                // Click event to toggle tooltip
+                pin.onclick = function(e) {
+                    e.stopPropagation();
+                    const isActive = pin.classList.contains('active');
+                    document.querySelectorAll('.manto-pin').forEach(p => p.classList.remove('active'));
+                    if (!isActive) {
+                        pin.classList.add('active');
+                    }
+                };
 
                 if (authorized) {
                     pin.draggable = true;
@@ -1249,6 +1279,8 @@ function renderPosiciones() {
 
                     pin.ondragstart = function(e) {
                         e.dataTransfer.setData('text/plain', person.id);
+                        // Hide tooltip during drag
+                        pin.classList.remove('active');
                     };
                 }
 
@@ -1315,5 +1347,12 @@ function unplaceVestidor(id) {
         if (typeof checkAutoSync !== 'undefined') checkAutoSync();
     }
 }
+
+// Global listener to close tooltips when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.manto-pin')) {
+        document.querySelectorAll('.manto-pin').forEach(p => p.classList.remove('active'));
+    }
+});
 
 
