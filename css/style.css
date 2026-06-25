@@ -1181,4 +1181,20 @@ h3 {
   font-size: 0.75rem;
 }
 
+.unpositioned-item.selected-for-placement {
+  background: rgba(197, 160, 89, 0.15) !important;
+  border: 1.5px solid var(--secondary) !important;
+  animation: pulse-border 1.5s infinite alternate;
+}
+
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0px rgba(197, 160, 89, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 6px rgba(197, 160, 89, 0);
+  }
+}
+
+
 

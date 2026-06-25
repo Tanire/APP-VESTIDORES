@@ -7,6 +7,8 @@
 let isEditingId = null; // If set, we are editing this person
 let currentSearchQuery = '';
 let currentCategoryFilter = 'all';
+let pendingPlacementId = null;
+let placementStartPos = { x: 0, y: 0 };
 
 // --- Utilities ---
 function normalizeText(str) {
@@ -1146,6 +1148,9 @@ function setupMantoViewportEvents() {
     viewport.onmousedown = function(e) {
         if (e.target.closest('.manto-pin') || e.target.closest('button')) return;
         
+        placementStartPos.x = e.clientX;
+        placementStartPos.y = e.clientY;
+        
         isPanning = true;
         viewport.style.cursor = 'grabbing';
         panStart.x = e.clientX - currentPan.x * currentZoom;
@@ -1170,6 +1175,9 @@ function setupMantoViewportEvents() {
     viewport.ontouchstart = function(e) {
         if (e.target.closest('.manto-pin') || e.target.closest('button')) return;
         if (e.touches.length === 1) {
+            placementStartPos.x = e.touches[0].clientX;
+            placementStartPos.y = e.touches[0].clientY;
+            
             isPanning = true;
             const touch = e.touches[0];
             panStart.x = touch.clientX - currentPan.x * currentZoom;
@@ -1213,6 +1221,34 @@ function setupMantoViewportEvents() {
             const yPercent = parseFloat(((yPx / rect.height) * 100).toFixed(2));
 
             placeVestidor(vestidorId, xPercent, yPercent);
+        };
+
+        // Mobile Tap-to-Position handler
+        pinsContainer.onclick = function(e) {
+            if (e.target.closest('.manto-pin') || e.target.closest('button')) return;
+            const authorized = isAuthorized();
+            if (!authorized) return;
+
+            if (pendingPlacementId) {
+                // Calculate distance from touch/mousedown start to avoid placing while panning
+                const dx = Math.abs(e.clientX - placementStartPos.x);
+                const dy = Math.abs(e.clientY - placementStartPos.y);
+                if (dx > 8 || dy > 8) {
+                    return; // Ignored as pan/drag
+                }
+
+                const rect = pinsContainer.getBoundingClientRect();
+                const xPx = (e.clientX - rect.left);
+                const yPx = (e.clientY - rect.top);
+                
+                const xPercent = parseFloat(((xPx / rect.width) * 100).toFixed(2));
+                const yPercent = parseFloat(((yPx / rect.height) * 100).toFixed(2));
+
+                placeVestidor(pendingPlacementId, xPercent, yPercent);
+                pendingPlacementId = null;
+                renderPosiciones();
+                if (typeof Toast !== 'undefined') Toast.success("Posición asignada correctamente.");
+            }
         };
     }
 }
@@ -1302,6 +1338,9 @@ function renderPosiciones() {
             unpositioned.forEach(person => {
                 const item = document.createElement('div');
                 item.className = 'unpositioned-item';
+                if (pendingPlacementId === person.id) {
+                    item.className += ' selected-for-placement';
+                }
                 item.innerHTML = `${person.name} ${person.surname1 || ''}`;
                 
                 if (authorized) {
@@ -1311,7 +1350,14 @@ function renderPosiciones() {
                     };
                     
                     item.onclick = function() {
-                        placeVestidor(person.id, 50, 50);
+                        if (pendingPlacementId === person.id) {
+                            pendingPlacementId = null;
+                            if (typeof Toast !== 'undefined') Toast.info("Colocación cancelada.");
+                        } else {
+                            pendingPlacementId = person.id;
+                            if (typeof Toast !== 'undefined') Toast.info(`Toca el manto para ubicar a ${person.name}.`);
+                        }
+                        renderPosiciones();
                     };
                 }
                 unpositionedList.appendChild(item);

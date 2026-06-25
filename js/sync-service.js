@@ -118,7 +118,7 @@ const SyncService = {
             shopping_list: StorageService.get('shopping_list', []),
             recurring_bills: StorageService.getRecurringBills(),
             household_tasks: StorageService.getTasks(),
-            vestidores_people: StorageService.getVestidores(),
+            vestidores_people: StorageService.get('vestidores_people', []),
             ofrenda_folders: StorageService.get('ofrenda_folders', [])
         };
     },
@@ -130,9 +130,10 @@ const SyncService = {
         if (data.shopping_list) StorageService.set('shopping_list', data.shopping_list, true);
         if (data.recurring_bills) StorageService.saveRecurringBills(data.recurring_bills, true);
         if (data.household_tasks) StorageService.saveTasks(data.household_tasks, true);
-        if (data.vestidores_people) StorageService.saveVestidores(data.vestidores_people, true);
+        if (data.vestidores_people) StorageService.set('vestidores_people', data.vestidores_people, true);
         if (data.ofrenda_folders) StorageService.set('ofrenda_folders', data.ofrenda_folders, true);
     },
+
 
     // Smart Merge
     mergeArrays(localArr, cloudArr) {

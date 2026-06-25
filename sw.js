@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vestidores-v0.6.1';
+const CACHE_NAME = 'vestidores-v0.6.2';
 const ASSETS = [
     './',
     './index.html',
@@ -39,7 +39,25 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+    // Only cache GET requests and skip browser extensions or chrome-extension URLs
+    if (e.request.method !== 'GET' || !e.request.url.startsWith(self.location.origin)) {
+        return;
+    }
+
     e.respondWith(
-        caches.match(e.request).then((response) => response || fetch(e.request))
+        caches.open(CACHE_NAME).then((cache) => {
+            return cache.match(e.request).then((cachedResponse) => {
+                const fetchPromise = fetch(e.request).then((networkResponse) => {
+                    if (networkResponse && networkResponse.status === 200) {
+                        cache.put(e.request, networkResponse.clone());
+                    }
+                    return networkResponse;
+                }).catch(() => {
+                    // Fallback to cache silently on network error
+                });
+                return cachedResponse || fetchPromise;
+            });
+        })
     );
 });
+

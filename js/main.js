@@ -5,6 +5,10 @@ if (localStorage.getItem('security_code') === '250925') {
 
 // Clear admin mode when exiting/leaving the app (visibility hidden, pagehide)
 function clearAdminMode() {
+  if (sessionStorage.getItem('navigating_internally') === 'true') {
+    sessionStorage.removeItem('navigating_internally');
+    return;
+  }
   if (localStorage.getItem('security_code') === '250925') {
     localStorage.removeItem('security_code');
     window.dispatchEvent(new Event("storage-updated"));
@@ -19,10 +23,12 @@ document.addEventListener('visibilitychange', () => {
 
 window.addEventListener('pagehide', clearAdminMode);
 
-const APP_VERSION = 'v0.6.1';
+const APP_VERSION = 'v0.6.2';
 const CHANGELOG = [
-  "Medidas de seguridad incrementadas: El modo administrador no se conserva al cerrar, minimizar o salir de la aplicación.",
-  "Restricción de seguridad: Solo el administrador puede exportar e importar copias de seguridad locales de los datos."
+  "Migración a IndexedDB: Soporte completo para almacenar fotos grandes de carnet y ofrendas sin el límite de 5MB de cuota local.",
+  "Seguridad Reforzada: Cifrado simétrico en cliente (usando el código verificador) para proteger DNI, teléfonos, emails y direcciones físicas antes de subir la base de datos a la nube.",
+  "Caché optimizada: Estrategia Stale-While-Revalidate en Service Worker para cargas instantáneas y actualización fluida en segundo plano.",
+  "Posicionamiento Táctil: Nueva interacción 'Tap-to-Position' para ubicar vestidores en el manto fácilmente tocando la pantalla en móviles."
 ];
 
 function checkAppUpdate() {
@@ -120,6 +126,7 @@ async function checkAutoSync() {
 
 // Navigation Logic
 function navigateTo(page) {
+  sessionStorage.setItem('navigating_internally', 'true');
   window.location.href = page;
 }
 
@@ -158,10 +165,21 @@ function showMainMenu() {
   document.getElementById("main-menu").style.display = "grid"; // Restore grid display
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+
+  // Initialize Storage Service (IndexedDB load) first
+  if (typeof StorageService !== "undefined" && StorageService.init) {
+    await StorageService.init();
+  }
 
   // Initialize App directly
   checkAutoSync();
+
+  // Update footer version dynamically
+  const footerVer = document.getElementById('app-version-footer');
+  if (footerVer) {
+    footerVer.textContent = `Versión ${APP_VERSION.replace('v', '')}`;
+  }
 
   // Check User Profile
   const user = localStorage.getItem('user_profile');
