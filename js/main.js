@@ -1,13 +1,17 @@
-// Clear admin security code at startup/initialization to ensure we start in read-only mode
-if (localStorage.getItem('security_code') === '250925') {
-  localStorage.removeItem('security_code');
+// Manage admin security code session on page load
+if (sessionStorage.getItem('navigating_internally') === 'true') {
+  sessionStorage.removeItem('navigating_internally'); // Reset flag for next action
+} else {
+  // Fresh entry or external launch, enforce read-only startup
+  if (localStorage.getItem('security_code') === '250925') {
+    localStorage.removeItem('security_code');
+  }
 }
 
 // Clear admin mode when exiting/leaving the app (visibility hidden, pagehide)
 function clearAdminMode() {
   if (sessionStorage.getItem('navigating_internally') === 'true') {
-    sessionStorage.removeItem('navigating_internally');
-    return;
+    return; // Keep the code, navigating internally
   }
   if (localStorage.getItem('security_code') === '250925') {
     localStorage.removeItem('security_code');
@@ -179,6 +183,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const footerVer = document.getElementById('app-version-footer');
   if (footerVer) {
     footerVer.textContent = `Versión ${APP_VERSION.replace('v', '')}`;
+  }
+
+  // Update settings page version dynamically
+  const settingsVer = document.getElementById('settings-app-version');
+  if (settingsVer) {
+    settingsVer.textContent = APP_VERSION;
   }
 
   // Check User Profile
