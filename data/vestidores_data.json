@@ -149,7 +149,7 @@
       "note": "",
       "recurrence": "none",
       "createdBy": "Mar",
-      "_deleted": true
+      "_deleted": false
     },
     {
       "id": "1768333749127",
@@ -358,7 +358,7 @@
       "note": "",
       "recurrence": "none",
       "createdBy": "Mar",
-      "_deleted": false
+      "_deleted": true
     },
     {
       "id": "1770618615411",
@@ -598,7 +598,7 @@
       "note": "Pendiente de confirmar",
       "recurrence": "none",
       "createdBy": "Mar",
-      "_deleted": false,
+      "_deleted": true,
       "updatedAt": "2026-03-04T20:04:17.283Z"
     },
     {
@@ -2019,7 +2019,8 @@
       "type": "expense",
       "date": "2026-02-14T11:46:23.372Z",
       "createdBy": "Mar",
-      "items": []
+      "items": [],
+      "_deleted": true
     },
     {
       "id": "1771069614032",
