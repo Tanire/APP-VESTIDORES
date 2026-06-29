@@ -27,12 +27,12 @@ document.addEventListener('visibilitychange', () => {
 
 window.addEventListener('pagehide', clearAdminMode);
 
-const APP_VERSION = 'v0.6.3';
+const APP_VERSION = 'v0.6.4';
 const CHANGELOG = [
+  "Cerrar Sesión de Administrador: Añadido nuevo botón 'Cerrar Sesión Admin' en la sección de Seguridad de Ajustes para salir del modo de edición fácilmente.",
   "Fotos del Manto Públicas: Ahora las fotos de los vestidores son visibles en el manto para todos los usuarios sin necesidad de contraseña.",
   "Instalación PWA Mejorada: Iconos optimizados en PNG y configuración de manifest ajustada para facilitar la instalación nativa como aplicación en Android.",
-  "Acceso de Instalación Directa: Nueva sección y botón 'Instalar Aplicación' añadidos en la página de Ajustes.",
-  "Seguridad y Privacidad: Se mantiene el cifrado en cliente para datos personales sensibles (DNI, Teléfono, Email, Domicilio) dejando las fotos en plano para acceso público."
+  "Acceso de Instalación Directa: Nueva sección y botón 'Instalar Aplicación' añadidos en la página de Ajustes."
 ];
 
 // PWA installation prompt logic (root listener to capture it early)
@@ -322,6 +322,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         importBtn.classList.remove('btn-disabled');
       }
     }
+
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+      logoutBtn.style.display = isAdmin ? 'block' : 'none';
+    }
   }
 
   // Initial Security UI Update
@@ -340,6 +345,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else {
         if (typeof Toast !== 'undefined') Toast.error('Código incorrecto');
       }
+    });
+  }
+
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('security_code');
+      if (verificationInput) {
+        verificationInput.value = '';
+      }
+      window.dispatchEvent(new Event("storage-updated"));
+      if (typeof Toast !== 'undefined') Toast.info('Sesión de administrador cerrada.');
     });
   }
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vestidores-v0.6.3';
+const CACHE_NAME = 'vestidores-v0.6.4';
 const ASSETS = [
     './',
     './index.html',
