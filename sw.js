@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vestidores-v0.6.2';
+const CACHE_NAME = 'vestidores-v0.6.3';
 const ASSETS = [
     './',
     './index.html',
@@ -13,7 +13,9 @@ const ASSETS = [
     './manifest.json',
     './assets/vestidores.jpeg',
     './assets/virgen.jpeg',
-    './assets/manto_placeholder.png'
+    './assets/manto_placeholder.png',
+    './assets/icon-192.png',
+    './assets/icon-512.png'
 ];
 
 self.addEventListener('install', (e) => {

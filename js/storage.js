@@ -153,7 +153,7 @@ function decryptString(hex, key) {
   }
 }
 
-const SENSITIVE_FIELDS = ['dni', 'phone', 'email', 'birthPlace', 'birthDate', 'addressStreet', 'addressNum', 'zipCode', 'locality', 'admissionYear', 'photo'];
+const SENSITIVE_FIELDS = ['dni', 'phone', 'email', 'birthPlace', 'birthDate', 'addressStreet', 'addressNum', 'zipCode', 'locality', 'admissionYear'];
 
 function encryptPerson(person, key) {
   if (!key) return person;

@@ -29,12 +29,23 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div>
                     <div style="font-weight: 600;">Versión Instalada</div>
-                    <div id="settings-app-version" style="color: var(--text-muted); font-size: 0.9rem;">v0.6.2</div>
+                    <div id="settings-app-version" style="color: var(--text-muted); font-size: 0.9rem;">v0.6.3</div>
                 </div>
                 <button onclick="window.location.reload()" class="btn btn-sm btn-secondary">
                     ⟳ Recargar
                 </button>
             </div>
+        </div>
+
+        <!-- PWA Installation -->
+        <div id="pwa-install-card" class="card" style="display: none; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
+            <h3 style="margin-bottom: 0.5rem;">📲 Instalar Aplicación</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                Instala esta aplicación en tu dispositivo para acceder rápidamente y usarla sin conexión.
+            </p>
+            <button id="pwa-install-btn" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                📥 Instalar en Dispositivo
+            </button>
         </div>
 
         <!-- 4. Seguridad -->

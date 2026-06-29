@@ -27,13 +27,24 @@ document.addEventListener('visibilitychange', () => {
 
 window.addEventListener('pagehide', clearAdminMode);
 
-const APP_VERSION = 'v0.6.2';
+const APP_VERSION = 'v0.6.3';
 const CHANGELOG = [
-  "Migración a IndexedDB: Soporte completo para almacenar fotos grandes de carnet y ofrendas sin el límite de 5MB de cuota local.",
-  "Seguridad Reforzada: Cifrado simétrico en cliente (usando el código verificador) para proteger DNI, teléfonos, emails y direcciones físicas antes de subir la base de datos a la nube.",
-  "Caché optimizada: Estrategia Stale-While-Revalidate en Service Worker para cargas instantáneas y actualización fluida en segundo plano.",
-  "Posicionamiento Táctil: Nueva interacción 'Tap-to-Position' para ubicar vestidores en el manto fácilmente tocando la pantalla en móviles."
+  "Fotos del Manto Públicas: Ahora las fotos de los vestidores son visibles en el manto para todos los usuarios sin necesidad de contraseña.",
+  "Instalación PWA Mejorada: Iconos optimizados en PNG y configuración de manifest ajustada para facilitar la instalación nativa como aplicación en Android.",
+  "Acceso de Instalación Directa: Nueva sección y botón 'Instalar Aplicación' añadidos en la página de Ajustes.",
+  "Seguridad y Privacidad: Se mantiene el cifrado en cliente para datos personales sensibles (DNI, Teléfono, Email, Domicilio) dejando las fotos en plano para acceso público."
 ];
+
+// PWA installation prompt logic (root listener to capture it early)
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  window.deferredPrompt = e;
+  const installCard = document.getElementById('pwa-install-card');
+  if (installCard) {
+    installCard.style.display = 'block';
+  }
+});
+
 
 function checkAppUpdate() {
   const currentVer = localStorage.getItem('app_version');
@@ -170,6 +181,31 @@ function showMainMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+
+  // If PWA installation prompt arrived before DOMContentLoaded
+  if (window.deferredPrompt) {
+    const installCard = document.getElementById('pwa-install-card');
+    if (installCard) {
+      installCard.style.display = 'block';
+    }
+  }
+
+  // Bind installation button click
+  const installBtn = document.getElementById('pwa-install-btn');
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      const promptEvent = window.deferredPrompt;
+      if (!promptEvent) return;
+      promptEvent.prompt();
+      const { outcome } = await promptEvent.userChoice;
+      console.log(`PWA install prompt outcome: ${outcome}`);
+      window.deferredPrompt = null;
+      const installCard = document.getElementById('pwa-install-card');
+      if (installCard) {
+        installCard.style.display = 'none';
+      }
+    });
+  }
 
   // Initialize Storage Service (IndexedDB load) first
   if (typeof StorageService !== "undefined" && StorageService.init) {
