@@ -66,6 +66,21 @@
           </div>
         </div>
 
+        <!-- Calendario Button (v0.6.5) -->
+        <div
+          class="menu-card"
+          onclick="showSection('calendar-section'); initCalendarView();"
+          style="flex-direction: row; justify-content: start; gap: 1.5rem"
+        >
+          <div class="menu-icon" style="margin-bottom: 0; font-size: 2.5rem">
+            📅
+          </div>
+          <div style="text-align: left">
+            <div class="menu-title" style="margin-bottom: 0.2rem">CALENDARIO</div>
+            <div class="menu-desc">Agenda, Eventos y Recordatorios</div>
+          </div>
+        </div>
+
         <!-- Ajustes Button -->
         <div
           class="menu-card"
@@ -81,6 +96,9 @@
           </div>
         </div>
       </div>
+
+      <!-- Widget de Próximos Eventos en Pantalla Principal (v0.6.5) -->
+      <div id="upcoming-events-widget"></div>
 
       <!-- OFRENDA SECTION (Hidden by default) -->
       <div id="ofrenda-section" style="display: none">
@@ -253,6 +271,69 @@
             </h3>
             <div id="unpositioned-list" class="unpositioned-list-container">
               <!-- Unpositioned vestidores will be injected here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALENDAR SECTION (Hidden by default) (v0.6.5) -->
+      <div id="calendar-section" style="display: none">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <button class="btn btn-secondary back-button" style="margin-bottom: 0;" onclick="showMainMenu()">
+            ⬅ Volver
+          </button>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button id="cal-enable-notif-btn" class="btn btn-sm btn-secondary" onclick="NotificationManager.requestPermission().then(() => updateNotificationButtonStatus())">
+              🔔 Recordatorios
+            </button>
+            <button class="btn btn-sm btn-primary" onclick="openEventModal()">
+              ➕ Añadir Evento
+            </button>
+          </div>
+        </div>
+
+        <div class="cal-section-container">
+          <!-- Month Navigation & Title -->
+          <div class="cal-header-card">
+            <div class="cal-controls-row">
+              <div class="cal-month-nav">
+                <button class="cal-nav-btn" onclick="changeCalendarMonth(-1)" title="Mes anterior">◀</button>
+                <div class="cal-month-title" id="cal-month-title">Septiembre 2026</div>
+                <button class="cal-nav-btn" onclick="changeCalendarMonth(1)" title="Mes siguiente">▶</button>
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button class="btn btn-sm btn-secondary" onclick="goToCalendarToday()">📅 Hoy</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Layout: Grid + Events Panel -->
+          <div class="cal-main-layout">
+            <!-- Left: Days Grid -->
+            <div class="cal-grid-wrapper">
+              <div id="cal-days-grid" class="cal-days-grid">
+                <!-- Days will be dynamically injected here -->
+              </div>
+            </div>
+
+            <!-- Right: Events Details Panel -->
+            <div class="cal-events-panel">
+              <div class="cal-panel-tabs">
+                <button id="cal-tab-day" class="cal-panel-tab active" onclick="setCalendarViewTab('day')">
+                  📅 Día Seleccionado
+                </button>
+                <button id="cal-tab-upcoming" class="cal-panel-tab" onclick="setCalendarViewTab('upcoming')">
+                  📋 Próximos Eventos
+                </button>
+              </div>
+
+              <h3 id="cal-events-panel-title" style="font-size: 1.05rem; margin-bottom: 1rem; color: var(--text-main);">
+                Eventos
+              </h3>
+
+              <div id="cal-events-list-container" class="cal-events-list">
+                <!-- Event cards or empty state injected here -->
+              </div>
             </div>
           </div>
         </div>
@@ -496,7 +577,7 @@
             opacity: 0.7;
           "
         >
-          Versión 0.6.4
+          Versión 0.6.5
         </p>
       </footer>
     </div>
@@ -527,6 +608,125 @@
       <img id="lightbox-img" src="" alt="Zoomed Photo" style="max-width: 95%; max-height: 90vh; border-radius: 4px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); object-fit: contain;" />
     </div>
 
+    <!-- ADD / EDIT EVENT MODAL (v0.6.5) -->
+    <div id="event-modal" class="modal modal-overlay" style="display: none">
+      <div class="modal-content" style="max-width: 480px;">
+        <h3 style="margin-bottom: 1.5rem;" id="event-modal-title">Agendar Evento</h3>
+
+        <div class="form-grid" style="grid-template-columns: 1fr 1fr;">
+          <!-- Titulo -->
+          <div class="form-group col-span-2">
+            <label class="form-label">Título / Nombre del Acto *</label>
+            <input
+              type="text"
+              id="ev-title"
+              class="form-input"
+              placeholder="Ej. Ofrenda de Flores, Misa Mayor, Reunión..."
+              required
+            />
+          </div>
+
+          <!-- Fecha y Hora -->
+          <div class="form-group">
+            <label class="form-label">Fecha *</label>
+            <input
+              type="date"
+              id="ev-date"
+              class="form-input"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Hora</label>
+            <input
+              type="time"
+              id="ev-time"
+              class="form-input"
+            />
+          </div>
+
+          <!-- Sitio -->
+          <div class="form-group col-span-2">
+            <label class="form-label">Sitio / Recinto</label>
+            <input
+              type="text"
+              id="ev-site"
+              class="form-input"
+              placeholder="Ej. Basílica de la Virgen, Sede, Parroquia..."
+            />
+          </div>
+
+          <!-- Ubicación -->
+          <div class="form-group col-span-2">
+            <label class="form-label">Ubicación / Dirección</label>
+            <input
+              type="text"
+              id="ev-location"
+              class="form-input"
+              placeholder="Ej. Plaza de la Virgen 1, 46001 Valencia"
+            />
+          </div>
+
+          <!-- Recordatorio -->
+          <div class="form-group col-span-2">
+            <label class="form-label">🔔 Recordatorio / Notificación</label>
+            <select id="ev-reminder" class="form-input">
+              <option value="none">Sin recordatorio</option>
+              <option value="at_time">A la hora del evento</option>
+              <option value="15m">15 minutos antes</option>
+              <option value="1h">1 hora antes</option>
+              <option value="2h">2 horas antes</option>
+              <option value="1d_9am" selected>1 día antes (a las 09:00 h)</option>
+              <option value="1d">1 día antes (a la misma hora)</option>
+              <option value="2d">2 días antes</option>
+              <option value="1w">1 semana antes</option>
+            </select>
+          </div>
+
+          <!-- Color de etiqueta -->
+          <div class="form-group col-span-2">
+            <label class="form-label">Color distintivo</label>
+            <input type="hidden" id="ev-color" value="#1B365D" />
+            <div class="color-swatch-picker">
+              <div class="color-swatch selected" data-color="#1B365D" style="background: #1B365D;" onclick="setEventColorSelection('#1B365D')"></div>
+              <div class="color-swatch" data-color="#C5A059" style="background: #C5A059;" onclick="setEventColorSelection('#C5A059')"></div>
+              <div class="color-swatch" data-color="#10B981" style="background: #10B981;" onclick="setEventColorSelection('#10B981')"></div>
+              <div class="color-swatch" data-color="#D97706" style="background: #D97706;" onclick="setEventColorSelection('#D97706')"></div>
+              <div class="color-swatch" data-color="#991B1B" style="background: #991B1B;" onclick="setEventColorSelection('#991B1B')"></div>
+              <div class="color-swatch" data-color="#7C3AED" style="background: #7C3AED;" onclick="setEventColorSelection('#7C3AED')"></div>
+            </div>
+          </div>
+
+          <!-- Notas -->
+          <div class="form-group col-span-2">
+            <label class="form-label">Notas / Observaciones</label>
+            <textarea
+              id="ev-note"
+              class="form-input"
+              rows="2"
+              placeholder="Detalles sobre vestimenta, material, asistentes..."
+            ></textarea>
+          </div>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+          "
+        >
+          <button class="btn btn-secondary" onclick="closeEventModal()">
+            Cancelar
+          </button>
+          <button class="btn btn-primary" onclick="saveCalendarEvent()">
+            Guardar Evento
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- CHANGELOG MODAL -->
     <div id="changelog-modal" class="modal modal-overlay" style="display: none; z-index: 9999;">
       <div class="modal-content" style="max-width: 450px; text-align: left;">
@@ -552,6 +752,8 @@
     <script src="js/vestidores.js"></script>
     <!-- Ofrendas Controller (v0.4.4) -->
     <script src="js/ofrendas.js"></script>
+    <!-- Calendar Controller (v0.6.5) -->
+    <script src="js/calendar.js"></script>
     <!-- New Controller -->
     <script src="js/main.js"></script>
     <!-- Simple Service Worker Registration for PWA -->

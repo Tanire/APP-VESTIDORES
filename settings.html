@@ -29,10 +29,26 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <div>
                     <div style="font-weight: 600;">Versión Instalada</div>
-                    <div id="settings-app-version" style="color: var(--text-muted); font-size: 0.9rem;">v0.6.4</div>
+                    <div id="settings-app-version" style="color: var(--text-muted); font-size: 0.9rem;">v0.6.5</div>
                 </div>
                 <button onclick="window.location.reload()" class="btn btn-sm btn-secondary">
                     ⟳ Recargar
+                </button>
+            </div>
+        </div>
+
+        <!-- Notificaciones y Recordatorios (v0.6.5) -->
+        <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--secondary);">
+            <h3 style="margin-bottom: 0.5rem;">🔔 Notificaciones y Recordatorios</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                Recibe avisos antes de que comiencen los eventos y actos de los vestidores.
+            </p>
+            <div style="display: flex; gap: 0.75rem; flex-direction: column;">
+                <button id="enable-notif-settings-btn" onclick="NotificationManager.requestPermission().then(() => updateNotifSettingsUI())" class="btn btn-primary" style="width: 100%;">
+                    🔔 Activar Notificaciones
+                </button>
+                <button id="test-notif-btn" onclick="NotificationManager.sendNotification('Vestidores de la Virgen', { body: 'Prueba de notificación correcta.' }); Toast.success('Notificación de prueba enviada.');" class="btn btn-secondary" style="width: 100%;">
+                    🧪 Probar Notificación
                 </button>
             </div>
         </div>
@@ -109,6 +125,35 @@
     <script src="js/notifications.js"></script>
     <script src="js/sync-service.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        function updateNotifSettingsUI() {
+            const btn = document.getElementById('enable-notif-settings-btn');
+            if (!btn) return;
+            if (!NotificationManager.isSupported()) {
+                btn.textContent = '❌ Notificaciones no soportadas';
+                btn.disabled = true;
+                return;
+            }
+            const perm = NotificationManager.getPermission();
+            if (perm === 'granted') {
+                btn.textContent = '✅ Notificaciones Permitidas';
+                btn.className = 'btn btn-secondary';
+                btn.disabled = true;
+                btn.style.opacity = '0.9';
+            } else if (perm === 'denied') {
+                btn.textContent = '🔕 Notificaciones Bloqueadas en Navegador';
+                btn.className = 'btn btn-secondary';
+                btn.disabled = true;
+            } else {
+                btn.textContent = '🔔 Activar Notificaciones';
+                btn.className = 'btn btn-primary';
+                btn.disabled = false;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            updateNotifSettingsUI();
+        });
+    </script>
 </body>
 
 </html>

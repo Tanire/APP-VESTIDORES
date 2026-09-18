@@ -27,12 +27,12 @@ document.addEventListener('visibilitychange', () => {
 
 window.addEventListener('pagehide', clearAdminMode);
 
-const APP_VERSION = 'v0.6.4';
+const APP_VERSION = 'v0.6.5';
 const CHANGELOG = [
-  "Cerrar Sesión de Administrador: Añadido nuevo botón 'Cerrar Sesión Admin' en la sección de Seguridad de Ajustes para salir del modo de edición fácilmente.",
-  "Fotos del Manto Públicas: Ahora las fotos de los vestidores son visibles en el manto para todos los usuarios sin necesidad de contraseña.",
-  "Instalación PWA Mejorada: Iconos optimizados en PNG y configuración de manifest ajustada para facilitar la instalación nativa como aplicación en Android.",
-  "Acceso de Instalación Directa: Nueva sección y botón 'Instalar Aplicación' añadidos en la página de Ajustes."
+  "Calendario de Eventos: Nuevo calendario interactivo accesible desde la pantalla principal para agendar actos con fecha, hora, sitio y ubicación con enlace directo a Google Maps.",
+  "Recordatorios y Notificaciones: Configuración de avisos previos por evento, alertas in-app para el día a día y soporte de notificaciones nativas en el dispositivo.",
+  "Widget de Próximos Actos: Visualización directa en el inicio de los actos más cercanos y alertas destacadas para actos que se celebran hoy.",
+  "Exportación de Eventos: Exporta cualquier acto agendado directamente a Google Calendar o descarga el archivo .ICS compatible con Apple y Android."
 ];
 
 // PWA installation prompt logic (root listener to capture it early)
@@ -146,15 +146,28 @@ function navigateTo(page) {
 }
 
 function showSection(sectionId) {
-  // Hide main menu
-  document.getElementById("main-menu").style.display = "none";
+  // Hide main menu & widget
+  const mainMenu = document.getElementById("main-menu");
+  if (mainMenu) mainMenu.style.display = "none";
+
+  const widget = document.getElementById("upcoming-events-widget");
+  if (widget) widget.style.display = "none";
 
   // Hide all sections just in case
-  document.getElementById("ofrenda-section").style.display = "none";
-  document.getElementById("vestidores-section").style.display = "none";
-  document.getElementById("vestidores-list-view").style.display = "none";
+  const ofrendaSec = document.getElementById("ofrenda-section");
+  if (ofrendaSec) ofrendaSec.style.display = "none";
+
+  const vestidoresSec = document.getElementById("vestidores-section");
+  if (vestidoresSec) vestidoresSec.style.display = "none";
+
+  const vestidoresList = document.getElementById("vestidores-list-view");
+  if (vestidoresList) vestidoresList.style.display = "none";
+
   const posView = document.getElementById("vestidores-posiciones-view");
   if (posView) posView.style.display = "none";
+
+  const calSec = document.getElementById("calendar-section");
+  if (calSec) calSec.style.display = "none";
 
   // Show requested section
   const section = document.getElementById(sectionId);
@@ -165,19 +178,42 @@ function showSection(sectionId) {
     if (sectionId === 'ofrenda-section' && typeof renderOfrendaFolders !== 'undefined') {
       renderOfrendaFolders();
     }
+
+    // Auto-render calendar on section open (v0.6.5)
+    if (sectionId === 'calendar-section' && typeof initCalendarView !== 'undefined') {
+      initCalendarView();
+    }
   }
 }
 
 function showMainMenu() {
   // Hide all sections
-  document.getElementById("ofrenda-section").style.display = "none";
-  document.getElementById("vestidores-section").style.display = "none";
-  document.getElementById("vestidores-list-view").style.display = "none";
+  const ofrendaSec = document.getElementById("ofrenda-section");
+  if (ofrendaSec) ofrendaSec.style.display = "none";
+
+  const vestidoresSec = document.getElementById("vestidores-section");
+  if (vestidoresSec) vestidoresSec.style.display = "none";
+
+  const vestidoresList = document.getElementById("vestidores-list-view");
+  if (vestidoresList) vestidoresList.style.display = "none";
+
   const posView = document.getElementById("vestidores-posiciones-view");
   if (posView) posView.style.display = "none";
 
-  // Show main menu
-  document.getElementById("main-menu").style.display = "grid"; // Restore grid display
+  const calSec = document.getElementById("calendar-section");
+  if (calSec) calSec.style.display = "none";
+
+  // Show main menu & widget
+  const mainMenu = document.getElementById("main-menu");
+  if (mainMenu) mainMenu.style.display = "grid"; // Restore grid display
+
+  const widget = document.getElementById("upcoming-events-widget");
+  if (widget) {
+    widget.style.display = "block";
+    if (typeof renderUpcomingEventsWidget !== 'undefined') {
+      renderUpcomingEventsWidget();
+    }
+  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -214,6 +250,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Initialize App directly
   checkAutoSync();
+
+  // Render Upcoming Events Widget on Main Page
+  if (typeof renderUpcomingEventsWidget !== 'undefined') {
+    renderUpcomingEventsWidget();
+  }
+
+  // Check Calendar Event Reminders
+  if (typeof checkCalendarReminders !== 'undefined') {
+    setTimeout(checkCalendarReminders, 1500);
+  }
 
   // Update footer version dynamically
   const footerVer = document.getElementById('app-version-footer');
@@ -374,6 +420,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       const posView = document.getElementById('vestidores-posiciones-view');
       if (posView && posView.style.display !== 'none') {
           renderPosiciones();
+      }
+      const calView = document.getElementById('calendar-section');
+      if (calView && calView.style.display !== 'none') {
+          if (typeof initCalendarView !== 'undefined') initCalendarView();
+      }
+      if (typeof renderUpcomingEventsWidget !== 'undefined') {
+          renderUpcomingEventsWidget();
+      }
+      if (typeof checkCalendarReminders !== 'undefined') {
+          checkCalendarReminders();
       }
   });
 });
